@@ -1,0 +1,159 @@
+personal:
+  name: Jackie Jin
+  title: Full Stack Engineer
+  email: jackie@example.com
+  location: Sydney, Australia
+  github: https://github.com/jackie311
+  linkedin: https://linkedin.com/in/jackiejin
+  open_to_work: true
+  bio: >
+    Passionate full stack engineer with 5+ years of experience building scalable web applications
+    and AI-powered tools. I love turning complex problems into elegant, user-friendly solutions.
+    Skilled in Python, TypeScript, and cloud infrastructure. Currently open to senior engineer
+    and tech lead roles.
+
+experience:
+  - company: Acme Corp
+    role: Senior Software Engineer
+    period: "2023 - Present"
+    start: 2023-01
+    location: Sydney, AU (Remote)
+    description: >
+      Led development of a real-time data pipeline processing 10M+ events/day using Python,
+      Kafka, and AWS. Mentored 3 junior engineers and drove adoption of TypeScript across
+      the frontend team.
+    highlights:
+      - Built event-driven microservices with Python + FastAPI, reducing latency by 40%
+      - Designed and shipped a React dashboard for real-time analytics used by 500+ clients
+      - Introduced CI/CD best practices (GitHub Actions, Docker), cutting deploy time from 45min to 8min
+    tech: [Python, FastAPI, TypeScript, React, AWS, Kafka, Docker, PostgreSQL]
+
+  - company: StartupXYZ
+    role: Full Stack Developer
+    period: "2021 - 2023"
+    start: 2021-03
+    location: Melbourne, AU
+    description: >
+      Early engineer at a B2B SaaS startup. Owned the full product from backend APIs to
+      React frontend and DevOps. Helped grow the platform from 0 to 2,000 paying customers.
+    highlights:
+      - Built the entire authentication + billing system (Stripe integration) from scratch
+      - Architected the multi-tenant database schema in PostgreSQL
+      - Reduced cloud costs by 35% by optimizing Lambda functions and adding CDN caching
+    tech: [Python, Django, React, Next.js, PostgreSQL, AWS Lambda, Stripe, Redis]
+
+  - company: Freelance / Contract
+    role: Software Developer
+    period: "2020 - 2021"
+    start: 2020-06
+    location: Remote
+    description: >
+      Worked with small businesses and startups to build web applications and automate
+      workflows. Delivered 8+ projects across e-commerce, fintech, and media.
+    highlights:
+      - Built a headless e-commerce site with Next.js + Shopify API for a fashion brand
+      - Automated invoice processing with Python (OCR + GPT-3), saving 20 hrs/week for a client
+      - Developed REST APIs for 3 mobile app clients using FastAPI and MongoDB
+    tech: [Python, FastAPI, Next.js, MongoDB, Shopify API, OpenAI, AWS]
+
+education:
+  - institution: University of Melbourne
+    degree: Bachelor of Computer Science
+    period: "2017 - 2020"
+    gpa: "3.8 / 4.0"
+    highlights:
+      - Major in Software Systems and Distributed Computing
+      - Dean's List — 2019, 2020
+      - "Final year project: Distributed task scheduler using Raft consensus algorithm"
+
+skills:
+  languages:
+    - name: Python
+      level: 5
+      years: 6
+    - name: TypeScript
+      level: 5
+      years: 4
+    - name: JavaScript
+      level: 5
+      years: 5
+    - name: SQL
+      level: 4
+      years: 5
+    - name: Go
+      level: 3
+      years: 1
+    - name: Java
+      level: 3
+      years: 2
+
+  frontend:
+    - React
+    - Next.js
+    - Tailwind CSS
+    - Framer Motion
+    - Recharts
+    - HTML5 / CSS3
+
+  backend:
+    - FastAPI
+    - Django
+    - Node.js / Express
+    - REST APIs
+    - GraphQL
+    - WebSockets
+
+  databases:
+    - PostgreSQL
+    - MongoDB
+    - Redis
+    - ChromaDB
+    - DynamoDB
+
+  devops_cloud:
+    - AWS (Lambda, ECS, S3, RDS, CloudFront)
+    - Docker / Docker Compose
+    - GitHub Actions
+    - Terraform
+    - Linux / Bash
+
+  ai_ml:
+    - LangChain
+    - Claude API (Anthropic)
+    - OpenAI API
+    - ChromaDB (vector DB)
+    - RAG pipelines
+    - Prompt engineering
+
+  skill_radar:
+    - category: Frontend
+      score: 85
+    - category: Backend
+      score: 92
+    - category: DevOps / Cloud
+      score: 78
+    - category: AI / ML
+      score: 80
+    - category: System Design
+      score: 82
+    - category: Databases
+      score: 85
+
+certifications:
+  - name: AWS Certified Developer – Associate
+    issuer: Amazon Web Services
+    year: 2023
+  - name: Google Cloud Professional Cloud Architect
+    issuer: Google Cloud
+    year: 2022
+
+languages_spoken:
+  - English (Professional)
+  - Mandarin Chinese (Native)
+
+availability:
+  status: Open to work
+  preferred_roles: [Senior Software Engineer, Tech Lead, Full Stack Engineer]
+  preferred_stack: [Python, TypeScript, React, AWS]
+  work_arrangement: [Remote, Hybrid]
+  notice_period: 2 weeks

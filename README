@@ -1,0 +1,113 @@
+# Jackie Jin — AI Interactive Resume
+
+An AI-powered personal portfolio site. Displays resume content with an always-visible AI chat
+sidebar where visitors can ask questions about experience, skills, and projects in English or Chinese.
+
+## Tech Stack
+
+- **Frontend**: Next.js 14 (App Router) + TypeScript + Tailwind CSS + Recharts + Framer Motion
+- **Backend**: Python FastAPI + LangChain + ChromaDB (RAG) + Claude API (claude-sonnet-4-6)
+- **Deployment**: AWS (Amplify or S3+CloudFront for frontend, Lambda/ECS for backend)
+
+---
+
+## Project Structure
+
+### Backend (`backend/`)
+
+| File | Purpose |
+|---|---|
+| `main.py` | FastAPI app entry point with CORS |
+| `routes/chat.py` | `POST /api/chat` — SSE streaming chat endpoint |
+| `routes/resume.py` | `GET /api/resume` and `GET /api/resume/projects` |
+| `routes/github.py` | `GET /api/github/stats` — GitHub API proxy with 1hr cache |
+| `rag/chain.py` | RAG chain: ChromaDB retrieval → Claude streaming response |
+| `rag/embedder.py` | Embeds resume YAML docs into ChromaDB (run once on setup) |
+| `data/resume.yaml` | **Source of truth** — edit this with your real info |
+| `data/projects.yaml` | Project details for showcase + RAG |
+
+### Frontend (`frontend/`)
+
+| File | Purpose |
+|---|---|
+| `src/app/page.tsx` | Main page — 70/30 side-by-side resume + chat layout |
+| `src/app/projects/page.tsx` | Project showcase grid (featured + other) |
+| `src/app/stats/page.tsx` | GitHub stats + language pie chart |
+| `src/components/chat/ChatPanel.tsx` | AI chat with SSE streaming + Recruiter Mode |
+| `src/components/chat/SuggestedQuestions.tsx` | Suggested question chips |
+| `src/components/resume/AboutSection.tsx` | Name, title, bio, open-to-work badge |
+| `src/components/resume/ExperienceSection.tsx` | Work history timeline |
+| `src/components/resume/SkillsSection.tsx` | Language bars + skill tag clouds |
+| `src/components/resume/EducationSection.tsx` | Education + certifications |
+| `src/components/visualizations/SkillsRadar.tsx` | Recharts radar chart for skill proficiency |
+| `src/components/visualizations/CareerTimeline.tsx` | Animated career + education timeline |
+| `src/components/visualizations/TechWordCloud.tsx` | Weighted tech stack word cloud |
+| `src/components/projects/ProjectCard.tsx` | Project card with tech badges + impact |
+| `src/components/Navbar.tsx` | Nav with dark/light mode toggle + PDF download |
+
+---
+
+## Features
+
+- Side-by-side layout: resume on the left, AI chat always visible on the right
+- AI chat powered by Claude API with RAG over resume data
+- Suggested questions + Recruiter Mode (paste a JD to analyze fit)
+- Bilingual: AI auto-detects English / Chinese and responds accordingly
+- Interactive visualizations: Skills Radar, Career Timeline, Tech Word Cloud
+- Project showcase with GitHub stats (stars/forks via GitHub API)
+- GitHub language breakdown pie chart
+- Dark / light mode
+- Open to Work status badge
+
+---
+
+## Setup
+
+### 1. Configure backend
+
+```bash
+cp backend/.env.example backend/.env
+# Edit backend/.env — add your ANTHROPIC_API_KEY, GITHUB_TOKEN, GITHUB_USERNAME
+```
+
+### 2. Install backend dependencies
+
+```bash
+cd backend
+python -m venv .venv
+.venv/Scripts/pip install -r requirements.txt   # Windows
+# or: .venv/bin/pip install -r requirements.txt  # Mac/Linux
+```
+
+### 3. Embed resume into ChromaDB (run once, re-run after data changes)
+
+```bash
+cd backend
+.venv/Scripts/python rag/embedder.py
+```
+
+### 4. Start the backend
+
+```bash
+cd backend
+.venv/Scripts/uvicorn main:app --reload
+# API available at http://localhost:8000
+```
+
+### 5. Configure and start the frontend
+
+```bash
+cd frontend
+cp .env.local.example .env.local
+npm install
+npm run dev
+# App available at http://localhost:3000
+```
+
+---
+
+## Customization
+
+Edit `backend/data/resume.yaml` with your real name, experience, skills, and education.
+Edit `backend/data/projects.yaml` with your real projects.
+After editing, re-run `rag/embedder.py` to update the AI's knowledge base.

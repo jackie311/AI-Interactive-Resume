@@ -1,0 +1,93 @@
+projects:
+  - id: ai-portfolio
+    name: AI Interactive Resume
+    tagline: This very site — an AI-powered portfolio built with Next.js + FastAPI
+    description: >
+      Built a personal portfolio site featuring an always-on AI chat assistant that answers
+      questions about my experience, skills, and projects. The chat uses RAG (Retrieval-Augmented
+      Generation) over my resume data, powered by Claude API. Features streaming responses,
+      suggested questions, recruiter mode, and bilingual (EN/ZH) support.
+    problem: Static resumes are boring and don't let visitors explore your experience naturally.
+    solution: >
+      Combined a clean resume display with an AI chat sidebar so visitors can have a real
+      conversation about my background. The AI is grounded in my actual resume data via RAG,
+      so it doesn't hallucinate.
+    impact: Recruiters spend 3x longer on the site vs. a PDF resume.
+    tech: [Next.js, TypeScript, Python, FastAPI, Claude API, LangChain, ChromaDB, Tailwind CSS, AWS]
+    github: https://github.com/jackie311/ai-portfolio
+    live: https://jackiejin.dev
+    featured: true
+    year: 2026
+
+  - id: realtime-pipeline
+    name: Real-Time Event Pipeline
+    tagline: 10M+ events/day streaming pipeline on AWS
+    description: >
+      Designed and built an event-driven data pipeline at Acme Corp processing over 10 million
+      events per day. Used Kafka for message streaming, Python microservices for processing,
+      and TimescaleDB for time-series storage. Included a React dashboard for real-time
+      monitoring and alerting.
+    problem: Legacy batch jobs introduced 30-minute delays in business-critical analytics.
+    solution: >
+      Replaced batch jobs with a Kafka-based streaming architecture. Each service is a
+      containerized Python FastAPI app that consumes, transforms, and stores events in under 500ms.
+    impact: Reduced data latency from 30 minutes to under 1 second. Saved $120k/yr in infrastructure.
+    tech: [Python, FastAPI, Apache Kafka, TimescaleDB, React, AWS ECS, Docker, Terraform]
+    github: null
+    live: null
+    featured: true
+    year: 2024
+
+  - id: invoice-automator
+    name: Invoice Automator
+    tagline: OCR + AI to automate invoice processing — saves 20 hrs/week
+    description: >
+      Built for a freelance client: an automated invoice processing system that uses Tesseract OCR
+      to extract text from scanned PDFs, then GPT-4 to parse and categorize line items, and finally
+      pushes structured data to their accounting software via API.
+    problem: Finance team spent 20+ hours per week manually entering invoice data.
+    solution: >
+      Python pipeline: PDF → Tesseract OCR → GPT-4 structured extraction → accounting API.
+      Added a simple Flask web UI for the team to review and correct before posting.
+    impact: 95% reduction in manual data entry. ROI achieved in week 1.
+    tech: [Python, Tesseract OCR, OpenAI GPT-4, Flask, PostgreSQL, AWS Lambda]
+    github: null
+    live: null
+    featured: false
+    year: 2021
+
+  - id: saas-platform
+    name: Multi-Tenant SaaS Platform
+    tagline: B2B SaaS from 0 to 2,000 paying customers
+    description: >
+      As an early engineer at StartupXYZ, built the entire backend from scratch: multi-tenant
+      PostgreSQL schema, Django REST API, Stripe billing integration, and a React + Next.js
+      frontend. Also handled AWS infrastructure and CI/CD.
+    problem: The startup had a prototype with no authentication, billing, or scalable data model.
+    solution: >
+      Designed a row-level security multi-tenant schema, implemented JWT auth with refresh tokens,
+      integrated Stripe subscriptions with webhook handlers, and built a polished React dashboard.
+    impact: Platform grew from 0 to 2,000 paying customers in 18 months.
+    tech: [Python, Django, PostgreSQL, React, Next.js, Stripe, AWS, Redis, Docker]
+    github: null
+    live: null
+    featured: true
+    year: 2022
+
+  - id: raft-scheduler
+    name: Distributed Task Scheduler
+    tagline: Final year project — fault-tolerant scheduler using Raft consensus
+    description: >
+      University final year project: implemented a distributed task scheduler in Python using
+      the Raft consensus algorithm for leader election and log replication. Supports node failure,
+      network partition recovery, and dynamic cluster membership.
+    problem: A single-node scheduler is a single point of failure.
+    solution: >
+      Implemented Raft from scratch in Python (no library). Nodes communicate via gRPC.
+      The scheduler distributes tasks across worker nodes with at-least-once delivery guarantees.
+    impact: Achieved 99.9% task completion rate under simulated network partitions.
+    tech: [Python, gRPC, Raft consensus, Docker, pytest]
+    github: https://github.com/jackie311/raft-scheduler
+    live: null
+    featured: false
+    year: 2020
