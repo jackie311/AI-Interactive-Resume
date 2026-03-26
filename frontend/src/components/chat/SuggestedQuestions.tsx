@@ -15,14 +15,16 @@ const QUESTIONS = [
 
 export default function SuggestedQuestions({ onSelect }: Props) {
   return (
-    <div className="px-3 pb-2">
-      <p className="text-xs text-gray-400 dark:text-gray-500 mb-1.5 px-1">Suggested questions</p>
+    <div className="px-3 pb-3">
+      <p className="text-[10px] font-semibold uppercase tracking-widest text-gray-400 dark:text-gray-500 mb-2 px-1">
+        Suggested
+      </p>
       <div className="flex flex-wrap gap-1.5">
         {QUESTIONS.map((q) => (
           <button
             key={q}
             onClick={() => onSelect(q)}
-            className="text-xs px-2.5 py-1.5 bg-indigo-50 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 border border-indigo-100 dark:border-indigo-800 rounded-full hover:bg-indigo-100 dark:hover:bg-indigo-900/50 transition-colors"
+            className="text-xs px-2.5 py-1.5 bg-violet-50 dark:bg-violet-500/[0.08] text-violet-700 dark:text-violet-300 border border-violet-100 dark:border-violet-500/20 rounded-lg hover:bg-violet-100 dark:hover:bg-violet-500/15 transition-all font-medium"
           >
             {q}
           </button>

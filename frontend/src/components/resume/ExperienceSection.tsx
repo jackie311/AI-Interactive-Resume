@@ -11,50 +11,52 @@ interface Props {
 export default function ExperienceSection({ experience }: Props) {
   return (
     <section className="mb-8">
-      <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
-        <span className="w-1 h-5 bg-indigo-500 rounded-full inline-block" />
+      <h2 className="text-sm font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2.5 uppercase tracking-widest">
+        <span className="w-1 h-4 gradient-bar rounded-full inline-block" />
         Experience
       </h2>
-      <div className="space-y-6">
+      <div className="space-y-3">
         {experience.map((job, i) => (
           <motion.div
             key={i}
-            initial={{ opacity: 0, x: -12 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.3, delay: i * 0.08 }}
-            className="relative pl-4 border-l-2 border-gray-200 dark:border-gray-700"
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.35, delay: i * 0.07 }}
+            className="group p-4 rounded-xl bg-white dark:bg-white/[0.03] border border-black/[0.06] dark:border-white/[0.06] hover:border-violet-200 dark:hover:border-violet-500/25 hover:shadow-lg hover:shadow-violet-500/[0.06] transition-all"
           >
-            <div className="absolute -left-[5px] top-1.5 w-2 h-2 rounded-full bg-indigo-500" />
-            <div className="flex items-start justify-between flex-wrap gap-1">
+            <div className="flex items-start justify-between flex-wrap gap-2">
               <div>
-                <h3 className="font-semibold text-gray-900 dark:text-white">{job.role}</h3>
-                <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400 mt-0.5">
-                  <Building2 className="w-3.5 h-3.5" />
-                  <span className="font-medium text-gray-700 dark:text-gray-300">{job.company}</span>
+                <h3 className="font-semibold text-gray-900 dark:text-white text-sm">{job.role}</h3>
+                <div className="flex items-center gap-2 text-xs text-gray-400 dark:text-gray-500 mt-0.5">
+                  <Building2 className="w-3 h-3" />
+                  <span className="font-medium text-gray-600 dark:text-gray-300">{job.company}</span>
                   <span>·</span>
-                  <MapPin className="w-3.5 h-3.5" />
+                  <MapPin className="w-3 h-3" />
                   <span>{job.location}</span>
                 </div>
               </div>
-              <span className="text-xs text-gray-400 dark:text-gray-500 bg-gray-100 dark:bg-gray-800 px-2 py-0.5 rounded-full">
+              <span className="text-xs text-gray-400 dark:text-gray-500 bg-black/[0.04] dark:bg-white/[0.05] px-2.5 py-1 rounded-full border border-black/[0.05] dark:border-white/[0.06]">
                 {job.period}
               </span>
             </div>
 
-            <p className="mt-2 text-sm text-gray-600 dark:text-gray-300">{job.description}</p>
+            <p className="mt-2.5 text-xs text-gray-500 dark:text-gray-400 leading-relaxed">{job.description}</p>
 
             <ul className="mt-2 space-y-1">
               {job.highlights.map((h, j) => (
-                <li key={j} className="text-sm text-gray-600 dark:text-gray-300 flex gap-2">
-                  <span className="text-indigo-500 shrink-0 mt-0.5">▸</span>
+                <li key={j} className="text-xs text-gray-600 dark:text-gray-300 flex gap-2">
+                  <span className="text-violet-500 shrink-0 mt-0.5">▸</span>
                   {h}
                 </li>
               ))}
             </ul>
 
-            <div className="flex flex-wrap gap-1.5 mt-2">
+            <div className="flex flex-wrap gap-1.5 mt-3">
               {job.tech.map((t) => (
-                <span key={t} className="text-xs px-2 py-0.5 bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 rounded">
+                <span
+                  key={t}
+                  className="text-xs px-2 py-0.5 bg-violet-50 dark:bg-violet-500/[0.08] text-violet-700 dark:text-violet-300 border border-violet-100 dark:border-violet-500/20 rounded-md"
+                >
                   {t}
                 </span>
               ))}

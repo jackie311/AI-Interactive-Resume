@@ -1,151 +1,157 @@
 personal:
   name: Jackie Jin
-  title: Full Stack Engineer
-  email: jackie@example.com
-  location: Sydney, Australia
+  title: Senior Full Stack Engineer
+  email: qing.jin3912@gmail.com
+  location: Brisbane, Australia
   github: https://github.com/jackie311
   linkedin: https://linkedin.com/in/jackiejin
   open_to_work: true
   bio: >
-    Passionate full stack engineer with 5+ years of experience building scalable web applications
-    and AI-powered tools. I love turning complex problems into elegant, user-friendly solutions.
-    Skilled in Python, TypeScript, and cloud infrastructure. Currently open to senior engineer
-    and tech lead roles.
+    A Full Stack Developer with 8+ years of expertise, specialising in front-end
+    development with React and TypeScript. Proven track record delivering high-impact
+    web applications for government, enterprise, and commercial clients. Experienced in
+    architecting scalable front-end systems, building performant user interfaces, and
+    leading technical initiatives across diverse sectors including Transportation,
+    Government, Energy, and Entertainment.
 
 experience:
-  - company: Acme Corp
-    role: Senior Software Engineer
-    period: "2023 - Present"
-    start: 2023-01
-    location: Sydney, AU (Remote)
+  - company: NCS Australia
+    role: Senior Engineer — React
+    period: "Jun 2022 - Present"
+    start: 2022-06
+    location: Brisbane, AU
     description: >
-      Led development of a real-time data pipeline processing 10M+ events/day using Python,
-      Kafka, and AWS. Mentored 3 junior engineers and drove adoption of TypeScript across
-      the frontend team.
+      Leading front-end development for high-profile government and enterprise clients.
+      Responsible for front-end code architecture, API integration, and delivering
+      scalable, accessible user interfaces across multiple concurrent projects.
     highlights:
-      - Built event-driven microservices with Python + FastAPI, reducing latency by 40%
-      - Designed and shipped a React dashboard for real-time analytics used by 500+ clients
-      - Introduced CI/CD best practices (GitHub Actions, Docker), cutting deploy time from 45min to 8min
-    tech: [Python, FastAPI, TypeScript, React, AWS, Kafka, Docker, PostgreSQL]
+      - Delivered the BEAR system for the Department of Transport and Main Roads — a dynamic form system and interactive dashboard for government compliance reporting
+      - Independently designed and shipped Qantas' Port Supervisor Page end-to-end (frontend, backend, and infrastructure), reducing deployment time by 70% via Kubernetes and ArgoCD
+      - Led the PNG Police Check prototype as Senior React Developer; the success led to a Prime Ministerial showcase at an international conference in Seattle
+      - Established reusable component libraries and front-end architecture patterns across projects, improving development efficiency and code quality
+    tech: [TypeScript, React, Next.js, Node.js, AWS, Kubernetes, ArgoCD, Figma, Microsoft Power Apps, Power Automate, SharePoint]
 
-  - company: StartupXYZ
-    role: Full Stack Developer
-    period: "2021 - 2023"
-    start: 2021-03
-    location: Melbourne, AU
+  - company: Healthcarelogic
+    role: Fullstack Web Engineer
+    period: "Jun 2018 - Jun 2022"
+    start: 2018-06
+    location: Gold Coast, AU
     description: >
-      Early engineer at a B2B SaaS startup. Owned the full product from backend APIs to
-      React frontend and DevOps. Helped grow the platform from 0 to 2,000 paying customers.
+      Full stack development using modern JavaScript frameworks. Responsible for building
+      new components and web features, reviewing pull requests, managing deployments,
+      and providing technical support across the business.
     highlights:
-      - Built the entire authentication + billing system (Stripe integration) from scratch
-      - Architected the multi-tenant database schema in PostgreSQL
-      - Reduced cloud costs by 35% by optimizing Lambda functions and adding CDN caching
-    tech: [Python, Django, React, Next.js, PostgreSQL, AWS Lambda, Stripe, Redis]
+      - Led TypeScript modernisation across multiple projects, achieving a 40% reduction in runtime errors and improved code maintainability
+      - Designed reusable React components now used across 15+ features, reducing new feature development time by 30%
+      - Maintained 99.9% system uptime during critical outages with an average resolution time under 2 hours
+    tech: [JavaScript, TypeScript, React, Redux, GraphQL, Node.js, Express, KnexJS, PostgreSQL]
 
-  - company: Freelance / Contract
-    role: Software Developer
-    period: "2020 - 2021"
-    start: 2020-06
-    location: Remote
+  - company: JR Craftsman Academy
+    role: Fullstack Engineer
+    period: "Aug 2017 - May 2018"
+    start: 2017-08
+    location: Brisbane, AU
     description: >
-      Worked with small businesses and startups to build web applications and automate
-      workflows. Delivered 8+ projects across e-commerce, fintech, and media.
+      Maintained, updated, and extended the company website. Implemented a hybrid
+      ReactJS architecture within an existing Pug template system and led the migration
+      from CSS to a Sass architecture.
     highlights:
-      - Built a headless e-commerce site with Next.js + Shopify API for a fashion brand
-      - Automated invoice processing with Python (OCR + GPT-3), saving 20 hrs/week for a client
-      - Developed REST APIs for 3 mobile app clients using FastAPI and MongoDB
-    tech: [Python, FastAPI, Next.js, MongoDB, Shopify API, OpenAI, AWS]
+      - Implemented a hybrid ReactJS + Pug architecture that significantly improved website interactivity and user experience
+      - Led migration from traditional CSS to Sass, establishing reusable mixins and variables for a more maintainable styling system
+    tech: [React, Node.js, JavaScript, Bootstrap, Sass, Pug, Keystone, Bitbucket]
 
 education:
-  - institution: University of Melbourne
-    degree: Bachelor of Computer Science
-    period: "2017 - 2020"
-    gpa: "3.8 / 4.0"
+  - institution: Queensland University of Technology (QUT)
+    degree: Master of Network Management
+    period: "2015 - 2017"
     highlights:
-      - Major in Software Systems and Distributed Computing
-      - Dean's List — 2019, 2020
-      - "Final year project: Distributed task scheduler using Raft consensus algorithm"
+      - Specialisation in network infrastructure and distributed systems
 
 skills:
   languages:
-    - name: Python
-      level: 5
-      years: 6
-    - name: TypeScript
-      level: 5
-      years: 4
     - name: JavaScript
       level: 5
+      years: 7
+    - name: TypeScript
+      level: 5
       years: 5
+    - name: Python
+      level: 2
+      years: 0
     - name: SQL
-      level: 4
+      level: 3
       years: 5
-    - name: Go
-      level: 3
-      years: 1
-    - name: Java
-      level: 3
-      years: 2
+    - name: HTML5 / CSS3
+      level: 5
+      years: 7
 
   frontend:
     - React
     - Next.js
+    - TypeScript
+    - Redux
+    - GraphQL
     - Tailwind CSS
-    - Framer Motion
-    - Recharts
-    - HTML5 / CSS3
+    - Material-UI
+    - Figma
+    - Microsoft Power Apps
+    - Power Automate
+    - Chakra UI
+    - Sass / CSS3
+    - Bootstrap
 
   backend:
-    - FastAPI
-    - Django
     - Node.js / Express
+    - FastAPI
     - REST APIs
     - GraphQL
+    - KnexJS
     - WebSockets
 
   databases:
     - PostgreSQL
-    - MongoDB
+    - MySQL
     - Redis
-    - ChromaDB
     - DynamoDB
 
   devops_cloud:
-    - AWS (Lambda, ECS, S3, RDS, CloudFront)
+    - AWS (Amplify, Cognito, Lambda, ECS, S3, CloudFront)
     - Docker / Docker Compose
     - GitHub Actions
-    - Terraform
+    - CI/CD pipelines
     - Linux / Bash
+    - Kubernetes (K8s)
+    - ArgoCD
 
   ai_ml:
-    - LangChain
     - Claude API (Anthropic)
     - OpenAI API
+    - LangChain
     - ChromaDB (vector DB)
     - RAG pipelines
     - Prompt engineering
 
   skill_radar:
     - category: Frontend
-      score: 85
-    - category: Backend
       score: 92
-    - category: DevOps / Cloud
+    - category: Backend
       score: 78
+    - category: DevOps / Cloud
+      score: 75
     - category: AI / ML
-      score: 80
+      score: 65
     - category: System Design
-      score: 82
+      score: 70
     - category: Databases
-      score: 85
+      score: 70
 
 certifications:
-  - name: AWS Certified Developer – Associate
+  - name: AWS Certified Cloud Practitioner
     issuer: Amazon Web Services
-    year: 2023
-  - name: Google Cloud Professional Cloud Architect
-    issuer: Google Cloud
     year: 2022
+  - name: Cisco Certified Network Professional (CCNP)
+    issuer: Cisco
+    year: 2014
 
 languages_spoken:
   - English (Professional)
@@ -153,7 +159,7 @@ languages_spoken:
 
 availability:
   status: Open to work
-  preferred_roles: [Senior Software Engineer, Tech Lead, Full Stack Engineer]
-  preferred_stack: [Python, TypeScript, React, AWS]
+  preferred_roles: [AI Engineer, LLM Engineer]
+  preferred_stack: [Python, LLM, RAG, AI Agents, LangChain, Claude API, OpenAI API, FastAPI, TypeScript, React, AWS]
   work_arrangement: [Remote, Hybrid]
-  notice_period: 2 weeks
+  notice_period: 4 weeks
