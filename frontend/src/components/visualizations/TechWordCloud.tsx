@@ -21,10 +21,15 @@ const COLORS = [
 export default function TechWordCloud({ languages, otherTags }: Props) {
   const words = useMemo(() => {
     const langWords = languages.map((l) => ({ text: l.name, weight: l.years }));
-    const other = otherTags.map((t) => ({ text: t, weight: 1.5 }));
+    const langNames = new Set(languages.map((l) => l.name));
+    const other = otherTags.filter((t) => !langNames.has(t)).map((t) => ({ text: t, weight: 1.5 }));
     const all = [...langWords, ...other];
-    // Shuffle for visual variety
-    return all.sort(() => Math.random() - 0.5);
+    // Deterministic shuffle based on text content (avoids SSR/client mismatch)
+    return all.sort((a, b) => {
+      const ha = a.text.split("").reduce((acc, c) => acc + c.charCodeAt(0), 0);
+      const hb = b.text.split("").reduce((acc, c) => acc + c.charCodeAt(0), 0);
+      return (ha % 7) - (hb % 7) || a.text.localeCompare(b.text);
+    });
   }, [languages, otherTags]);
 
   const maxWeight = Math.max(...words.map((w) => w.weight));
