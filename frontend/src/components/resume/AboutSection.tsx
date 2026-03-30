@@ -34,7 +34,7 @@ export default function AboutSection({ personal, availability }: Props) {
           <div className="flex items-start justify-between flex-wrap gap-3">
             <div>
               <h1 className="text-4xl font-bold tracking-tight gradient-text leading-tight">
-                {personal.name}
+                {/* {personal.name} */}11
               </h1>
               <p className="text-base text-gray-500 dark:text-gray-400 font-medium mt-1">
                 {personal.title}
