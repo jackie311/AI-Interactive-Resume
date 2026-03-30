@@ -119,6 +119,7 @@ jobs:
           aws ecs update-service \
             --cluster ${{ env.ECS_CLUSTER }} \
             --service myresume-backend-service \
+            --task-definition ${{ steps.register-task.outputs.task_def_arn }} \
             --force-new-deployment \
             --region ${{ env.AWS_REGION }}
           echo "Backend restarting with fresh embeddings..."
