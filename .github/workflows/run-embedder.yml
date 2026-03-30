@@ -60,3 +60,17 @@ jobs:
             exit 1
           fi
           echo "Embedding completed successfully."
+
+      - name: Restart backend service to pick up new embeddings
+        run: |
+          aws ecs update-service \
+            --cluster ${{ env.ECS_CLUSTER }} \
+            --service myresume-backend-service \
+            --force-new-deployment \
+            --region ${{ env.AWS_REGION }}
+          echo "Backend restarting with fresh embeddings..."
+          aws ecs wait services-stable \
+            --cluster ${{ env.ECS_CLUSTER }} \
+            --services myresume-backend-service \
+            --region ${{ env.AWS_REGION }}
+          echo "Backend is live with updated data."
