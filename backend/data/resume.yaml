@@ -27,7 +27,9 @@ experience:
       AI-powered portfolio (RAG + LLM) to explore and demonstrate AI engineering capabilities.
     highlights:
       - Built an AI-powered interactive resume using RAG (ChromaDB + HuggingFace embeddings + Claude API), FastAPI streaming SSE, and Next.js — deployed end-to-end on AWS (ECS Fargate, CloudFront, EFS, ECR)
-      - Independently designed and shipped Qantas' Port Supervisor Page end-to-end (frontend, backend, infrastructure) with a Kubernetes + ArgoCD CI/CD pipeline that cut deployment time by 70%
+      - Independently built Qantas' Port Supervisor Page from scratch — given only two hand-drawn UI sketches, self-directed the entire design, frontend, and backend solo; the ELogbook team manager singled me out by name: "your immediate impact, and ability to deliver results from day one is truly awesome"
+      - Solved a critical deployment bottleneck by self-learning Kubernetes through Confluence research and proactively reaching out across teams on Microsoft Teams — reduced CI from ~40 min to 7–8 min and CD to ~2 min (70%+ improvement) through iterative trial and error
+      - Supported the team's monthly UAT, DEV, and TEST environment deployments and Prod release cycles; received repeated commendations from the Qantas team throughout the engagement
       - Delivered the BEAR system for Queensland's Department of Transport — dynamic form engine and admin dashboard serving government auditors, fully WCAG-compliant
       - Led the PNG Police Check prototype as Senior Developer; success resulted in the Prime Minister of PNG presenting the solution at an international conference in Seattle
     tech: [Python, FastAPI, LangChain, ChromaDB, Claude API, TypeScript, React, Next.js, Node.js, AWS, Kubernetes, ArgoCD, Docker, GitHub Actions]

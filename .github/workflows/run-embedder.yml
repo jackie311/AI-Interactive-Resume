@@ -2,6 +2,13 @@ name: Run Embedder
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - master
+      - dev
+    paths:
+      - "backend/data/resume.yaml"
+      - "backend/data/projects.yaml"
 
 env:
   AWS_REGION: ap-southeast-2

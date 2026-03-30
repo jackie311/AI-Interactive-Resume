@@ -32,20 +32,34 @@ projects:
 
   - id: qantas-platforms
     name: Qantas Digital Platforms
-    tagline: Full-stack ownership + 70% faster deployments via K8s and ArgoCD
+    tagline: Built a full product solo from two sketches — and solved a deployment problem nobody else had cracked
     description: >
-      Maintained and enhanced multiple Qantas digital platforms — ELogbook, QETouch (mobile apps),
-      and the Port Supervisor Page (web). Independently owned the Port Supervisor Page from
-      conception to production: full-stack development plus cloud infrastructure. Designed and
-      implemented a CI/CD pipeline with Kubernetes and ArgoCD that reduced deployment time from
-      40 minutes to 12 minutes.
+      Worked across multiple Qantas digital platforms — ELogbook, QETouch (mobile apps), and the
+      Port Supervisor Page (web). The Port Supervisor Page was a greenfield project: the manager
+      handed me two hand-drawn UI sketches and I took it from there — self-directed design,
+      full-stack development (frontend + backend), and infrastructure, completely solo.
+      The ELogbook team manager called me out by name in writing: "your immediate impact, and
+      ability to deliver results from day one is truly awesome."
+      Separately, the team's CI/CD pipeline was painfully slow (~40 minutes per deployment).
+      The team lead asked if Kubernetes could help. I had no prior K8s experience — so I dug
+      through Confluence documentation, proactively reached out to engineers across different
+      teams on Microsoft Teams, and worked through it with repeated trial and error until it
+      worked. The result: CI down to 7–8 minutes, CD down to ~2 minutes.
+      Also supported the team's monthly UAT, DEV, and TEST environment deployments and
+      production release cycles throughout the engagement.
     problem: >
-      Multiple simultaneous platforms with 24/7 availability requirements, coordinated across
-      teams and time zones. Slow deployments (40 min) increased risk on every release.
+      Two separate challenges: (1) deliver a brand-new internal tool with minimal requirements
+      and no existing design, and (2) fix a slow, risky CI/CD pipeline that nobody on the team
+      had solved yet — in a technology I hadn't used before.
     solution: >
-      Took complete ownership of the Port Supervisor Page (frontend, backend, infrastructure).
-      Rebuilt the CI/CD pipeline with Kubernetes and ArgoCD for fast, reliable, automated deployments.
-    impact: 70% reduction in deployment time (40 min → 12 min); maintained 24/7 availability across all platforms.
+      For the Port Supervisor Page: owned the full product lifecycle alone — from interpreting
+      rough sketches into a real UI design, through to backend APIs and deployment.
+      For the pipeline: self-taught Kubernetes through documentation research and cross-team
+      collaboration on Teams, iterated through failures until the pipeline was working and fast.
+    impact: >
+      Port Supervisor Page shipped and well-received. CI/CD reduced from ~40 min to under 10 min
+      (70%+ improvement). Named personally in a manager commendation email. Received repeated
+      praise from the Qantas team throughout the engagement.
     tech: [React Native, Node.js, TypeScript, AWS Cognito, Kubernetes, ArgoCD, Docker]
     github: null
     live: null
