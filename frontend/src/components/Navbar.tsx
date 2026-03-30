@@ -43,7 +43,7 @@ export default function Navbar() {
 
         <div className="flex items-center gap-2">
           <a
-            href="/api/resume/download"
+            href="/resume.pdf"
             download
             className="flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-semibold text-white bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-500 hover:to-indigo-500 rounded-lg transition-all shadow-lg shadow-violet-500/20"
           >
