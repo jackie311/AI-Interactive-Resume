@@ -1,149 +1,54 @@
 # Jackie Jin — AI Interactive Resume
 
-An AI-powered personal portfolio site. Displays resume content with an always-visible AI chat
-sidebar where visitors can ask questions about experience, skills, and projects in English or Chinese.
+AI-powered portfolio site with an always-visible chat sidebar. Visitors can ask questions about my experience, skills, and projects in English or Chinese.
 
-## Tech Stack
+**Live**: https://d33qsa6f99h2bi.cloudfront.net
 
-- **Frontend**: Next.js 14 (App Router) + TypeScript + Tailwind CSS + Recharts + Framer Motion
-- **Backend**: Python FastAPI + LangChain + ChromaDB (RAG) + Claude API (claude-sonnet-4-6)
-- **Deployment**: AWS — S3 + CloudFront (frontend), ECS Fargate + ALB (backend), EFS (ChromaDB)
+## Stack
 
----
-
-## Project Structure
-
-### Backend (`backend/`)
-
-| File | Purpose |
+| Layer | Tech |
 |---|---|
-| `main.py` | FastAPI app entry point with CORS |
-| `routes/chat.py` | `POST /api/chat` — SSE streaming chat endpoint |
-| `routes/resume.py` | `GET /api/resume` and `GET /api/resume/projects` |
-| `routes/github.py` | `GET /api/github/stats` — GitHub API proxy with 1hr cache |
-| `rag/chain.py` | RAG chain: ChromaDB retrieval → Claude streaming response |
-| `rag/embedder.py` | Embeds resume YAML docs into ChromaDB (run once on setup) |
-| `data/resume.yaml` | **Source of truth** — edit this with your real info |
-| `data/projects.yaml` | Project details for showcase + RAG |
+| Frontend | Next.js + TypeScript + Tailwind CSS |
+| Backend | Python FastAPI + ChromaDB (RAG) + Claude API |
+| Infra | AWS S3 + CloudFront / ECS Fargate + ALB / EFS |
 
-### Frontend (`frontend/`)
+## Local Dev
 
-| File | Purpose |
+**Recommended — Docker:**
+```bash
+docker compose up --build
+# Frontend: http://localhost:3000 | Backend: http://localhost:8000
+```
+
+**Manual:**
+```bash
+# Backend
+cd backend && source .venv/Scripts/activate
+uvicorn main:app --reload
+
+# Frontend
+cd frontend && npm run dev
+```
+
+Required: `backend/.env` with `ANTHROPIC_API_KEY`, `GITHUB_TOKEN`, `GITHUB_USERNAME=jackie311`
+
+## Data
+
+Resume content lives in `backend/data/resume.yaml` and `projects.yaml`.
+After editing, re-run the embedder to update the AI's knowledge:
+
+```bash
+cd backend && python rag/embedder.py
+```
+
+## CI/CD
+
+Three GitHub Actions workflows (manual trigger via Actions tab):
+
+| Workflow | What it does |
 |---|---|
-| `src/app/page.tsx` | Main page — 70/30 side-by-side resume + chat layout |
-| `src/app/projects/page.tsx` | Project showcase grid (featured + other) |
-| `src/app/stats/page.tsx` | GitHub stats + language pie chart |
-| `src/components/chat/ChatPanel.tsx` | AI chat with SSE streaming + Recruiter Mode |
-| `src/components/chat/SuggestedQuestions.tsx` | Suggested question chips |
-| `src/components/resume/AboutSection.tsx` | Name, title, bio, open-to-work badge |
-| `src/components/resume/ExperienceSection.tsx` | Work history timeline |
-| `src/components/resume/SkillsSection.tsx` | Language bars + skill tag clouds |
-| `src/components/resume/EducationSection.tsx` | Education + certifications |
-| `src/components/visualizations/SkillsRadar.tsx` | Recharts radar chart for skill proficiency |
-| `src/components/visualizations/CareerTimeline.tsx` | Animated career + education timeline |
-| `src/components/visualizations/TechWordCloud.tsx` | Weighted tech stack word cloud |
-| `src/components/projects/ProjectCard.tsx` | Project card with tech badges + impact |
-| `src/components/Navbar.tsx` | Nav with dark/light mode toggle + PDF download |
+| **Deploy Frontend** | Build + lint → S3 sync → CloudFront invalidation |
+| **Deploy Backend** | Docker build → ECR push → ECS force deploy |
+| **Run Embedder** | Re-embed YAML data on ECS → restart backend |
 
----
-
-## Features
-
-- Side-by-side layout: resume on the left, AI chat always visible on the right
-- AI chat powered by Claude API with RAG over resume data
-- Suggested questions + Recruiter Mode (paste a JD to analyze fit)
-- Bilingual: AI auto-detects English / Chinese and responds accordingly
-- Interactive visualizations: Skills Radar, Career Timeline, Tech Word Cloud
-- Project showcase with GitHub stats (stars/forks via GitHub API)
-- GitHub language breakdown pie chart
-- Dark / light mode
-- Open to Work status badge
-
----
-
-## Setup
-
-### 1. Configure backend
-
-```bash
-cp backend/.env.example backend/.env
-# Edit backend/.env — add your ANTHROPIC_API_KEY, GITHUB_TOKEN, GITHUB_USERNAME
-```
-
-### 2. Install backend dependencies
-
-```bash
-cd backend
-python -m venv .venv
-.venv/Scripts/pip install -r requirements.txt   # Windows
-# or: .venv/bin/pip install -r requirements.txt  # Mac/Linux
-```
-
-### 3. Embed resume into ChromaDB (run once, re-run after data changes)
-
-```bash
-cd backend
-.venv/Scripts/python rag/embedder.py
-```
-
-### 4. Start the backend
-
-```bash
-cd backend
-.venv/Scripts/uvicorn main:app --reload
-# API available at http://localhost:8000
-```
-
-### 5. Configure and start the frontend
-
-```bash
-cd frontend
-cp .env.local.example .env.local
-npm install
-npm run dev
-# App available at http://localhost:3000
-```
-
----
-
-## Customization
-
-Edit `backend/data/resume.yaml` with your real name, experience, skills, and education.
-Edit `backend/data/projects.yaml` with your real projects.
-After editing, re-run `rag/embedder.py` to update the AI's knowledge base.
-
----
-
-## AWS Deployment
-
-**Live URL**: https://d33qsa6f99h2bi.cloudfront.net
-
-**Architecture**: CloudFront → S3 (frontend static export) + ALB → ECS Fargate (FastAPI backend) + EFS (ChromaDB)
-
-### Redeploy frontend
-```bash
-cd frontend
-npm run build
-aws s3 sync out/ s3://myresume-frontend-041875151540/ --delete --region ap-southeast-2
-aws cloudfront create-invalidation --distribution-id E2VLNB8O1DB4Y7 --paths "/*" --region us-east-1
-```
-
-### Redeploy backend
-```bash
-docker build -t myresume-backend ./backend
-docker tag myresume-backend:latest 041875151540.dkr.ecr.ap-southeast-2.amazonaws.com/myresume-backend:latest
-docker push 041875151540.dkr.ecr.ap-southeast-2.amazonaws.com/myresume-backend:latest
-aws ecs update-service --cluster myresume-cluster --service myresume-backend-service --force-new-deployment --region ap-southeast-2
-```
-
-### Re-embed after data changes
-After editing `resume.yaml` or `projects.yaml`, push new backend image then run the embedder as a one-off ECS task:
-```bash
-aws ecs run-task \
-  --cluster myresume-cluster \
-  --task-definition myresume-backend \
-  --launch-type FARGATE \
-  --network-configuration "awsvpcConfiguration={subnets=[subnet-03ff39fd91d5192dd],securityGroups=[sg-0cfa3c2e86d87e0a0],assignPublicIp=ENABLED}" \
-  --overrides '{"containerOverrides":[{"name":"backend","command":["python","rag/embedder.py"]}]}' \
-  --region ap-southeast-2
-```
+Requires GitHub Secrets: `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`
