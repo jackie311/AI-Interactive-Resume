@@ -5,6 +5,7 @@ import ExperienceSection from "@/components/resume/ExperienceSection";
 import SkillsSection from "@/components/resume/SkillsSection";
 import EducationSection from "@/components/resume/EducationSection";
 import ChatPanel from "@/components/chat/ChatPanel";
+import ChatStatsBadge from "@/components/ChatStatsBadge";
 import SkillsRadar from "@/components/visualizations/SkillsRadar";
 import CareerTimeline from "@/components/visualizations/CareerTimeline";
 import TechWordCloud from "@/components/visualizations/TechWordCloud";
@@ -46,6 +47,9 @@ export default async function HomePage() {
       <div className="flex-1 overflow-y-auto min-w-0">
         <div className="max-w-2xl mx-auto px-6 py-8">
           <AboutSection personal={resume.personal} availability={resume.availability} />
+          <div className="mb-4 -mt-4">
+            <ChatStatsBadge />
+          </div>
 
           {/* Visualizations */}
           <div className="mb-8 space-y-4">

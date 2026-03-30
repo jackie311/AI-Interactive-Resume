@@ -1,18 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import { Download } from "lucide-react";
 
 export default function Navbar() {
-  const [pathname, setPathname] = useState("");
-
-  useEffect(() => {
-    setPathname(window.location.pathname);
-    const onNav = () => setPathname(window.location.pathname);
-    window.addEventListener("popstate", onNav);
-    return () => window.removeEventListener("popstate", onNav);
-  }, []);
+  const pathname = usePathname();
 
   const links = [
     { href: "/", label: "Resume" },
@@ -20,6 +13,8 @@ export default function Navbar() {
     { href: "/experience", label: "Experience" },
     { href: "/skills", label: "Skills" },
     { href: "/how-it-works", label: "How It Works" },
+    // { href: "/jobs", label: "Jobs" },
+    // { href: "/jd-analyzer", label: "JD Analyzer" },
   ];
 
   return (

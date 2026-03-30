@@ -3,6 +3,7 @@ from fastapi.responses import StreamingResponse
 from pydantic import BaseModel
 
 from rag.chain import stream_chat
+import chat_stats
 
 router = APIRouter(prefix="/chat", tags=["chat"])
 
@@ -19,6 +20,7 @@ class ChatRequest(BaseModel):
 
 @router.post("")
 async def chat(req: ChatRequest):
+    chat_stats.record(is_new_conversation=len(req.history) == 0)
     history = [{"role": m.role, "content": m.content} for m in req.history]
 
     return StreamingResponse(
@@ -29,3 +31,8 @@ async def chat(req: ChatRequest):
             "X-Accel-Buffering": "no",
         },
     )
+
+
+@router.get("/stats")
+def get_chat_stats():
+    return chat_stats.get()

@@ -1,6 +1,8 @@
 "use client";
 
-import { ArrowRight, Database, Cpu, Cloud, MessageSquare, FileText, Layers } from "lucide-react";
+import { useEffect, useState } from "react";
+import { ArrowRight, Database, Cpu, MessageSquare, FileText, Layers, Users, MessagesSquare } from "lucide-react";
+import { fetchChatStats } from "@/lib/api";
 
 const PIPELINE_STEPS = [
   {
@@ -89,6 +91,12 @@ const AWS_COMPONENTS = [
 ];
 
 export default function AIPage() {
+  const [stats, setStats] = useState<{ total_questions: number; total_conversations: number } | null>(null);
+
+  useEffect(() => {
+    fetchChatStats().then(setStats).catch(() => null);
+  }, []);
+
   return (
     <div className="max-w-4xl mx-auto px-6 py-10 space-y-12">
       <div>
@@ -224,6 +232,37 @@ export default function AIPage() {
               </div>
             </div>
           ))}
+        </div>
+      </section>
+
+      {/* Live Stats */}
+      <section>
+        <h2 className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-5 uppercase tracking-wider">
+          Live Stats
+        </h2>
+        <div className="grid grid-cols-2 gap-4">
+          <div className="bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800 p-5 flex items-center gap-4">
+            <div className="w-10 h-10 rounded-xl bg-violet-50 dark:bg-violet-500/10 flex items-center justify-center shrink-0">
+              <Users className="w-5 h-5 text-violet-600 dark:text-violet-400" />
+            </div>
+            <div>
+              <div className="text-2xl font-bold text-gray-900 dark:text-white">
+                {stats ? stats.total_conversations.toLocaleString() : "—"}
+              </div>
+              <div className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">Conversations started</div>
+            </div>
+          </div>
+          <div className="bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800 p-5 flex items-center gap-4">
+            <div className="w-10 h-10 rounded-xl bg-indigo-50 dark:bg-indigo-500/10 flex items-center justify-center shrink-0">
+              <MessagesSquare className="w-5 h-5 text-indigo-600 dark:text-indigo-400" />
+            </div>
+            <div>
+              <div className="text-2xl font-bold text-gray-900 dark:text-white">
+                {stats ? stats.total_questions.toLocaleString() : "—"}
+              </div>
+              <div className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">Questions asked</div>
+            </div>
+          </div>
         </div>
       </section>
     </div>

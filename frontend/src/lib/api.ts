@@ -15,6 +15,12 @@ export async function fetchProjects() {
   return res.json();
 }
 
+export async function fetchChatStats(): Promise<{ total_questions: number; total_conversations: number }> {
+  const res = await fetch(`${API_BASE}/chat/stats`);
+  if (!res.ok) throw new Error("Failed to fetch chat stats");
+  return res.json();
+}
+
 export async function fetchGithubStats() {
   const res = await fetch(`${API_BASE}/github/stats`);
   if (!res.ok) return null;
