@@ -7,7 +7,7 @@ sidebar where visitors can ask questions about experience, skills, and projects 
 
 - **Frontend**: Next.js 14 (App Router) + TypeScript + Tailwind CSS + Recharts + Framer Motion
 - **Backend**: Python FastAPI + LangChain + ChromaDB (RAG) + Claude API (claude-sonnet-4-6)
-- **Deployment**: AWS (Amplify or S3+CloudFront for frontend, Lambda/ECS for backend)
+- **Deployment**: AWS — S3 + CloudFront (frontend), ECS Fargate + ALB (backend), EFS (ChromaDB)
 
 ---
 
@@ -111,3 +111,39 @@ npm run dev
 Edit `backend/data/resume.yaml` with your real name, experience, skills, and education.
 Edit `backend/data/projects.yaml` with your real projects.
 After editing, re-run `rag/embedder.py` to update the AI's knowledge base.
+
+---
+
+## AWS Deployment
+
+**Live URL**: https://d33qsa6f99h2bi.cloudfront.net
+
+**Architecture**: CloudFront → S3 (frontend static export) + ALB → ECS Fargate (FastAPI backend) + EFS (ChromaDB)
+
+### Redeploy frontend
+```bash
+cd frontend
+npm run build
+aws s3 sync out/ s3://myresume-frontend-041875151540/ --delete --region ap-southeast-2
+aws cloudfront create-invalidation --distribution-id E2VLNB8O1DB4Y7 --paths "/*" --region us-east-1
+```
+
+### Redeploy backend
+```bash
+docker build -t myresume-backend ./backend
+docker tag myresume-backend:latest 041875151540.dkr.ecr.ap-southeast-2.amazonaws.com/myresume-backend:latest
+docker push 041875151540.dkr.ecr.ap-southeast-2.amazonaws.com/myresume-backend:latest
+aws ecs update-service --cluster myresume-cluster --service myresume-backend-service --force-new-deployment --region ap-southeast-2
+```
+
+### Re-embed after data changes
+After editing `resume.yaml` or `projects.yaml`, push new backend image then run the embedder as a one-off ECS task:
+```bash
+aws ecs run-task \
+  --cluster myresume-cluster \
+  --task-definition myresume-backend \
+  --launch-type FARGATE \
+  --network-configuration "awsvpcConfiguration={subnets=[subnet-03ff39fd91d5192dd],securityGroups=[sg-0cfa3c2e86d87e0a0],assignPublicIp=ENABLED}" \
+  --overrides '{"containerOverrides":[{"name":"backend","command":["python","rag/embedder.py"]}]}' \
+  --region ap-southeast-2
+```

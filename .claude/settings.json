@@ -1,0 +1,23 @@
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "agent",
+            "if": "Bash(git commit*)",
+            "prompt": "The user is about to run a git commit. Review the staged changes with `git diff --cached` and the current CLAUDE.md. If the staged changes introduce anything that CLAUDE.md should document (new commands, architecture changes, deployment changes, environment variables, important gotchas), update CLAUDE.md before the commit proceeds. If nothing needs updating, do nothing.",
+            "timeout": 30
+          },
+          {
+            "type": "agent",
+            "if": "Bash(git commit*)",
+            "prompt": "The user is about to run a git commit. Run `git diff --cached` to inspect staged changes. Check if any new tech stack items are introduced — new libraries, frameworks, AWS services, tools, or architectural patterns. Compare against the existing content in prepare.txt and prepare.en.txt. If new stack items are found, update both files: prepare.txt in Chinese and prepare.en.txt in English, with the same interview-ready depth as existing entries (explain what it does, why it was chosen, how it integrates). If nothing new is found, do nothing.",
+            "timeout": 60
+          }
+        ]
+      }
+    ]
+  }
+}
