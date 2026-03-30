@@ -76,7 +76,7 @@ export default function ChatPanel() {
               <Bot className="w-4.5 h-4.5" />
             </div>
             <div>
-              <p className="font-semibold text-sm leading-none">Ask Jackie's AI</p>
+              <p className="font-semibold text-sm leading-none">Ask Jackie&apos;s AI</p>
               <p className="text-xs text-indigo-200 mt-0.5">Powered by Claude</p>
             </div>
           </div>
@@ -95,7 +95,7 @@ export default function ChatPanel() {
         </div>
         {recruiterMode && (
           <p className="text-xs text-indigo-200 mt-2">
-            Paste a job description and I'll analyze how Jackie fits the role.
+            Paste a job description and I&apos;ll analyze how Jackie fits the role.
           </p>
         )}
       </div>

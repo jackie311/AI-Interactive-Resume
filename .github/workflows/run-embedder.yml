@@ -1,0 +1,62 @@
+name: Run Embedder
+
+on:
+  workflow_dispatch:
+
+env:
+  AWS_REGION: ap-southeast-2
+  ECS_CLUSTER: myresume-cluster
+  TASK_DEFINITION: myresume-backend
+  SUBNET: subnet-03ff39fd91d5192dd
+  SECURITY_GROUP: sg-0cfa3c2e86d87e0a0
+
+jobs:
+  embed:
+    name: Re-embed resume data on ECS
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Run embedder task on ECS Fargate
+        id: run-task
+        run: |
+          TASK_ARN=$(aws ecs run-task \
+            --cluster ${{ env.ECS_CLUSTER }} \
+            --task-definition ${{ env.TASK_DEFINITION }} \
+            --launch-type FARGATE \
+            --network-configuration "awsvpcConfiguration={subnets=[${{ env.SUBNET }}],securityGroups=[${{ env.SECURITY_GROUP }}],assignPublicIp=ENABLED}" \
+            --overrides '{"containerOverrides":[{"name":"backend","command":["python","rag/embedder.py"]}]}' \
+            --region ${{ env.AWS_REGION }} \
+            --query 'tasks[0].taskArn' \
+            --output text)
+          echo "task_arn=$TASK_ARN" >> "$GITHUB_OUTPUT"
+          echo "Started ECS task: $TASK_ARN"
+
+      - name: Wait for embedder task to complete
+        run: |
+          aws ecs wait tasks-stopped \
+            --cluster ${{ env.ECS_CLUSTER }} \
+            --tasks ${{ steps.run-task.outputs.task_arn }} \
+            --region ${{ env.AWS_REGION }}
+          echo "Embedder task finished."
+
+      - name: Check task exit code
+        run: |
+          EXIT_CODE=$(aws ecs describe-tasks \
+            --cluster ${{ env.ECS_CLUSTER }} \
+            --tasks ${{ steps.run-task.outputs.task_arn }} \
+            --region ${{ env.AWS_REGION }} \
+            --query 'tasks[0].containers[0].exitCode' \
+            --output text)
+          echo "Exit code: $EXIT_CODE"
+          if [ "$EXIT_CODE" != "0" ]; then
+            echo "Embedder failed with exit code $EXIT_CODE"
+            exit 1
+          fi
+          echo "Embedding completed successfully."
