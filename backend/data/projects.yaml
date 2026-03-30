@@ -12,82 +12,139 @@ projects:
       Combined a clean resume display with an AI chat sidebar so visitors can have a real
       conversation about my background. The AI is grounded in my actual resume data via RAG,
       so it doesn't hallucinate.
-    impact: Recruiters spend 3x longer on the site vs. a PDF resume.
+    impact: Recruiters can interactively explore my background instead of skimming a PDF.
     tech: [Next.js, TypeScript, Python, FastAPI, Claude API, LangChain, ChromaDB, Tailwind CSS, AWS]
     github: https://github.com/jackie311/ai-portfolio
-    live: https://jackiejin.dev
+    live: https://d33qsa6f99h2bi.cloudfront.net
     featured: true
     year: 2026
 
-  - id: realtime-pipeline
-    name: Real-Time Event Pipeline
-    tagline: 10M+ events/day streaming pipeline on AWS
+  - id: bear
+    name: BEAR — Booking Entity Authorisation Reporting
+    tagline: Government digital transformation for Queensland's transport authority
     description: >
-      Designed and built an event-driven data pipeline at Acme Corp processing over 10 million
-      events per day. Used Kafka for message streaming, Python microservices for processing,
-      and TimescaleDB for time-series storage. Included a React dashboard for real-time
-      monitoring and alerting.
-    problem: Legacy batch jobs introduced 30-minute delays in business-critical analytics.
+      Front-end developer on the BEAR system for the Department of Transport and Main Roads (TMR),
+      delivering a web application used by both internal TMR staff and external BEA auditors.
+      Implemented a dynamic form system for BEA report submissions and an interactive admin
+      dashboard, all meeting strict government accessibility standards within two-week sprint cycles.
+    problem: >
+      Delivering new features at pace while coordinating across government officials, external
+      auditors, and internal teams — all within compressed sprints and strict accessibility requirements.
     solution: >
-      Replaced batch jobs with a Kafka-based streaming architecture. Each service is a
-      containerized Python FastAPI app that consumes, transforms, and stores events in under 500ms.
-    impact: Reduced data latency from 30 minutes to under 1 second. Saved $120k/yr in infrastructure.
-    tech: [Python, FastAPI, Apache Kafka, TimescaleDB, React, AWS ECS, Docker, Terraform]
+      Built reusable component libraries and established front-end best practices to accelerate
+      development. Worked closely with designers to reconcile technical constraints with evolving
+      requirements and ensure WCAG compliance.
+    impact: Consistently met sprint commitments; reusable components reduced future maintenance costs and improved team velocity.
+    tech: [TypeScript, React, Next.js, AWS]
     github: null
     live: null
     featured: true
     year: 2024
 
-  - id: invoice-automator
-    name: Invoice Automator
-    tagline: OCR + AI to automate invoice processing — saves 20 hrs/week
+  - id: qantas-platforms
+    name: Qantas Digital Platforms
+    tagline: Full-stack ownership of 2 apps and 2 websites — plus a 70% faster CI/CD pipeline
     description: >
-      Built for a freelance client: an automated invoice processing system that uses Tesseract OCR
-      to extract text from scanned PDFs, then GPT-4 to parse and categorize line items, and finally
-      pushes structured data to their accounting software via API.
-    problem: Finance team spent 20+ hours per week manually entering invoice data.
+      Maintained and enhanced multiple Qantas digital platforms simultaneously — ELogbook,
+      QETouch (mobile apps), and Port Supervisor Page (web). Independently designed and delivered
+      the Port Supervisor Page end-to-end, covering frontend, backend, and infrastructure.
+      Implemented a CI/CD pipeline with Kubernetes and ArgoCD that cut deployment time from
+      40 minutes to 12 minutes.
+    problem: >
+      Any downtime or bugs on Qantas platforms directly impact customer booking experience and
+      revenue. Coordinating multiple teams across time zones while maintaining 24/7 stability
+      added significant complexity.
     solution: >
-      Python pipeline: PDF → Tesseract OCR → GPT-4 structured extraction → accounting API.
-      Added a simple Flask web UI for the team to review and correct before posting.
-    impact: 95% reduction in manual data entry. ROI achieved in week 1.
-    tech: [Python, Tesseract OCR, OpenAI GPT-4, Flask, PostgreSQL, AWS Lambda]
-    github: null
-    live: null
-    featured: false
-    year: 2021
-
-  - id: saas-platform
-    name: Multi-Tenant SaaS Platform
-    tagline: B2B SaaS from 0 to 2,000 paying customers
-    description: >
-      As an early engineer at StartupXYZ, built the entire backend from scratch: multi-tenant
-      PostgreSQL schema, Django REST API, Stripe billing integration, and a React + Next.js
-      frontend. Also handled AWS infrastructure and CI/CD.
-    problem: The startup had a prototype with no authentication, billing, or scalable data model.
-    solution: >
-      Designed a row-level security multi-tenant schema, implemented JWT auth with refresh tokens,
-      integrated Stripe subscriptions with webhook handlers, and built a polished React dashboard.
-    impact: Platform grew from 0 to 2,000 paying customers in 18 months.
-    tech: [Python, Django, PostgreSQL, React, Next.js, Stripe, AWS, Redis, Docker]
+      Took full ownership of the Port Supervisor Page from conception to production.
+      Optimised the CI/CD pipeline using Kubernetes and ArgoCD to dramatically reduce
+      deployment risk and cycle time.
+    impact: 70% reduction in deployment time (40 min → 12 min); maintained 24/7 stability across all platforms.
+    tech: [React Native, Node.js, JavaScript, TypeScript, AWS Cognito, AWS Hosted UI, Kubernetes, ArgoCD]
     github: null
     live: null
     featured: true
-    year: 2022
+    year: 2023
 
-  - id: raft-scheduler
-    name: Distributed Task Scheduler
-    tagline: Final year project — fault-tolerant scheduler using Raft consensus
+  - id: png-police-check
+    name: PNG Police Check Application
+    tagline: Government e-portal prototype delivered in 6 weeks — showcased internationally
     description: >
-      University final year project: implemented a distributed task scheduler in Python using
-      the Raft consensus algorithm for leader election and log replication. Supports node failure,
-      network partition recovery, and dynamic cluster membership.
-    problem: A single-node scheduler is a single point of failure.
+      Built the entire front-end for a Papua New Guinea government police clearance prototype,
+      part of a broader initiative to establish a digital government presence similar to myGov.
+      The project was a collaboration between AWS (cloud) and Arq (full-stack development),
+      with a goal of delivering three applications in six weeks.
+    problem: >
+      Delivering a fully responsive government prototype — desktop and mobile — in just six weeks,
+      with no prior digital government infrastructure in PNG.
     solution: >
-      Implemented Raft from scratch in Python (no library). Nodes communicate via gRPC.
-      The scheduler distributes tasks across worker nodes with at-least-once delivery guarantees.
-    impact: Achieved 99.9% task completion rate under simulated network partitions.
-    tech: [Python, gRPC, Raft consensus, Docker, pytest]
-    github: https://github.com/jackie311/raft-scheduler
+      As the sole front-end developer, built a responsive UI from Figma designs using Next.js
+      and AWS Amplify, covering both mobile and desktop views for the police clearance workflow.
+    impact: >
+      Prototype success led to the Prime Minister of PNG presenting the Government Services
+      ePortal at an international conference in Seattle.
+    tech: [Next.js, JavaScript, Figma, Axios, AWS Amplify]
+    github: null
+    live: null
+    featured: true
+    year: 2023
+
+  - id: ncs-cv-tool
+    name: NCS Consultant CV Tool
+    tagline: Internal Power Apps tool to manage and generate consultant CVs company-wide
+    description: >
+      After ARQ Group was acquired by NCS Australia, I built a centralised CV management system
+      to standardise consultant profiles across the company. Used Microsoft Power Apps for the UI,
+      Power Automate to generate Word documents from SharePoint data, and Figma for design.
+    problem: >
+      No consistent CV template existed after the acquisition; managing hundreds of consultant
+      profiles manually was unsustainable.
+    solution: >
+      Connected Power Automate with a SharePoint List to auto-generate CVs from a standard
+      template. Built a Power Apps interface (following Figma designs) that lets staff search,
+      create, and update consultant CVs with filters.
+    impact: Eliminated manual CV formatting across the company; consistent branding from day one.
+    tech: [Microsoft Power Automate, Microsoft Power Apps, SharePoint, Figma, Miro]
+    github: null
     live: null
     featured: false
-    year: 2020
+    year: 2023
+
+  - id: conocophillips-haaic
+    name: ConocoPhillips HAAIC Sheet App
+    tagline: Digitised electrical equipment procurement — paperless and signature-ready
+    description: >
+      Built a responsive web application for ConocoPhillips to streamline the procurement
+      of electrical equipment. Replaced manual paper-based processes and physical sign-offs
+      with a digital workflow supporting desktop, mobile, and tablet views.
+    problem: >
+      Electrical equipment procurement relied on manual sourcing, paper documents, and
+      in-person signatures — slow, error-prone, and difficult to audit.
+    solution: >
+      Designed the front-end architecture using React.js and Material-UI. Created reusable
+      components optimised for performance across all device sizes, integrated APIs, and
+      managed tasks via JIRA with close collaboration with project managers.
+    impact: Eliminated paper-based procurement; streamlined digital sign-offs for field engineers.
+    tech: [React, JavaScript, Material-UI, Figma, Miro, Jira]
+    github: null
+    live: null
+    featured: false
+    year: 2022
+
+  - id: redballoon-replatform
+    name: Redballoon Website Re-platform
+    tagline: PWA re-platform of a major e-commerce site using React
+    description: >
+      Refactored the Redballoon website (Big Red Group) for both desktop and mobile using
+      the Progressive Web App Kit (PWA Kit) with React. Worked in an agile team with full
+      sprint and release cycles, conducting code reviews and translating UX designs into
+      functional interfaces.
+    problem: Legacy codebase needed a full re-platform to PWA to improve performance and maintainability.
+    solution: >
+      Rebuilt key pages using PWA Kit and React, collaborated on new feature design, and
+      conducted peer code reviews to lift overall code quality.
+    impact: Modernised front-end architecture; improved site performance and developer experience.
+    tech: [React, JavaScript, TypeScript, PWA Kit, Jira]
+    github: null
+    live: null
+    featured: false
+    year: 2022
