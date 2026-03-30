@@ -22,18 +22,18 @@ export default async function ProjectsPage() {
       <div className="mb-8">
         <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Projects</h1>
         <p className="text-gray-500 dark:text-gray-400 mt-1 text-sm">
-          Things I&apos;ve built — from AI pipelines to SaaS platforms.
+          Things I&apos;ve built — from AI pipelines to government platforms.
         </p>
       </div>
 
       {featured.length > 0 && (
-        <div className="mb-8">
-          <h2 className="text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-gray-500 mb-3">
+        <div className="mb-10">
+          <h2 className="text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-gray-500 mb-4">
             Featured
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 gap-4">
             {featured.map((project, i) => (
-              <ProjectCard key={project.id} project={project} index={i} />
+              <ProjectCard key={project.id} project={project} index={i} featured />
             ))}
           </div>
         </div>
@@ -41,10 +41,10 @@ export default async function ProjectsPage() {
 
       {other.length > 0 && (
         <div>
-          <h2 className="text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-gray-500 mb-3">
+          <h2 className="text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-gray-500 mb-4">
             Other Projects
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {other.map((project, i) => (
               <ProjectCard key={project.id} project={project} index={i} />
             ))}

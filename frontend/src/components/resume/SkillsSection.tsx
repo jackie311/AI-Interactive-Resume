@@ -43,7 +43,7 @@ export default function SkillsSection({ skills }: Props) {
               <div className="flex-1 h-2 bg-gray-100 dark:bg-white/[0.06] rounded-full overflow-hidden">
                 <motion.div
                   initial={{ width: 0 }}
-                  animate={{ width: `${(lang.level / 5) * 100}%` }}
+                  animate={{ width: `${(lang.years / 8) * 100}%` }}
                   transition={{ duration: 0.7, delay: 0.1, ease: "easeOut" }}
                   className="h-full bg-gradient-to-r from-violet-500 via-indigo-500 to-cyan-400 rounded-full"
                 />

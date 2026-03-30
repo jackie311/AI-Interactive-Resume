@@ -25,10 +25,32 @@ projects:
       pipeline design, embedding strategy, LLM orchestration, streaming architecture, and
       cloud-native deployment.
     tech: [Python, FastAPI, LangChain, ChromaDB, HuggingFace Embeddings, Claude API, Next.js, TypeScript, AWS ECS, AWS EFS, CloudFront, Docker, GitHub Actions]
-    github: https://github.com/jackie311/ai-portfolio
+    github: https://github.com/jackie311/AI-Interactive-Resume
     live: https://d33qsa6f99h2bi.cloudfront.net
     featured: true
     year: 2026
+
+  - id: bear
+    name: BEAR — Booking Entity Authorisation Reporting
+    tagline: Government compliance platform for Queensland's transport authority
+    description: >
+      Front-end lead on the BEAR system for the Department of Transport and Main Roads (TMR).
+      Delivered a web application serving internal TMR staff and external BEA auditors —
+      dynamic form system for report submissions and an interactive admin dashboard —
+      within strict two-week agile sprints and WCAG accessibility requirements.
+    problem: >
+      Complex compliance reporting needed to serve both government staff and external auditors,
+      meeting strict accessibility standards while iterating quickly under sprint pressure.
+    solution: >
+      Built a reusable component library and established front-end architecture patterns
+      to accelerate delivery. Worked closely with design and stakeholders to balance
+      technical constraints with evolving requirements.
+    impact: Consistently shipped sprint commitments; reusable components reduced maintenance cost and improved team velocity.
+    tech: [TypeScript, React, Next.js, AWS]
+    github: null
+    live: null
+    featured: true
+    year: 2024
 
   - id: qantas-platforms
     name: Qantas Digital Platforms
@@ -65,28 +87,6 @@ projects:
     live: null
     featured: true
     year: 2023
-
-  - id: bear
-    name: BEAR — Booking Entity Authorisation Reporting
-    tagline: Government compliance platform for Queensland's transport authority
-    description: >
-      Front-end lead on the BEAR system for the Department of Transport and Main Roads (TMR).
-      Delivered a web application serving internal TMR staff and external BEA auditors —
-      dynamic form system for report submissions and an interactive admin dashboard —
-      within strict two-week agile sprints and WCAG accessibility requirements.
-    problem: >
-      Complex compliance reporting needed to serve both government staff and external auditors,
-      meeting strict accessibility standards while iterating quickly under sprint pressure.
-    solution: >
-      Built a reusable component library and established front-end architecture patterns
-      to accelerate delivery. Worked closely with design and stakeholders to balance
-      technical constraints with evolving requirements.
-    impact: Consistently shipped sprint commitments; reusable components reduced maintenance cost and improved team velocity.
-    tech: [TypeScript, React, Next.js, AWS]
-    github: null
-    live: null
-    featured: true
-    year: 2024
 
   - id: png-police-check
     name: PNG Police Check Application
