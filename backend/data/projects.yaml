@@ -1,109 +1,112 @@
 projects:
   - id: ai-portfolio
     name: AI Interactive Resume
-    tagline: This very site — an AI-powered portfolio built with Next.js + FastAPI
+    tagline: RAG + LLM + AWS — a full AI engineering project, deployed to production
     description: >
-      Built a personal portfolio site featuring an always-on AI chat assistant that answers
-      questions about my experience, skills, and projects. The chat uses RAG (Retrieval-Augmented
-      Generation) over my resume data, powered by Claude API. Features streaming responses,
-      suggested questions, recruiter mode, and bilingual (EN/ZH) support.
-    problem: Static resumes are boring and don't let visitors explore your experience naturally.
+      Designed and built an AI-powered portfolio from scratch. The core is a RAG pipeline:
+      resume data (YAML) is chunked and embedded with HuggingFace sentence transformers into
+      ChromaDB, then retrieved at query time to ground Claude's responses in real facts.
+      The backend is a Python FastAPI app that streams responses over SSE. The frontend is
+      Next.js with a real-time chat panel. The entire stack is deployed on AWS — ECS Fargate
+      (backend), S3 + CloudFront (frontend), EFS (ChromaDB persistence), ECR (Docker images) —
+      with GitHub Actions CI/CD for automated deployments.
+    problem: >
+      Static resumes don't let recruiters explore your background naturally.
+      More importantly, I wanted a hands-on AI engineering project that covers
+      the full stack: LLM integration, vector search, RAG pipeline design, streaming
+      inference, and production cloud deployment.
     solution: >
-      Combined a clean resume display with an AI chat sidebar so visitors can have a real
-      conversation about my background. The AI is grounded in my actual resume data via RAG,
-      so it doesn't hallucinate.
-    impact: Recruiters can interactively explore my background instead of skimming a PDF.
-    tech: [Next.js, TypeScript, Python, FastAPI, Claude API, LangChain, ChromaDB, Tailwind CSS, AWS]
+      Built the entire system end-to-end: YAML data → HuggingFace embeddings → ChromaDB
+      vector store → LangChain retrieval → Claude API streaming → FastAPI SSE → Next.js chat UI.
+      Deployed on AWS with ECS Fargate + EFS for persistent vector storage, fronted by
+      CloudFront with API routing to ALB.
+    impact: >
+      Production RAG system live at jackiejin.dev. Demonstrates end-to-end AI engineering:
+      pipeline design, embedding strategy, LLM orchestration, streaming architecture, and
+      cloud-native deployment.
+    tech: [Python, FastAPI, LangChain, ChromaDB, HuggingFace Embeddings, Claude API, Next.js, TypeScript, AWS ECS, AWS EFS, CloudFront, Docker, GitHub Actions]
     github: https://github.com/jackie311/ai-portfolio
     live: https://d33qsa6f99h2bi.cloudfront.net
     featured: true
     year: 2026
 
+  - id: qantas-platforms
+    name: Qantas Digital Platforms
+    tagline: Full-stack ownership + 70% faster deployments via K8s and ArgoCD
+    description: >
+      Maintained and enhanced multiple Qantas digital platforms — ELogbook, QETouch (mobile apps),
+      and the Port Supervisor Page (web). Independently owned the Port Supervisor Page from
+      conception to production: full-stack development plus cloud infrastructure. Designed and
+      implemented a CI/CD pipeline with Kubernetes and ArgoCD that reduced deployment time from
+      40 minutes to 12 minutes.
+    problem: >
+      Multiple simultaneous platforms with 24/7 availability requirements, coordinated across
+      teams and time zones. Slow deployments (40 min) increased risk on every release.
+    solution: >
+      Took complete ownership of the Port Supervisor Page (frontend, backend, infrastructure).
+      Rebuilt the CI/CD pipeline with Kubernetes and ArgoCD for fast, reliable, automated deployments.
+    impact: 70% reduction in deployment time (40 min → 12 min); maintained 24/7 availability across all platforms.
+    tech: [React Native, Node.js, TypeScript, AWS Cognito, Kubernetes, ArgoCD, Docker]
+    github: null
+    live: null
+    featured: true
+    year: 2023
+
   - id: bear
     name: BEAR — Booking Entity Authorisation Reporting
-    tagline: Government digital transformation for Queensland's transport authority
+    tagline: Government compliance platform for Queensland's transport authority
     description: >
-      Front-end developer on the BEAR system for the Department of Transport and Main Roads (TMR),
-      delivering a web application used by both internal TMR staff and external BEA auditors.
-      Implemented a dynamic form system for BEA report submissions and an interactive admin
-      dashboard, all meeting strict government accessibility standards within two-week sprint cycles.
+      Front-end lead on the BEAR system for the Department of Transport and Main Roads (TMR).
+      Delivered a web application serving internal TMR staff and external BEA auditors —
+      dynamic form system for report submissions and an interactive admin dashboard —
+      within strict two-week agile sprints and WCAG accessibility requirements.
     problem: >
-      Delivering new features at pace while coordinating across government officials, external
-      auditors, and internal teams — all within compressed sprints and strict accessibility requirements.
+      Complex compliance reporting needed to serve both government staff and external auditors,
+      meeting strict accessibility standards while iterating quickly under sprint pressure.
     solution: >
-      Built reusable component libraries and established front-end best practices to accelerate
-      development. Worked closely with designers to reconcile technical constraints with evolving
-      requirements and ensure WCAG compliance.
-    impact: Consistently met sprint commitments; reusable components reduced future maintenance costs and improved team velocity.
+      Built a reusable component library and established front-end architecture patterns
+      to accelerate delivery. Worked closely with design and stakeholders to balance
+      technical constraints with evolving requirements.
+    impact: Consistently shipped sprint commitments; reusable components reduced maintenance cost and improved team velocity.
     tech: [TypeScript, React, Next.js, AWS]
     github: null
     live: null
     featured: true
     year: 2024
 
-  - id: qantas-platforms
-    name: Qantas Digital Platforms
-    tagline: Full-stack ownership of 2 apps and 2 websites — plus a 70% faster CI/CD pipeline
-    description: >
-      Maintained and enhanced multiple Qantas digital platforms simultaneously — ELogbook,
-      QETouch (mobile apps), and Port Supervisor Page (web). Independently designed and delivered
-      the Port Supervisor Page end-to-end, covering frontend, backend, and infrastructure.
-      Implemented a CI/CD pipeline with Kubernetes and ArgoCD that cut deployment time from
-      40 minutes to 12 minutes.
-    problem: >
-      Any downtime or bugs on Qantas platforms directly impact customer booking experience and
-      revenue. Coordinating multiple teams across time zones while maintaining 24/7 stability
-      added significant complexity.
-    solution: >
-      Took full ownership of the Port Supervisor Page from conception to production.
-      Optimised the CI/CD pipeline using Kubernetes and ArgoCD to dramatically reduce
-      deployment risk and cycle time.
-    impact: 70% reduction in deployment time (40 min → 12 min); maintained 24/7 stability across all platforms.
-    tech: [React Native, Node.js, JavaScript, TypeScript, AWS Cognito, AWS Hosted UI, Kubernetes, ArgoCD]
-    github: null
-    live: null
-    featured: true
-    year: 2023
-
   - id: png-police-check
     name: PNG Police Check Application
-    tagline: Government e-portal prototype delivered in 6 weeks — showcased internationally
+    tagline: Government e-portal prototype in 6 weeks — presented at an international conference
     description: >
       Built the entire front-end for a Papua New Guinea government police clearance prototype,
-      part of a broader initiative to establish a digital government presence similar to myGov.
-      The project was a collaboration between AWS (cloud) and Arq (full-stack development),
-      with a goal of delivering three applications in six weeks.
-    problem: >
-      Delivering a fully responsive government prototype — desktop and mobile — in just six weeks,
-      with no prior digital government infrastructure in PNG.
+      part of a digital government initiative (akin to myGov). Collaboration between AWS (cloud)
+      and Arq (full-stack), with a hard deadline of six weeks for three applications.
+    problem: Deliver a fully responsive government prototype — desktop and mobile — in six weeks with no prior digital government infrastructure in PNG.
     solution: >
-      As the sole front-end developer, built a responsive UI from Figma designs using Next.js
-      and AWS Amplify, covering both mobile and desktop views for the police clearance workflow.
+      Sole front-end developer. Built a responsive UI from Figma designs using Next.js and
+      AWS Amplify, covering all device sizes and the complete police clearance workflow.
     impact: >
       Prototype success led to the Prime Minister of PNG presenting the Government Services
       ePortal at an international conference in Seattle.
-    tech: [Next.js, JavaScript, Figma, Axios, AWS Amplify]
+    tech: [Next.js, JavaScript, AWS Amplify, Figma, Axios]
     github: null
     live: null
-    featured: true
+    featured: false
     year: 2023
 
   - id: ncs-cv-tool
     name: NCS Consultant CV Tool
-    tagline: Internal Power Apps tool to manage and generate consultant CVs company-wide
+    tagline: Internal automation tool to manage and generate consultant CVs company-wide
     description: >
-      After ARQ Group was acquired by NCS Australia, I built a centralised CV management system
-      to standardise consultant profiles across the company. Used Microsoft Power Apps for the UI,
-      Power Automate to generate Word documents from SharePoint data, and Figma for design.
-    problem: >
-      No consistent CV template existed after the acquisition; managing hundreds of consultant
-      profiles manually was unsustainable.
+      After ARQ Group was acquired by NCS Australia, built a centralised CV management system
+      to standardise consultant profiles. Used Microsoft Power Apps for the UI, Power Automate
+      to auto-generate Word documents from SharePoint data, following Figma designs.
+    problem: No consistent CV template post-acquisition; manually managing hundreds of consultant profiles was unsustainable.
     solution: >
-      Connected Power Automate with a SharePoint List to auto-generate CVs from a standard
-      template. Built a Power Apps interface (following Figma designs) that lets staff search,
-      create, and update consultant CVs with filters.
-    impact: Eliminated manual CV formatting across the company; consistent branding from day one.
-    tech: [Microsoft Power Automate, Microsoft Power Apps, SharePoint, Figma, Miro]
+      Connected Power Automate to a SharePoint List to generate CVs from a standard template.
+      Built a Power Apps interface for staff to search, create, and update consultant CVs.
+    impact: Eliminated manual CV formatting company-wide; consistent branding from day one.
+    tech: [Microsoft Power Automate, Microsoft Power Apps, SharePoint, Figma]
     github: null
     live: null
     featured: false
@@ -113,37 +116,15 @@ projects:
     name: ConocoPhillips HAAIC Sheet App
     tagline: Digitised electrical equipment procurement — paperless and signature-ready
     description: >
-      Built a responsive web application for ConocoPhillips to streamline the procurement
-      of electrical equipment. Replaced manual paper-based processes and physical sign-offs
-      with a digital workflow supporting desktop, mobile, and tablet views.
-    problem: >
-      Electrical equipment procurement relied on manual sourcing, paper documents, and
-      in-person signatures — slow, error-prone, and difficult to audit.
+      Web application for ConocoPhillips to replace paper-based electrical equipment
+      procurement with a digital workflow — responsive across desktop, mobile, and tablet,
+      with digital sign-offs.
+    problem: Manual paper-based procurement with physical signatures was slow and difficult to audit.
     solution: >
-      Designed the front-end architecture using React.js and Material-UI. Created reusable
-      components optimised for performance across all device sizes, integrated APIs, and
-      managed tasks via JIRA with close collaboration with project managers.
-    impact: Eliminated paper-based procurement; streamlined digital sign-offs for field engineers.
-    tech: [React, JavaScript, Material-UI, Figma, Miro, Jira]
-    github: null
-    live: null
-    featured: false
-    year: 2022
-
-  - id: redballoon-replatform
-    name: Redballoon Website Re-platform
-    tagline: PWA re-platform of a major e-commerce site using React
-    description: >
-      Refactored the Redballoon website (Big Red Group) for both desktop and mobile using
-      the Progressive Web App Kit (PWA Kit) with React. Worked in an agile team with full
-      sprint and release cycles, conducting code reviews and translating UX designs into
-      functional interfaces.
-    problem: Legacy codebase needed a full re-platform to PWA to improve performance and maintainability.
-    solution: >
-      Rebuilt key pages using PWA Kit and React, collaborated on new feature design, and
-      conducted peer code reviews to lift overall code quality.
-    impact: Modernised front-end architecture; improved site performance and developer experience.
-    tech: [React, JavaScript, TypeScript, PWA Kit, Jira]
+      Designed the front-end architecture with React and Material-UI, built reusable
+      components for all device sizes, and integrated backend APIs throughout.
+    impact: Eliminated paper-based procurement; streamlined digital approvals for field engineers.
+    tech: [React, JavaScript, Material-UI, Figma, Jira]
     github: null
     live: null
     featured: false
