@@ -24,12 +24,12 @@ export default function AboutSection({ personal, availability }: Props) {
             {personal.title}
           </p>
         </div>
-        {personal.open_to_work && (
+        {/* {personal.open_to_work && (
           <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-green-100 text-green-800 dark:bg-green-900/40 dark:text-green-400 border border-green-200 dark:border-green-700">
             <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
             Open to Work
           </span>
-        )}
+        )} */}
       </div>
 
       <div className="flex flex-wrap gap-3 mt-3 text-sm text-gray-500 dark:text-gray-400">

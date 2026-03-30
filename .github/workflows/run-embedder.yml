@@ -45,12 +45,43 @@ jobs:
           docker push $IMAGE
           echo "Pushed new image: $IMAGE"
 
+      - name: Register new task definition revision with latest image
+        id: register-task
+        run: |
+          # Get current task definition and update image to force ECS to pull latest
+          TASK_DEF=$(aws ecs describe-task-definition \
+            --task-definition ${{ env.TASK_DEFINITION }} \
+            --region ${{ env.AWS_REGION }} \
+            --query 'taskDefinition' \
+            --output json)
+
+          NEW_TASK_DEF=$(echo $TASK_DEF | python3 -c "
+          import json, sys
+          td = json.load(sys.stdin)
+          # Update image to include sha to force a fresh pull
+          for c in td['containerDefinitions']:
+              if c['name'] == 'backend':
+                  c['image'] = '${{ env.ECR_REGISTRY }}/${{ env.ECR_REPOSITORY }}:latest'
+          # Remove fields that can't be re-registered
+          for key in ['taskDefinitionArn','revision','status','requiresAttributes','compatibilities','registeredAt','registeredBy']:
+              td.pop(key, None)
+          print(json.dumps(td))
+          ")
+
+          NEW_REVISION=$(aws ecs register-task-definition \
+            --cli-input-json "$NEW_TASK_DEF" \
+            --region ${{ env.AWS_REGION }} \
+            --query 'taskDefinition.taskDefinitionArn' \
+            --output text)
+          echo "task_def_arn=$NEW_REVISION" >> "$GITHUB_OUTPUT"
+          echo "Registered new task definition: $NEW_REVISION"
+
       - name: Run embedder task on ECS Fargate
         id: run-task
         run: |
           TASK_ARN=$(aws ecs run-task \
             --cluster ${{ env.ECS_CLUSTER }} \
-            --task-definition ${{ env.TASK_DEFINITION }} \
+            --task-definition ${{ steps.register-task.outputs.task_def_arn }} \
             --launch-type FARGATE \
             --network-configuration "awsvpcConfiguration={subnets=[${{ env.SUBNET }}],securityGroups=[${{ env.SECURITY_GROUP }}],assignPublicIp=ENABLED}" \
             --overrides '{"containerOverrides":[{"name":"backend","command":["python","rag/embedder.py"]}]}' \
