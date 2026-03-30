@@ -108,7 +108,8 @@ def build_vectorstore() -> Chroma:
     """Build and persist vector store from data files. Clears existing data first."""
     import shutil
     if CHROMA_DIR.exists():
-        shutil.rmtree(CHROMA_DIR)
+        for item in CHROMA_DIR.iterdir():
+            shutil.rmtree(item) if item.is_dir() else item.unlink()
         print(f"Cleared existing ChromaDB at {CHROMA_DIR}")
 
     resume = load_resume()
