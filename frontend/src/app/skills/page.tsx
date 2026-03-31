@@ -40,11 +40,11 @@ interface ResumeData {
 }
 
 const TECH_GROUPS = [
-  { key: "ai_ml", label: "AI / LLM", color: "bg-violet-100 text-violet-800 dark:bg-violet-900/40 dark:text-violet-300" },
-  { key: "backend", label: "Backend", color: "bg-blue-100 text-blue-800 dark:bg-blue-900/40 dark:text-blue-300" },
-  { key: "frontend", label: "Frontend", color: "bg-cyan-100 text-cyan-800 dark:bg-cyan-900/40 dark:text-cyan-300" },
-  { key: "databases", label: "Databases", color: "bg-emerald-100 text-emerald-800 dark:bg-emerald-900/40 dark:text-emerald-300" },
-  { key: "devops_cloud", label: "Cloud & DevOps", color: "bg-amber-100 text-amber-800 dark:bg-amber-900/40 dark:text-amber-300" },
+  { key: "ai_ml", label: "AI / LLM", color: "bg-violet-100 text-violet-800" },
+  { key: "backend", label: "Backend", color: "bg-blue-100 text-blue-800" },
+  { key: "frontend", label: "Frontend", color: "bg-cyan-100 text-cyan-800" },
+  { key: "databases", label: "Databases", color: "bg-emerald-100 text-emerald-800" },
+  { key: "devops_cloud", label: "Cloud & DevOps", color: "bg-amber-100 text-amber-800" },
 ];
 
 export default function StatsPage() {
@@ -60,13 +60,13 @@ export default function StatsPage() {
 
   if (loading) {
     return (
-      <div className="text-center text-gray-400 dark:text-gray-500 py-24">Loading...</div>
+      <div className="text-center text-gray-400 py-24">Loading...</div>
     );
   }
 
   if (!resume) {
     return (
-      <div className="text-center text-gray-400 dark:text-gray-500 py-24">Failed to load skills.</div>
+      <div className="text-center text-gray-400 py-24">Failed to load skills.</div>
     );
   }
 
@@ -77,18 +77,18 @@ export default function StatsPage() {
   return (
     <div className="max-w-4xl mx-auto px-6 py-10 space-y-10">
       <div>
-        <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Skills</h1>
-        <p className="text-gray-500 dark:text-gray-400 mt-1 text-sm">
+        <h1 className="text-2xl font-bold text-gray-900">Skills</h1>
+        <p className="text-gray-500 mt-1 text-sm">
           Skill coverage, language proficiency, and tech stack.
         </p>
       </div>
 
       {/* Radar chart */}
-      <div className="bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800 p-6">
-        <h2 className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-4">Skill Coverage</h2>
+      <div className="bg-white rounded-xl border border-gray-200 p-6">
+        <h2 className="text-sm font-semibold text-gray-700 mb-4">Skill Coverage</h2>
         <ResponsiveContainer width="100%" height={320}>
           <RadarChart data={skill_radar}>
-            <PolarGrid stroke="#e5e7eb" className="dark:[&>line]:stroke-gray-700 dark:[&>circle]:stroke-gray-700" />
+            <PolarGrid stroke="#e5e7eb" />
             <PolarAngleAxis
               dataKey="category"
               tick={{ fontSize: 12, fill: "#6b7280" }}
@@ -114,16 +114,16 @@ export default function StatsPage() {
       </div>
 
       {/* Language proficiency */}
-      <div className="bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800 p-6">
-        <h2 className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-5">Language Proficiency</h2>
+      <div className="bg-white rounded-xl border border-gray-200 p-6">
+        <h2 className="text-sm font-semibold text-gray-700 mb-5">Language Proficiency</h2>
         <div className="space-y-4">
           {skillsForTags.languages.map((lang) => (
             <div key={lang.name}>
               <div className="flex items-center justify-between mb-1.5">
-                <span className="text-sm font-medium text-gray-800 dark:text-gray-200">{lang.name}</span>
-                <span className="text-xs text-gray-400 dark:text-gray-500">{lang.years} yr{lang.years !== 1 ? "s" : ""}</span>
+                <span className="text-sm font-medium text-gray-800">{lang.name}</span>
+                <span className="text-xs text-gray-400">{lang.years} yr{lang.years !== 1 ? "s" : ""}</span>
               </div>
-              <div className="h-2 bg-gray-100 dark:bg-gray-800 rounded-full overflow-hidden">
+              <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
                 <div
                   className="h-full bg-gradient-to-r from-violet-500 to-indigo-500 rounded-full transition-all duration-500"
                   style={{ width: `${(lang.years / 8) * 100}%` }}
@@ -135,14 +135,14 @@ export default function StatsPage() {
       </div>
 
       {/* Tech stack tags */}
-      <div className="bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800 p-6">
-        <h2 className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-5">Tech Stack</h2>
+      <div className="bg-white rounded-xl border border-gray-200 p-6">
+        <h2 className="text-sm font-semibold text-gray-700 mb-5">Tech Stack</h2>
         <div className="space-y-5">
           {TECH_GROUPS.map(({ key, label, color }) => {
             const items = skillsForTags[key as keyof ResumeSkills] as string[];
             return (
               <div key={key}>
-                <div className="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-2">
+                <div className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">
                   {label}
                 </div>
                 <div className="flex flex-wrap gap-2">

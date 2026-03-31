@@ -129,8 +129,8 @@ export default function JobsPage() {
   return (
     <div className="max-w-4xl mx-auto px-6 py-10">
       <div className="mb-8">
-        <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Job Search</h1>
-        <p className="text-gray-500 dark:text-gray-400 mt-1 text-sm">
+        <h1 className="text-2xl font-bold text-gray-900">Job Search</h1>
+        <p className="text-gray-500 mt-1 text-sm">
           Pre-filled job searches on Seek, Indeed, and LinkedIn — Brisbane · Remote · Hybrid.
         </p>
       </div>
@@ -138,20 +138,20 @@ export default function JobsPage() {
       <div className="space-y-8">
         {JOB_GROUPS.map((group) => (
           <div key={group.category}>
-            <h2 className="text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-gray-500 mb-3">
+            <h2 className="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-3">
               {group.category}
             </h2>
             <div className="space-y-3">
               {group.jobs.map((job) => (
                 <div key={job.title}
-                  className={`bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800 border-l-4 ${group.color} p-4`}>
+                  className={`bg-white rounded-xl border border-gray-200 border-l-4 ${group.color} p-4`}>
                   <div className="flex items-start justify-between gap-4 flex-wrap">
                     <div className="min-w-0">
                       <div className="flex items-center gap-2 mb-0.5">
                         <Search className="w-3.5 h-3.5 text-gray-400 shrink-0" />
-                        <span className="font-semibold text-sm text-gray-900 dark:text-white">{job.title}</span>
+                        <span className="font-semibold text-sm text-gray-900">{job.title}</span>
                       </div>
-                      <p className="text-xs text-gray-500 dark:text-gray-400 ml-5">{job.description}</p>
+                      <p className="text-xs text-gray-500 ml-5">{job.description}</p>
                     </div>
                     <div className="flex gap-2 shrink-0">
                       {BOARDS.map((board) => (

@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import { ThemeProvider } from "next-themes";
 import Navbar from "@/components/Navbar";
 import "./globals.css";
 
@@ -26,11 +25,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       suppressHydrationWarning
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-[#f7f7fc] dark:bg-[#09090f]">
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+      <body className="min-h-full flex flex-col bg-[#f7f7fc]">
           <Navbar />
           <main className="flex-1 flex flex-col">{children}</main>
-        </ThemeProvider>
       </body>
     </html>
   );

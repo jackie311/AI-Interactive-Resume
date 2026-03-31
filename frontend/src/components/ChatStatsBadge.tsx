@@ -13,7 +13,7 @@ export default function ChatStatsBadge() {
   if (!stats) return null;
 
   return (
-    <div className="flex items-center gap-1.5 text-xs text-gray-400 dark:text-gray-500">
+    <div className="flex items-center gap-1.5 text-xs text-gray-400">
       <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
       <span>
         {stats.total_conversations.toLocaleString()} conversations ·{" "}

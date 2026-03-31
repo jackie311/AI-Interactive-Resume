@@ -16,11 +16,11 @@ interface Props {
 
 export default function SkillsRadar({ data }: Props) {
   return (
-    <div className="bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800 p-4">
-      <h3 className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-3">Skill Proficiency</h3>
+    <div className="bg-white rounded-xl border border-gray-200 p-4">
+      <h3 className="text-sm font-semibold text-gray-700 mb-3">Skill Proficiency</h3>
       <ResponsiveContainer width="100%" height={220}>
         <RadarChart data={data} margin={{ top: 10, right: 20, bottom: 10, left: 20 }}>
-          <PolarGrid stroke="#e5e7eb" className="dark:stroke-gray-700" />
+          <PolarGrid stroke="#e5e7eb" />
           <PolarAngleAxis
             dataKey="category"
             tick={{ fill: "#6b7280", fontSize: 11 }}

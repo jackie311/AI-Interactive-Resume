@@ -9,13 +9,13 @@ interface Props {
 }
 
 const COLORS = [
-  "text-indigo-600 dark:text-indigo-400",
-  "text-purple-600 dark:text-purple-400",
-  "text-blue-600 dark:text-blue-400",
-  "text-cyan-600 dark:text-cyan-400",
-  "text-teal-600 dark:text-teal-400",
-  "text-green-600 dark:text-green-400",
-  "text-emerald-600 dark:text-emerald-400",
+  "text-indigo-600",
+  "text-purple-600",
+  "text-blue-600",
+  "text-cyan-600",
+  "text-teal-600",
+  "text-green-600",
+  "text-emerald-600",
 ];
 
 export default function TechWordCloud({ languages, otherTags }: Props) {
@@ -35,8 +35,8 @@ export default function TechWordCloud({ languages, otherTags }: Props) {
   const maxWeight = Math.max(...words.map((w) => w.weight));
 
   return (
-    <div className="bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800 p-4">
-      <h3 className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-3">Tech Stack</h3>
+    <div className="bg-white rounded-xl border border-gray-200 p-4">
+      <h3 className="text-sm font-semibold text-gray-700 mb-3">Tech Stack</h3>
       <div className="flex flex-wrap gap-2 justify-center py-2">
         {words.map((word, i) => {
           const size = 10 + (word.weight / maxWeight) * 14;

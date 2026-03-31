@@ -18,7 +18,7 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className="sticky top-0 z-40 bg-white/70 dark:bg-[#09090f]/80 backdrop-blur-xl border-b border-black/[0.06] dark:border-white/[0.06]">
+    <nav className="sticky top-0 z-40 bg-white/70#09090f]/80 backdrop-blur-xl border-b border-black/[0.06]">
       <div className="max-w-screen-xl mx-auto px-5 h-14 flex items-center justify-between">
         <div className="flex items-center gap-8">
           <span className="font-bold text-base gradient-text">Jackie Jin</span>
@@ -29,8 +29,8 @@ export default function Navbar() {
                 href={href}
                 className={`px-3.5 py-1.5 rounded-lg text-sm font-medium transition-all ${
                   pathname === href
-                    ? "bg-violet-50 dark:bg-violet-500/10 text-violet-600 dark:text-violet-400"
-                    : "text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-black/[0.04] dark:hover:bg-white/[0.05]"
+                    ? "bg-violet-50 text-violet-600"
+                    : "text-gray-500 hover:text-gray-900 hover:bg-black/[0.04]"
                 }`}
               >
                 {label}

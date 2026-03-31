@@ -70,21 +70,21 @@ export default function JDAnalyzerPage() {
   return (
     <div className="max-w-3xl mx-auto px-6 py-10">
       <div className="mb-8">
-        <h1 className="text-2xl font-bold text-gray-900 dark:text-white">JD Fit Analyzer</h1>
-        <p className="text-gray-500 dark:text-gray-400 mt-1 text-sm">
+        <h1 className="text-2xl font-bold text-gray-900">JD Fit Analyzer</h1>
+        <p className="text-gray-500 mt-1 text-sm">
           Paste a job description — the AI will assess how well Jackie fits the role.
         </p>
       </div>
 
       {/* Input */}
-      <div className="bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800 p-5 mb-4">
+      <div className="bg-white rounded-xl border border-gray-200 p-5 mb-4">
         <div className="flex items-center justify-between mb-3">
-          <span className="text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-gray-500">
+          <span className="text-xs font-semibold uppercase tracking-wider text-gray-400">
             Job Description
           </span>
           <button
             onClick={() => setJd(EXAMPLE_JD)}
-            className="flex items-center gap-1.5 text-xs text-violet-600 dark:text-violet-400 hover:underline"
+            className="flex items-center gap-1.5 text-xs text-violet-600 hover:underline"
           >
             <ClipboardPaste className="w-3.5 h-3.5" />
             Load example
@@ -95,15 +95,15 @@ export default function JDAnalyzerPage() {
           onChange={(e) => setJd(e.target.value)}
           placeholder="Paste a job description here..."
           rows={10}
-          className="w-full text-sm text-gray-700 dark:text-gray-200 bg-transparent placeholder-gray-300 dark:placeholder-gray-600 resize-none outline-none leading-relaxed"
+          className="w-full text-sm text-gray-700 bg-transparent placeholder-gray-300 resize-none outline-none leading-relaxed"
         />
-        <div className="flex items-center justify-between pt-3 border-t border-gray-100 dark:border-gray-800">
+        <div className="flex items-center justify-between pt-3 border-t border-gray-100">
           <span className="text-xs text-gray-400">{jd.length} characters</span>
           <div className="flex gap-2">
             {(result || jd) && (
               <button
                 onClick={reset}
-                className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-lg text-gray-500 hover:text-gray-700 dark:hover:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all"
+                className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-lg text-gray-500 hover:text-gray-700 hover:bg-gray-100 transition-all"
               >
                 <RotateCcw className="w-3.5 h-3.5" />
                 Reset
@@ -129,13 +129,13 @@ export default function JDAnalyzerPage() {
       {(result || loading) && (
         <div
           ref={resultRef}
-          className="bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800 p-5"
+          className="bg-white rounded-xl border border-gray-200 p-5"
         >
           <div className="flex items-center gap-2 mb-4">
             <div className="w-6 h-6 rounded-lg bg-gradient-to-br from-violet-500 to-indigo-600 flex items-center justify-center">
               <Sparkles className="w-3.5 h-3.5 text-white" />
             </div>
-            <span className="text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-gray-500">
+            <span className="text-xs font-semibold uppercase tracking-wider text-gray-400">
               AI Analysis
             </span>
             {loading && (
@@ -145,14 +145,14 @@ export default function JDAnalyzerPage() {
               </span>
             )}
           </div>
-          <div className="prose prose-sm dark:prose-invert max-w-none text-gray-700 dark:text-gray-300
-            prose-headings:text-gray-900 dark:prose-headings:text-white
-            prose-strong:text-gray-900 dark:prose-strong:text-white
-            prose-li:text-gray-600 dark:prose-li:text-gray-400">
+          <div className="prose prose-sm max-w-none text-gray-700
+            prose-headings:text-gray-900
+            prose-strong:text-gray-900
+            prose-li:text-gray-600">
             <ReactMarkdown>{result}</ReactMarkdown>
           </div>
           {done && (
-            <div className="mt-4 pt-3 border-t border-gray-100 dark:border-gray-800 text-xs text-gray-400 dark:text-gray-500">
+            <div className="mt-4 pt-3 border-t border-gray-100 text-xs text-gray-400">
               Analysis complete · Powered by Claude claude-sonnet-4-6 + RAG
             </div>
           )}
