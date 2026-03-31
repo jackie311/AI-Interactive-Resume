@@ -34,7 +34,7 @@ export default function CareerTimeline({ experience, education }: Props) {
       subtitle: e.institution,
       type: "education" as const,
     })),
-  ].sort((a, b) => a.year - b.year);
+  ].sort((a, b) => b.year - a.year);
 
   return (
     <div className="bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800 p-4">

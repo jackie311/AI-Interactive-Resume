@@ -4,6 +4,7 @@ import { useState, useRef, useEffect } from "react";
 import { ChatMessage } from "@/lib/types";
 import { streamChat } from "@/lib/api";
 import { Send, Bot, User, Briefcase } from "lucide-react";
+import ReactMarkdown from "react-markdown";
 import SuggestedQuestions from "./SuggestedQuestions";
 
 const WELCOME = `Hi! I'm Jackie's AI assistant. Ask me anything about Jackie's experience, skills, or projects — in English or Chinese! 👋
@@ -127,7 +128,24 @@ export default function ChatPanel() {
                   : "bg-gradient-to-br from-violet-600 to-indigo-600 text-white rounded-tr-sm shadow-lg shadow-violet-500/20"
               }`}
             >
-              {msg.content || (
+              {msg.content ? (
+                msg.role === "assistant" ? (
+                  <ReactMarkdown
+                    components={{
+                      p: ({ children }) => <p className="mb-1 last:mb-0">{children}</p>,
+                      strong: ({ children }) => <strong className="font-semibold">{children}</strong>,
+                      ul: ({ children }) => <ul className="list-disc pl-4 mb-1 space-y-0.5">{children}</ul>,
+                      ol: ({ children }) => <ol className="list-decimal pl-4 mb-1 space-y-0.5">{children}</ol>,
+                      li: ({ children }) => <li>{children}</li>,
+                      code: ({ children }) => <code className="bg-black/[0.07] dark:bg-white/[0.1] rounded px-1 text-xs font-mono">{children}</code>,
+                    }}
+                  >
+                    {msg.content}
+                  </ReactMarkdown>
+                ) : (
+                  msg.content
+                )
+              ) : (
                 <span className="inline-flex gap-1 items-center">
                   <span className="w-1.5 h-1.5 rounded-full bg-current animate-bounce [animation-delay:0ms]" />
                   <span className="w-1.5 h-1.5 rounded-full bg-current animate-bounce [animation-delay:150ms]" />

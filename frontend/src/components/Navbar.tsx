@@ -9,12 +9,12 @@ export default function Navbar() {
 
   const links = [
     { href: "/", label: "Resume" },
-    { href: "/projects", label: "Projects" },
-    { href: "/experience", label: "Experience" },
-    { href: "/skills", label: "Skills" },
-    { href: "/how-it-works", label: "How It Works" },
-    // { href: "/jobs", label: "Jobs" },
-    // { href: "/jd-analyzer", label: "JD Analyzer" },
+    { href: "/projects/", label: "Projects" },
+    { href: "/experience/", label: "Experience" },
+    { href: "/skills/", label: "Skills" },
+    { href: "/how-it-works/", label: "How It Works" },
+    // { href: "/jobs/", label: "Jobs" },
+    // { href: "/jd-analyzer/", label: "JD Analyzer" },
   ];
 
   return (
