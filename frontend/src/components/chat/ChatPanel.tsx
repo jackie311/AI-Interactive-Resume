@@ -38,7 +38,7 @@ export default function ChatPanel() {
 
     try {
       let assistantContent = "";
-      for await (const chunk of streamChat(content, history)) {
+      for await (const chunk of streamChat(content, history, recruiterMode)) {
         assistantContent += chunk;
         setMessages((prev) => {
           const next = [...prev];

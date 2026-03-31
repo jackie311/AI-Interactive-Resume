@@ -29,12 +29,13 @@ export async function fetchGithubStats() {
 
 export async function* streamChat(
   message: string,
-  history: { role: string; content: string }[]
+  history: { role: string; content: string }[],
+  recruiterMode = false
 ): AsyncGenerator<string> {
   const res = await fetch(`${API_BASE}/chat`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ message, history }),
+    body: JSON.stringify({ message, history, recruiter_mode: recruiterMode }),
   });
 
   if (!res.ok || !res.body) throw new Error("Chat request failed");

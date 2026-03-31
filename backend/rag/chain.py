@@ -46,7 +46,7 @@ def detect_recruiter_mode(message: str) -> bool:
     return any(kw in lower for kw in jd_keywords) or len(message) > 500
 
 
-async def stream_chat(message: str, history: list[dict]) -> AsyncGenerator[str, None]:
+async def stream_chat(message: str, history: list[dict], recruiter_mode: bool = False) -> AsyncGenerator[str, None]:
     """
     Retrieve relevant context and stream Claude's response as SSE events.
     Yields strings in SSE format: "data: ...\n\n"
@@ -58,8 +58,12 @@ async def stream_chat(message: str, history: list[dict]) -> AsyncGenerator[str, 
 
     # Build recruiter mode note
     recruiter_note = ""
-    if detect_recruiter_mode(message):
-        recruiter_note = "\n\nThe user has shared a job description. Analyze fit carefully."
+    if recruiter_mode or detect_recruiter_mode(message):
+        recruiter_note = (
+            "\n\nThe user has shared a job description. Do a structured fit analysis: "
+            "1) list matching skills/experience, 2) note any gaps honestly, "
+            "3) give an overall fit summary. Be specific and concise."
+        )
 
     system = SYSTEM_PROMPT + recruiter_note + f"\n\n<resume_context>\n{context}\n</resume_context>"
 

@@ -16,6 +16,7 @@ class ChatMessage(BaseModel):
 class ChatRequest(BaseModel):
     message: str
     history: list[ChatMessage] = []
+    recruiter_mode: bool = False
 
 
 @router.post("")
@@ -24,7 +25,7 @@ async def chat(req: ChatRequest):
     history = [{"role": m.role, "content": m.content} for m in req.history]
 
     return StreamingResponse(
-        stream_chat(req.message, history),
+        stream_chat(req.message, history, req.recruiter_mode),
         media_type="text/event-stream",
         headers={
             "Cache-Control": "no-cache",
