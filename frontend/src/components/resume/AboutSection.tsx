@@ -51,8 +51,8 @@ export default function AboutSection({ personal, availability }: Props) {
         {personal.bio}
       </p>
 
-      <div className="mt-4 p-3 bg-indigo-50 rounded-lg border border-indigo-100">
-        <div className="flex items-center gap-2 text-sm">
+      {/* <div className="mt-4 p-3 bg-indigo-50 rounded-lg border border-indigo-100"> */}
+        {/* <div className="flex items-center gap-2 text-sm">
           <Briefcase className="w-4 h-4 text-indigo-600 shrink-0" />
           <span className="text-gray-700">
             <span className="font-medium">Seeking:</span>{" "}
@@ -68,8 +68,8 @@ export default function AboutSection({ personal, availability }: Props) {
           <span className="text-xs px-2 py-0.5 bg-white border border-indigo-200 rounded-full text-indigo-700">
             {availability.notice_period} notice
           </span>
-        </div>
-      </div>
+        </div> */}
+      {/* </div> */}
     </motion.section>
   );
 }
