@@ -7,9 +7,11 @@ import { Send, Bot, User, Briefcase } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import SuggestedQuestions from "./SuggestedQuestions";
 
-const WELCOME = `Hi! I'm Jackie's AI assistant. Ask me anything about Jackie's experience, skills, or projects — in English or Chinese! 👋
+const WELCOME = `Hi! I'm Jackie's AI assistant — and yes, this chat is itself part of Jackie's work, built with RAG, ChromaDB, and Claude API.
 
-Try: "What's your strongest project?" or "你会 Python 吗？"`;
+Ask me about Jackie's AI/LLM experience, projects, or tech stack — in English or Chinese! 👋
+
+Try: "What AI systems have you built?" or "Tell me about your RAG pipeline"`;
 
 export default function ChatPanel() {
   const [messages, setMessages] = useState<ChatMessage[]>([

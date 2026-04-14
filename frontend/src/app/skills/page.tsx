@@ -79,7 +79,7 @@ export default function StatsPage() {
       <div>
         <h1 className="text-2xl font-bold text-gray-900">Skills</h1>
         <p className="text-gray-500 mt-1 text-sm">
-          Skill coverage, language proficiency, and tech stack.
+          Skill coverage and tech stack.
         </p>
       </div>
 
@@ -111,27 +111,6 @@ export default function StatsPage() {
             />
           </RadarChart>
         </ResponsiveContainer>
-      </div>
-
-      {/* Language proficiency */}
-      <div className="bg-white rounded-xl border border-gray-200 p-6">
-        <h2 className="text-sm font-semibold text-gray-700 mb-5">Language Proficiency</h2>
-        <div className="space-y-4">
-          {skillsForTags.languages.map((lang) => (
-            <div key={lang.name}>
-              <div className="flex items-center justify-between mb-1.5">
-                <span className="text-sm font-medium text-gray-800">{lang.name}</span>
-                <span className="text-xs text-gray-400">{lang.years} yr{lang.years !== 1 ? "s" : ""}</span>
-              </div>
-              <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
-                <div
-                  className="h-full bg-gradient-to-r from-violet-500 to-indigo-500 rounded-full transition-all duration-500"
-                  style={{ width: `${(lang.years / 8) * 100}%` }}
-                />
-              </div>
-            </div>
-          ))}
-        </div>
       </div>
 
       {/* Tech stack tags */}

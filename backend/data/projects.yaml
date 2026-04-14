@@ -32,21 +32,33 @@ projects:
 
   - id: bear
     name: BEAR — Booking Entity Authorisation Reporting
-    tagline: Government compliance platform for Queensland's transport authority
+    tagline: Government reporting platform for regulatory workflows across internal staff and external auditors
     description: >
-      Front-end lead on the BEAR system for the Department of Transport and Main Roads (TMR).
-      Delivered a web application serving internal TMR staff and external BEA auditors —
-      dynamic form system for report submissions and an interactive admin dashboard —
-      within strict two-week agile sprints and WCAG accessibility requirements.
+      Developed and delivered a government reporting platform supporting regulatory workflows for internal
+      staff and external auditors at the Department of Transport and Main Roads (TMR). Built complex,
+      data-driven user interfaces including dynamic form systems and administrative dashboards to handle
+      structured data submission and validation. Designed and implemented responsive, cross-device interfaces
+      (desktop, tablet, mobile), ensuring consistent user experience across multiple form factors. Ensured
+      full compliance with WCAG accessibility standards, balancing usability with strict government
+      requirements. Collaborated in an agile team environment (2-week sprints), working closely with backend
+      engineers, stakeholders, and auditors to deliver stable and scalable features. Integrated APIs and
+      handled complex data flows, enabling reliable data processing and real-time user interactions.
+      Contributed to CI/CD workflows using GitHub Actions, supporting multiple deployment environments and
+      improving release efficiency.
     problem: >
-      Complex compliance reporting needed to serve both government staff and external auditors,
-      meeting strict accessibility standards while iterating quickly under sprint pressure.
+      Complex compliance reporting needed to serve both government staff and external auditors simultaneously,
+      meeting strict WCAG accessibility standards while iterating quickly under tight sprint pressure across
+      multiple device form factors.
     solution: >
-      Built a reusable component library and established front-end architecture patterns
-      to accelerate delivery. Worked closely with design and stakeholders to balance
-      technical constraints with evolving requirements.
-    impact: Consistently shipped sprint commitments; reusable components reduced maintenance cost and improved team velocity.
-    tech: [TypeScript, React, Next.js, AWS]
+      Designed reusable component libraries and frontend architecture patterns to improve consistency and
+      maintainability across the application. Integrated APIs to handle complex data flows and built
+      responsive interfaces across desktop, tablet, and mobile. Contributed to CI/CD pipelines via GitHub
+      Actions to support multiple deployment environments and reliable releases.
+    impact: >
+      Delivered features reliably under tight sprint cycles while maintaining system stability in a
+      multi-stakeholder environment. Improved development efficiency and reduced future maintenance costs
+      through standardised frontend architecture.
+    tech: [React, Next.js, TypeScript, AWS, GitHub Actions]
     github: null
     live: null
     featured: true
@@ -54,35 +66,39 @@ projects:
 
   - id: qantas-platforms
     name: Qantas Digital Platforms
-    tagline: Built a full product solo from two sketches — and solved a deployment problem nobody else had cracked
+    tagline: From maintaining mission-critical pilot apps to independently delivering a new production system end-to-end
     description: >
-      Worked across multiple Qantas digital platforms — ELogbook, QETouch (mobile apps), and the
-      Port Supervisor Page (web). The Port Supervisor Page was a greenfield project: the manager
-      handed me two hand-drawn UI sketches and I took it from there — self-directed design,
-      full-stack development (frontend + backend), and infrastructure, completely solo.
-      The ELogbook team manager called me out by name in writing: "your immediate impact, and
-      ability to deliver results from day one is truly awesome."
-      Separately, the team's CI/CD pipeline was painfully slow (~40 minutes per deployment).
-      The team lead asked if Kubernetes could help. I had no prior K8s experience — so I dug
-      through Confluence documentation, proactively reached out to engineers across different
-      teams on Microsoft Teams, and worked through it with repeated trial and error until it
-      worked. The result: CI down to 7–8 minutes, CD down to ~2 minutes.
-      Also supported the team's monthly UAT, DEV, and TEST environment deployments and
-      production release cycles throughout the engagement.
+      Contributed to multiple Qantas operational platforms, including iPad applications (ELogbook, QETouch)
+      used by pilots and engineers, and an administrative dashboard for internal users. Maintained and
+      enhanced the dashboard system, debugging and resolving issues across both frontend and backend to
+      ensure reliability in a production-critical environment. Worked with React Native-based mobile
+      applications despite no prior iOS experience, quickly ramping up and contributing to cross-platform
+      fixes and improvements. Participated in monthly release cycles across multiple applications, supporting
+      deployment coordination and ensuring stable production releases. Acted as release-day support and backup
+      lead during Qantas release windows, assisting in issue triage, communication, and system monitoring.
+      Independently designed and built the Port Supervisor Page from initial hand-drawn concepts to
+      production, taking ownership of frontend development and integrating with existing backend systems via
+      new API endpoints. Collaborated with internal cloud teams to deploy using Kubernetes and ArgoCD,
+      leveraging internal documentation and cross-team communication despite limited prior exposure.
+      Established deployment pipelines across dev, test, and production environments, improving release
+      consistency and reducing manual effort.
     problem: >
-      Two separate challenges: (1) deliver a brand-new internal tool with minimal requirements
-      and no existing design, and (2) fix a slow, risky CI/CD pipeline that nobody on the team
-      had solved yet — in a technology I hadn't used before.
+      Two separate challenges: (1) maintain and enhance production-critical aviation platforms used by pilots
+      and engineers across mobile and web, and (2) deliver a brand-new internal tool from two hand-drawn
+      sketches with no prior design or requirements — then deploy it in a technology stack (Kubernetes/ArgoCD)
+      I had never used before.
     solution: >
-      For the Port Supervisor Page: owned the full product lifecycle alone — from interpreting
-      rough sketches into a real UI design, through to backend APIs and deployment.
-      For the pipeline: self-taught Kubernetes through documentation research and cross-team
-      collaboration on Teams, iterated through failures until the pipeline was working and fast.
+      For ongoing platforms: ramped up quickly on React Native despite no iOS background, contributed
+      cross-platform fixes, and served as release-day backup lead to keep production stable.
+      For the Port Supervisor Page: owned the full product lifecycle — from interpreting rough sketches into
+      a real UI, through to new backend API endpoints and cloud deployment. Self-taught Kubernetes and ArgoCD
+      through internal documentation and cross-team collaboration to get it shipped.
     impact: >
-      Port Supervisor Page shipped and well-received. CI/CD reduced from ~40 min to under 10 min
-      (70%+ improvement). Named personally in a manager commendation email. Received repeated
-      praise from the Qantas team throughout the engagement.
-    tech: [React Native, Node.js, TypeScript, AWS Cognito, Kubernetes, ArgoCD, Docker]
+      Port Supervisor Page reduced deployment time from ~40 minutes to 12 minutes (~70% improvement) through
+      improved CI/CD workflows. Ensured stable operation of mission-critical systems through effective
+      debugging, release support, and cross-team collaboration. Progressed from system maintenance to
+      independently delivering a new production system end-to-end.
+    tech: [React Native, React, Node.js, TypeScript, AWS Cognito, Kubernetes, ArgoCD]
     github: null
     live: null
     featured: true

@@ -1,7 +1,6 @@
 "use client";
 
 import { Skills } from "@/lib/types";
-import { motion } from "framer-motion";
 
 interface Props {
   skills: Skills;
@@ -30,31 +29,6 @@ export default function SkillsSection({ skills }: Props) {
         <span className="w-1 h-4 gradient-bar rounded-full inline-block" />
         Skills
       </h2>
-
-      {/* Language proficiency bars */}
-      <div className="mb-5 p-4 rounded-xl bg-white border border-black/[0.06]">
-        <h3 className="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-3">
-          Languages
-        </h3>
-        <div className="space-y-2.5">
-          {skills.languages.map((lang) => (
-            <div key={lang.name} className="flex items-center gap-3">
-              <span className="text-xs font-medium text-gray-700 w-24 shrink-0">{lang.name}</span>
-              <div className="flex-1 h-2 bg-gray-100 rounded-full overflow-hidden">
-                <motion.div
-                  initial={{ width: 0 }}
-                  animate={{ width: `${(lang.years / 8) * 100}%` }}
-                  transition={{ duration: 0.7, delay: 0.1, ease: "easeOut" }}
-                  className="h-full bg-gradient-to-r from-violet-500 via-indigo-500 to-cyan-400 rounded-full"
-                />
-              </div>
-              <span className="text-[10px] text-gray-400 w-12 shrink-0 text-right">
-                {lang.years}y exp
-              </span>
-            </div>
-          ))}
-        </div>
-      </div>
 
       {/* Tag clouds */}
       <div className="space-y-3">

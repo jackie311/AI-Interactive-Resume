@@ -5,12 +5,10 @@ interface Props {
 }
 
 const QUESTIONS = [
-  "What's your strongest project?",
-  "Tell me about your Python experience",
-  "Are you open to remote work?",
-  "What's your experience with AWS?",
-  "你会哪些编程语言？",
-  "What AI/ML tools have you used?",
+  "What AI/LLM projects have you built?",
+  "How have you worked with RAG or vector databases?",
+  "What's your experience with Python and AI frameworks?",
+  "Have you deployed AI systems to production?",
 ];
 
 export default function SuggestedQuestions({ onSelect }: Props) {

@@ -90,7 +90,7 @@ export default function ProjectCard({ project, index, featured = false }: Props)
               exit={{ opacity: 0, scale: 0.95, y: 12 }}
               transition={{ duration: 0.2, ease: "easeOut" }}
               onClick={(e) => e.stopPropagation()}
-              className="relative w-full max-w-xl bg-white#111118] rounded-2xl border border-black/[0.08] shadow-2xl shadow-black/20 overflow-hidden max-h-[85vh] flex flex-col"
+              className="relative w-full max-w-xl bg-white rounded-2xl border border-black/[0.08] shadow-2xl shadow-black/20 overflow-hidden max-h-[85vh] flex flex-col"
             >
               {/* Header */}
               <div className="flex items-start justify-between p-6 pb-4 shrink-0">
