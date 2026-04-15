@@ -6,8 +6,9 @@ services:
     env_file:
       - ./backend/.env
     volumes:
-      - ./backend/data:/app/data
-      - ./backend/chroma_db:/app/chroma_db
+      - ./backend:/app                     # live-mount source code
+      - ./backend/chroma_db:/app/chroma_db # persist vector store
+    command: uvicorn main:app --host 0.0.0.0 --port 8000 --reload
 
   frontend:
     build: ./frontend
@@ -16,5 +17,9 @@ services:
     environment:
       - NEXT_PUBLIC_API_URL=http://localhost:8000/api
       - INTERNAL_API_URL=http://backend:8000/api
+    volumes:
+      - ./frontend:/app          # live-mount source code
+      - /app/node_modules        # keep container's node_modules isolated
+      - /app/.next               # keep container's build cache isolated
     depends_on:
       - backend

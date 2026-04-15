@@ -79,21 +79,21 @@ export default function ProjectCard({ project, index, featured = false }: Props)
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.15 }}
-            className="fixed inset-0 z-50 flex items-center justify-center p-6"
+            className="fixed inset-0 z-50 flex items-end sm:items-center justify-center sm:p-6"
             onClick={() => setOpen(false)}
           >
             <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" />
 
             <motion.div
-              initial={{ opacity: 0, scale: 0.95, y: 12 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95, y: 12 }}
-              transition={{ duration: 0.2, ease: "easeOut" }}
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 40 }}
+              transition={{ duration: 0.25, ease: "easeOut" }}
               onClick={(e) => e.stopPropagation()}
-              className="relative w-full max-w-xl bg-white rounded-2xl border border-black/[0.08] shadow-2xl shadow-black/20 overflow-hidden max-h-[85vh] flex flex-col"
+              className="relative w-full sm:max-w-xl bg-white rounded-t-2xl sm:rounded-2xl border border-black/[0.08] shadow-2xl shadow-black/20 overflow-hidden max-h-[92dvh] sm:max-h-[85vh] flex flex-col"
             >
               {/* Header */}
-              <div className="flex items-start justify-between p-6 pb-4 shrink-0">
+              <div className="flex items-start justify-between p-4 sm:p-6 pb-4 shrink-0">
                 <div className="min-w-0 pr-4">
                   <div className="flex items-center gap-2 flex-wrap">
                     <h2 className="text-xl font-bold text-gray-900">{project.name}</h2>
@@ -113,7 +113,7 @@ export default function ProjectCard({ project, index, featured = false }: Props)
               </div>
 
               {/* Scrollable body */}
-              <div className="px-6 pb-6 space-y-4 overflow-y-auto">
+              <div className="px-4 sm:px-6 pb-6 space-y-4 overflow-y-auto">
                 <p className="text-sm text-gray-600 leading-relaxed">
                   {project.description}
                 </p>

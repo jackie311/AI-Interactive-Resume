@@ -9,6 +9,7 @@ import ChatStatsBadge from "@/components/ChatStatsBadge";
 import SkillsRadar from "@/components/visualizations/SkillsRadar";
 import CareerTimeline from "@/components/visualizations/CareerTimeline";
 import TechWordCloud from "@/components/visualizations/TechWordCloud";
+import HomeLayout from "@/components/HomeLayout";
 
 export const revalidate = 3600;
 
@@ -41,38 +42,30 @@ export default async function HomePage() {
     ...resume.skills.ai_ml.slice(0, 4),
   ];
 
-  return (
-    <div className="flex h-[calc(100vh-3rem)] overflow-hidden">
-      {/* Left panel — Resume (scrollable) */}
-      <div className="flex-1 overflow-y-auto min-w-0">
-        <div className="max-w-2xl mx-auto px-6 py-8">
-          <AboutSection personal={resume.personal} availability={resume.availability} />
-          <div className="mb-4 -mt-4">
-            <ChatStatsBadge />
-          </div>
+  const resumePanel = (
+    <div className="max-w-2xl mx-auto px-6 py-8">
+      <AboutSection personal={resume.personal} availability={resume.availability} />
+      <div className="mb-4 -mt-4">
+        <ChatStatsBadge />
+      </div>
 
-          {/* Visualizations */}
-          <div className="mb-8 space-y-4">
-            <SkillsRadar data={resume.skills.skill_radar} />
-            <div className="grid grid-cols-2 gap-4">
-              <CareerTimeline experience={resume.experience} education={resume.education} />
-              <TechWordCloud languages={resume.skills.languages} otherTags={otherTags} />
-            </div>
-          </div>
-
-          <ExperienceSection experience={resume.experience} />
-          <SkillsSection skills={resume.skills} />
-          <EducationSection
-            education={resume.education}
-            certifications={resume.certifications}
-          />
+      {/* Visualizations */}
+      <div className="mb-8 space-y-4">
+        <SkillsRadar data={resume.skills.skill_radar} />
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <CareerTimeline experience={resume.experience} education={resume.education} />
+          <TechWordCloud languages={resume.skills.languages} otherTags={otherTags} />
         </div>
       </div>
 
-      {/* Right panel — AI Chat */}
-      <div className="w-[360px] shrink-0 flex flex-col">
-        <ChatPanel />
-      </div>
+      <ExperienceSection experience={resume.experience} />
+      <SkillsSection skills={resume.skills} />
+      <EducationSection
+        education={resume.education}
+        certifications={resume.certifications}
+      />
     </div>
   );
+
+  return <HomeLayout resumePanel={resumePanel} chatPanel={<ChatPanel />} />;
 }
