@@ -3,16 +3,11 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Download, Menu, X } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 export default function Navbar() {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
-
-  // Close menu on route change
-  useEffect(() => {
-    setMenuOpen(false);
-  }, [pathname]);
 
   const links = [
     { href: "/", label: "Resume" },
@@ -85,6 +80,7 @@ export default function Navbar() {
                 <Link
                   key={href}
                   href={href}
+                  onClick={() => setMenuOpen(false)}
                   className={`flex items-center px-4 py-3 rounded-xl text-sm font-medium transition-all ${
                     pathname === href
                       ? "bg-violet-50 text-violet-600"
