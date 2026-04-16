@@ -1,7 +1,7 @@
 "use client";
 
 import { PersonalInfo, Availability } from "@/lib/types";
-import { MapPin, Mail, GitBranch, Link2, Briefcase } from "lucide-react";
+import { MapPin, Mail, GitBranch, Link2 } from "lucide-react";
 import { motion } from "framer-motion";
 
 interface Props {
@@ -9,7 +9,7 @@ interface Props {
   availability: Availability;
 }
 
-export default function AboutSection({ personal, availability }: Props) {
+export default function AboutSection({ personal }: Props) {
   return (
     <motion.section
       initial={{ opacity: 0, y: 16 }}
