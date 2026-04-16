@@ -2,7 +2,7 @@
 
 AI-powered portfolio site with an always-visible chat sidebar. Visitors can ask questions about my experience, skills, and projects in English or Chinese.
 
-**Live**: https://d33qsa6f99h2bi.cloudfront.net
+**Live**: https://www.jackiejin.dev
 
 ## Stack
 
