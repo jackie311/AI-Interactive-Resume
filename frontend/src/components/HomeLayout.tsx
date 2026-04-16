@@ -15,9 +15,9 @@ export default function HomeLayout({
   return (
     <>
       {/* ── Desktop: side-by-side (lg+) ── */}
-      <div className="hidden lg:flex flex-1 overflow-hidden">
+      <div className="hidden lg:flex flex-1 min-h-0 overflow-hidden">
         <div className="flex-1 overflow-y-auto min-w-0">{resumePanel}</div>
-        <div className="w-[360px] shrink-0 flex flex-col">{chatPanel}</div>
+        <div className="w-[360px] shrink-0 flex flex-col overflow-hidden">{chatPanel}</div>
       </div>
 
       {/* ── Mobile / Tablet: tab layout ── */}
