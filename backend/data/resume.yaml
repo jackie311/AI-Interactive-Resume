@@ -10,8 +10,8 @@ personal:
     Full Stack Engineer with 8+ years of experience, now specialising in AI engineering —
     building LLM-powered applications, RAG pipelines, and cloud-native systems on AWS.
     Hands-on with the full AI stack: Claude API, LangChain, ChromaDB, vector embeddings,
-    and streaming inference. Strong cloud background (AWS CCP, CCNP) with production
-    deployments on ECS Fargate, CloudFront, and EFS. Passionate about turning
+    and streaming inference. Strong cloud background with production deployments on
+    EC2, CloudFront, and S3. Passionate about turning
     state-of-the-art AI models into reliable, production-ready products.
 
 experience:
@@ -26,7 +26,7 @@ experience:
       API integration, and cloud infrastructure. Also independently built an
       AI-powered portfolio (RAG + LLM) to explore and demonstrate AI engineering capabilities.
     highlights:
-      - Built an AI-powered interactive resume using RAG (ChromaDB + HuggingFace embeddings + Claude API), FastAPI streaming SSE, and Next.js — deployed end-to-end on AWS (ECS Fargate, CloudFront, EFS, ECR)
+      - Built an AI-powered interactive resume using RAG (ChromaDB + HuggingFace embeddings + Claude API), FastAPI streaming SSE, and Next.js — deployed end-to-end on AWS (EC2, CloudFront, S3)
       - 'Independently built Qantas'' Port Supervisor Page from scratch — given only two hand-drawn UI sketches, self-directed the entire design, frontend, and backend solo; the ELogbook team manager singled me out by name: "your immediate impact, and ability to deliver results from day one is truly awesome"'
       - Solved a critical deployment bottleneck by self-learning Kubernetes through Confluence research and proactively reaching out across teams on Microsoft Teams — reduced CI from ~40 min to 7–8 min and CD to ~2 min (70%+ improvement) through iterative trial and error
       - Supported the team's monthly UAT, DEV, and TEST environment deployments and Prod release cycles; received repeated commendations from the Qantas team throughout the engagement
