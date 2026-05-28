@@ -2,7 +2,7 @@
 
 AI-powered portfolio site with an always-visible chat sidebar. Visitors can ask questions about my experience, skills, and projects in English or Chinese.
 
-**Live**: https://www.jackiejin.dev
+**Live**: https://profile.jackiejin.dev
 
 ## Stack
 
@@ -10,7 +10,7 @@ AI-powered portfolio site with an always-visible chat sidebar. Visitors can ask 
 |---|---|
 | Frontend | Next.js + TypeScript + Tailwind CSS |
 | Backend | Python FastAPI + ChromaDB (RAG) + Claude API |
-| Infra | AWS S3 + CloudFront / ECS Fargate + ALB / EFS |
+| Infra | AWS S3 + CloudFront / EC2 t2.micro (Docker) |
 
 ## Local Dev
 
@@ -41,14 +41,24 @@ After editing, re-run the embedder to update the AI's knowledge:
 cd backend && python rag/embedder.py
 ```
 
-## CI/CD
+## Deploy
 
-Three GitHub Actions workflows (manual trigger via Actions tab):
+**Frontend** — run locally after any frontend code or data change:
+```bash
+cd frontend && npm run build
+aws s3 sync out/ s3://myresume-330759080485/ --delete --region ap-southeast-2
+aws cloudfront create-invalidation --distribution-id E3QWWKLYQ6ALDB --paths "/*" --region us-east-1
+```
 
-| Workflow | What it does |
-|---|---|
-| **Deploy Frontend** | Build + lint → S3 sync → CloudFront invalidation |
-| **Deploy Backend** | Docker build → ECR push → ECS force deploy |
-| **Run Embedder** | Re-embed YAML data on ECS → restart backend |
+**Backend** — SSH into EC2, then:
+```bash
+ssh -i myresume-key.pem ubuntu@3.24.107.104
+cd myResume && git pull
+docker compose -f docker-compose.prod.yml up -d --build
+```
 
-Requires GitHub Secrets: `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`
+**Re-embed** — run on EC2 after editing resume.yaml or projects.yaml:
+```bash
+# (already SSH'd in)
+docker compose -f docker-compose.prod.yml exec backend python rag/embedder.py
+```

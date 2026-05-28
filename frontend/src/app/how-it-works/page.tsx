@@ -22,7 +22,7 @@ const PIPELINE_STEPS = [
   {
     icon: Database,
     label: "Vector Store",
-    detail: "ChromaDB on AWS EFS",
+    detail: "ChromaDB on EC2 EBS",
     color: "bg-violet-50 border-violet-200 text-violet-700",
     iconColor: "text-violet-600",
   },
@@ -57,7 +57,7 @@ const TECH_CHOICES = [
   },
   {
     name: "HuggingFace all-MiniLM-L6-v2",
-    why: "Fast, small (80MB), runs CPU-only in Fargate. Good semantic similarity for resume-style factual retrieval without needing a paid embedding API.",
+    why: "Fast, small (80MB), runs CPU-only on EC2. Good semantic similarity for resume-style factual retrieval without needing a paid embedding API.",
     category: "Embeddings",
     color: "border-l-blue-400",
   },
@@ -74,8 +74,8 @@ const TECH_CHOICES = [
     color: "border-l-emerald-400",
   },
   {
-    name: "AWS ECS Fargate",
-    why: "Serverless containers — no EC2 to manage. Scales to zero when idle, spins up in seconds. Paired with EFS for persistent ChromaDB storage across deployments.",
+    name: "AWS EC2 t2.micro",
+    why: "Free-tier eligible (12 months). Runs Docker Compose directly — no orchestration overhead. ChromaDB persisted on EBS volume, survives container restarts without EFS complexity.",
     category: "Infra",
     color: "border-l-amber-400",
   },
@@ -83,11 +83,11 @@ const TECH_CHOICES = [
 
 const AWS_COMPONENTS = [
   { name: "CloudFront + S3", role: "CDN + static hosting for Next.js export", icon: "🌐" },
-  { name: "ECS Fargate", role: "Serverless container running FastAPI backend", icon: "⚙️" },
-  { name: "EFS", role: "Persistent filesystem — ChromaDB survives redeploys", icon: "💾" },
-  { name: "ECR", role: "Docker image registry for backend container", icon: "📦" },
-  { name: "ALB", role: "Load balancer — routes /api/* from CloudFront to ECS", icon: "⚖️" },
-  { name: "Secrets Manager", role: "ANTHROPIC_API_KEY, GITHUB_TOKEN at runtime", icon: "🔐" },
+  { name: "EC2 t2.micro", role: "Docker host running FastAPI backend (free tier)", icon: "⚙️" },
+  { name: "EBS", role: "Persistent disk — ChromaDB Docker volume survives restarts", icon: "💾" },
+  { name: "Elastic IP", role: "Static public IP for EC2, used as CloudFront origin", icon: "🔌" },
+  { name: "ACM", role: "Wildcard TLS cert (*.jackiejin.dev) for CloudFront HTTPS", icon: "🔐" },
+  { name: "CloudFront Function", role: "Rewrites paths like /experience → /experience.html", icon: "⚡" },
 ];
 
 export default function AIPage() {
@@ -133,7 +133,7 @@ export default function AIPage() {
           </div>
 
           <div className="mt-5 pt-4 border-t border-gray-100 text-sm text-gray-500 leading-relaxed">
-            Resume YAML is chunked and embedded offline into ChromaDB (persisted on EFS). At query time,
+            Resume YAML is chunked and embedded offline into ChromaDB (persisted on EC2 EBS). At query time,
             the top-4 relevant chunks are retrieved and injected into the Claude prompt as grounding context —
             so the AI answers as Jackie, citing real facts, not hallucinations.
             Responses stream token-by-token via SSE to the chat panel.
@@ -194,24 +194,14 @@ export default function AIPage() {
                 <div className="w-px h-4 bg-gray-200" />
                 <div className="text-[10px] text-gray-400">/api/*</div>
                 <div className="w-px h-4 bg-gray-200" />
-                <div className="px-3 py-1.5 rounded-lg bg-gray-100 text-gray-600 font-medium text-xs">
-                  ALB
-                </div>
-                <div className="w-px h-4 bg-gray-200" />
                 <div className="px-3 py-1.5 rounded-lg bg-emerald-50 border border-emerald-200 text-emerald-700 font-medium text-xs whitespace-nowrap">
-                  ECS Fargate
+                  EC2 t2.micro (Docker)
                 </div>
                 <div className="flex items-center gap-3 mt-1">
                   <div className="flex flex-col items-center gap-1">
                     <div className="w-px h-3 bg-gray-200" />
                     <div className="px-2.5 py-1 rounded-lg bg-violet-50 border border-violet-200 text-violet-700 font-medium text-[10px]">
-                      EFS (ChromaDB)
-                    </div>
-                  </div>
-                  <div className="flex flex-col items-center gap-1">
-                    <div className="w-px h-3 bg-gray-200" />
-                    <div className="px-2.5 py-1 rounded-lg bg-rose-50 border border-rose-200 text-rose-700 font-medium text-[10px]">
-                      Secrets Manager
+                      EBS (ChromaDB)
                     </div>
                   </div>
                 </div>
