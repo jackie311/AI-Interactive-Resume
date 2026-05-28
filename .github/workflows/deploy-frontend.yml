@@ -14,10 +14,10 @@ on:
 
 env:
   AWS_REGION: ap-southeast-2
-  S3_BUCKET: myresume-frontend-041875151540
-  CLOUDFRONT_DISTRIBUTION_ID: E2VLNB8O1DB4Y7
-  NEXT_PUBLIC_API_URL: https://d33qsa6f99h2bi.cloudfront.net/api
-  INTERNAL_API_URL: http://myresume-alb-1732503466.ap-southeast-2.elb.amazonaws.com/api
+  S3_BUCKET: myresume-330759080485
+  CLOUDFRONT_DISTRIBUTION_ID: E3QWWKLYQ6ALDB
+  NEXT_PUBLIC_API_URL: https://profile.jackiejin.dev/api
+  INTERNAL_API_URL: http://3.24.107.104:8000/api
 
 jobs:
   build:
