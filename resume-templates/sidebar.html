@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Resume — Sidebar</title>
+<style>
+  @page { size: A4; margin: 0; }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body { background: #94a3b8; }
+
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    background: #fff;
+    margin: 0 auto;
+    display: flex;
+    font-family: -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+    font-size: 9pt;
+    color: #1e293b;
+    line-height: 1.45;
+  }
+
+  @media print {
+    html, body { background: white; }
+    .page { margin: 0; box-shadow: none; }
+    * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+
+  /* ── Sidebar ── */
+  .sidebar {
+    width: 66mm;
+    min-height: 297mm;
+    background: #1e293b;
+    color: #cbd5e1;
+    padding: 14mm 8mm 12mm;
+    flex-shrink: 0;
+  }
+
+  .sidebar-name {
+    font-size: 15pt;
+    font-weight: 700;
+    color: #f8fafc;
+    line-height: 1.2;
+    margin-bottom: 3pt;
+  }
+  .sidebar-title {
+    font-size: 8.5pt;
+    color: #94a3b8;
+    margin-bottom: 10pt;
+  }
+  .sidebar-contact { margin-bottom: 14pt; }
+  .sidebar-contact-item {
+    font-size: 7.5pt;
+    color: #94a3b8;
+    margin-bottom: 2pt;
+    word-break: break-all;
+  }
+  .sidebar-contact-item a { color: #93c5fd; text-decoration: none; }
+
+  .sidebar-section-title {
+    font-size: 6.5pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    color: #475569;
+    margin-bottom: 5pt;
+    margin-top: 12pt;
+  }
+  .sidebar-section-title:first-of-type { margin-top: 0; }
+
+  .skill-category { margin-bottom: 7pt; }
+  .skill-cat-name {
+    font-size: 7.5pt;
+    font-weight: 600;
+    color: #94a3b8;
+    margin-bottom: 2pt;
+  }
+  .skill-cat-name::before { content: "▸ "; color: #3b82f6; }
+  .sidebar ul { list-style: none; padding-left: 0; }
+  .sidebar li {
+    font-size: 7.5pt;
+    color: #cbd5e1;
+    padding: 1pt 0;
+    padding-left: 8pt;
+  }
+
+  .cert-item {
+    font-size: 7.5pt;
+    color: #cbd5e1;
+    padding: 1.5pt 0;
+  }
+
+  /* ── Main ── */
+  .main {
+    flex: 1;
+    padding: 13mm 12mm 12mm 10mm;
+  }
+
+  .main-header { margin-bottom: 10pt; }
+  .main-name {
+    font-size: 20pt;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 2pt;
+  }
+  .main-tagline {
+    font-size: 9pt;
+    color: #64748b;
+    margin-bottom: 8pt;
+  }
+  .main-header-rule { border: none; border-top: 2pt solid #1e293b; margin-bottom: 10pt; }
+
+  .section { margin-bottom: 9pt; }
+  .section-title {
+    font-size: 8.5pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #0f172a;
+    border-bottom: 1pt solid #e2e8f0;
+    padding-bottom: 2pt;
+    margin-bottom: 6pt;
+  }
+
+  /* Summary */
+  .summary p { font-size: 9pt; color: #374151; margin-bottom: 3pt; line-height: 1.5; }
+
+  /* Entries */
+  .entry { margin-bottom: 7pt; page-break-inside: avoid; }
+  .entry-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 0.5pt;
+  }
+  .entry-company { font-weight: 700; font-size: 9.5pt; color: #0f172a; }
+  .entry-date { font-size: 8pt; color: #94a3b8; white-space: nowrap; margin-left: 6pt; }
+  .entry-role { font-size: 8.5pt; color: #64748b; font-style: italic; margin-bottom: 3pt; }
+  .entry-url { font-size: 7.5pt; margin-bottom: 3pt; }
+  .entry-url a { color: #3b82f6; text-decoration: none; }
+  .entry ul { padding-left: 10pt; margin: 2pt 0; }
+  .entry li { margin-bottom: 1.5pt; font-size: 8.5pt; color: #334155; }
+  .entry-achievements-title { font-weight: 600; font-size: 8.5pt; color: #1e293b; margin: 3pt 0 2pt; }
+  .entry-impact-title { font-weight: 600; font-size: 8.5pt; color: #1e293b; margin: 3pt 0 2pt; }
+  .entry-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2.5pt;
+    margin-top: 3pt;
+  }
+  .tag {
+    background: #f1f5f9;
+    color: #475569;
+    font-size: 7pt;
+    padding: 1pt 4pt;
+    border-radius: 2pt;
+    border: 0.5pt solid #e2e8f0;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <aside class="sidebar">
+{{SIDEBAR}}
+  </aside>
+  <main class="main">
+{{MAIN}}
+  </main>
+</div>
+</body>
+</html>

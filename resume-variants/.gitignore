@@ -1,0 +1,3 @@
+# Keep directory, ignore variant files (personal job search data)
+*.md
+!.gitkeep

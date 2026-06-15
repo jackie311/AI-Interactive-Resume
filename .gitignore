@@ -16,3 +16,6 @@ frontend/.env.local
 *.env
 prepare.txt
 prepare.en.txt
+
+# Claude Code worktrees (managed by git worktree, not committed here)
+.claude/worktrees/

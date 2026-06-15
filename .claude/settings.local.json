@@ -2,7 +2,11 @@
   "permissions": {
     "allow": [
       "Bash(npm run:*)",
-      "Bash(xargs grep *)"
+      "Bash(xargs grep *)",
+      "WebFetch(domain:www.linkedin.com)",
+      "WebSearch",
+      "WebFetch(domain:www.glassdoor.com)",
+      "Bash(C:/Program Files/Google/Chrome/Application/chrome.exe *)"
     ]
   }
 }

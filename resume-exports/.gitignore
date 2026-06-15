@@ -1,0 +1,4 @@
+# Ignore all exports (personal, large PDF files)
+*.html
+*.pdf
+!.gitkeep
