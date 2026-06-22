@@ -19,21 +19,23 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className="sticky top-0 z-40 bg-white/70 backdrop-blur-xl border-b border-black/[0.06]">
+      <nav className="sticky top-0 z-40 bg-canvas/80 backdrop-blur-xl border-b border-hairline">
 
         {/* ── Desktop (lg+) ── */}
         <div className="hidden lg:flex max-w-screen-xl mx-auto px-5 h-14 items-center justify-between">
           <div className="flex items-center gap-8">
-            <span className="font-bold text-base gradient-text">Jackie Jin</span>
+            <span className="font-semibold text-[15px] tracking-display text-ink">
+              Jackie Jin
+            </span>
             <div className="flex gap-1">
               {links.map(({ href, label }) => (
                 <Link
                   key={href}
                   href={href}
-                  className={`px-3.5 py-1.5 rounded-lg text-sm font-medium transition-all ${
+                  className={`px-3 py-1.5 rounded-md text-sm font-medium transition-colors ${
                     pathname === href
-                      ? "bg-violet-50 text-violet-600"
-                      : "text-gray-500 hover:text-gray-900 hover:bg-black/[0.04]"
+                      ? "bg-surface-2 text-ink"
+                      : "text-ink-subtle hover:text-ink hover:bg-surface-1"
                   }`}
                 >
                   {label}
@@ -44,7 +46,7 @@ export default function Navbar() {
           <a
             href="/resume.pdf"
             download="Jackie_Jin_Resume.pdf"
-            className="flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-semibold text-white bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-500 hover:to-indigo-500 rounded-lg transition-all shadow-lg shadow-violet-500/20"
+            className="flex items-center gap-1.5 px-3.5 py-1.5 text-sm font-medium text-on-primary bg-primary hover:bg-primary-hover rounded-md transition-colors"
           >
             <Download className="w-3.5 h-3.5" />
             Download Resume
@@ -53,10 +55,12 @@ export default function Navbar() {
 
         {/* ── Mobile (< lg): logo + hamburger only ── */}
         <div className="lg:hidden flex items-center justify-between px-4 h-12">
-          <span className="font-bold text-base gradient-text">Jackie Jin</span>
+          <span className="font-semibold text-[15px] tracking-display text-ink">
+            Jackie Jin
+          </span>
           <button
             onClick={() => setMenuOpen((v) => !v)}
-            className="p-2 rounded-lg text-gray-600 hover:bg-black/[0.05] transition-colors"
+            className="p-2 rounded-md text-ink-subtle hover:text-ink hover:bg-surface-1 transition-colors"
             aria-label="Toggle menu"
           >
             {menuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -68,11 +72,11 @@ export default function Navbar() {
       {menuOpen && (
         <div className="lg:hidden fixed inset-0 z-30 flex flex-col" onClick={() => setMenuOpen(false)}>
           {/* Backdrop */}
-          <div className="absolute inset-0 bg-black/20 backdrop-blur-sm" />
+          <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" />
 
           {/* Menu panel — slides down from top */}
           <div
-            className="relative mt-12 mx-3 bg-white rounded-2xl shadow-2xl shadow-black/15 overflow-hidden"
+            className="relative mt-12 mx-3 bg-surface-1 border border-hairline rounded-xl shadow-2xl shadow-black/40 overflow-hidden"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="p-2">
@@ -81,10 +85,10 @@ export default function Navbar() {
                   key={href}
                   href={href}
                   onClick={() => setMenuOpen(false)}
-                  className={`flex items-center px-4 py-3 rounded-xl text-sm font-medium transition-all ${
+                  className={`flex items-center px-4 py-3 rounded-lg text-sm font-medium transition-colors ${
                     pathname === href
-                      ? "bg-violet-50 text-violet-600"
-                      : "text-gray-700 hover:bg-black/[0.04]"
+                      ? "bg-surface-2 text-ink"
+                      : "text-ink-subtle hover:text-ink hover:bg-surface-2"
                   }`}
                 >
                   {label}
@@ -95,7 +99,7 @@ export default function Navbar() {
               <a
                 href="/resume.pdf"
                 download="Jackie_Jin_Resume.pdf"
-                className="flex items-center justify-center gap-2 w-full px-4 py-2.5 text-sm font-semibold text-white bg-gradient-to-r from-violet-600 to-indigo-600 rounded-xl shadow-lg shadow-violet-500/20"
+                className="flex items-center justify-center gap-2 w-full px-4 py-2.5 text-sm font-medium text-on-primary bg-primary hover:bg-primary-hover rounded-md transition-colors"
               >
                 <Download className="w-4 h-4" />
                 Download Resume

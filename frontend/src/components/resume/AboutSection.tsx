@@ -19,8 +19,8 @@ export default function AboutSection({ personal }: Props) {
     >
       <div className="flex items-start justify-between flex-wrap gap-3">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900">{personal.name}</h1>
-          <p className="text-lg text-indigo-600 font-medium mt-0.5">
+          <h1 className="text-3xl font-semibold text-ink tracking-display">{personal.name}</h1>
+          <p className="text-lg text-ink-muted font-normal mt-1">
             {personal.title}
           </p>
         </div>
@@ -32,22 +32,22 @@ export default function AboutSection({ personal }: Props) {
         )} */}
       </div>
 
-      <div className="flex flex-wrap gap-3 mt-3 text-sm text-gray-500">
+      <div className="flex flex-wrap gap-3 mt-3 text-sm text-ink-subtle">
         <span className="flex items-center gap-1">
           <MapPin className="w-3.5 h-3.5" /> {personal.location}
         </span>
-        <a href={`mailto:${personal.email}`} className="flex items-center gap-1 hover:text-indigo-600 transition-colors">
+        <a href={`mailto:${personal.email}`} className="flex items-center gap-1 hover:text-ink transition-colors">
           <Mail className="w-3.5 h-3.5" /> {personal.email}
         </a>
-        <a href={personal.github} target="_blank" rel="noreferrer" className="flex items-center gap-1 hover:text-indigo-600 transition-colors">
+        <a href={personal.github} target="_blank" rel="noreferrer" className="flex items-center gap-1 hover:text-ink transition-colors">
           <GitBranch className="w-3.5 h-3.5" /> GitHub
         </a>
-        <a href={personal.linkedin} target="_blank" rel="noreferrer" className="flex items-center gap-1 hover:text-indigo-600 transition-colors">
+        <a href={personal.linkedin} target="_blank" rel="noreferrer" className="flex items-center gap-1 hover:text-ink transition-colors">
           <Link2 className="w-3.5 h-3.5" /> LinkedIn
         </a>
       </div>
 
-      <p className="mt-4 text-gray-600 leading-relaxed text-sm">
+      <p className="mt-4 text-ink-muted leading-relaxed text-sm">
         {personal.bio}
       </p>
 

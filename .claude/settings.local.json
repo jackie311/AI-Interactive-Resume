@@ -6,7 +6,14 @@
       "WebFetch(domain:www.linkedin.com)",
       "WebSearch",
       "WebFetch(domain:www.glassdoor.com)",
-      "Bash(C:/Program Files/Google/Chrome/Application/chrome.exe *)"
+      "Bash(C:/Program Files/Google/Chrome/Application/chrome.exe *)",
+      "Bash(docker compose *)",
+      "Bash(curl -s -o /dev/null -w \"GET /api/resume -> %{http_code}\\\\n\" http://localhost:8000/api/resume)",
+      "Bash(curl -s -o /dev/null -w \"GET / -> %{http_code}\\\\n\" http://localhost:3000)",
+      "Bash(curl -s -o /dev/null -w \"frontend / -> %{http_code}\\\\n\" http://localhost:3000)",
+      "Bash(curl -s -o /dev/null -w \"backend /api/resume -> %{http_code}\\\\n\" http://localhost:8000/api/resume)",
+      "PowerShell($chrome = \"C:\\\\Program Files\\\\Google\\\\Chrome\\\\Application\\\\chrome.exe\"; $out = \"D:\\\\Jackie\\\\repo\\\\myResume\\\\.claude\\\\worktrees\\\\home-theme.png\"; & $chrome --headless --disable-gpu --hide-scrollbars --window-size=1440,1024 --screenshot=\"$out\" \"http://localhost:3000\" 2>$null; Start-Sleep -Seconds 2; if \\(Test-Path $out\\) { \"screenshot saved: $out \\($\\(\\(Get-Item $out\\).Length\\) bytes\\)\" } else { \"screenshot failed\" })",
+      "PowerShell($chrome = \"C:\\\\Program Files\\\\Google\\\\Chrome\\\\Application\\\\chrome.exe\"; $out = \"D:\\\\Jackie\\\\repo\\\\myResume\\\\.claude\\\\worktrees\\\\home-theme2.png\"; & $chrome --headless --disable-gpu --hide-scrollbars --window-size=1440,1024 --virtual-time-budget=5000 --screenshot=\"$out\" \"http://localhost:3000\" 2>$null; Start-Sleep -Seconds 2; if \\(Test-Path $out\\) { \"saved \\($\\(\\(Get-Item $out\\).Length\\) bytes\\)\" } else { \"failed\" })"
     ]
   }
 }

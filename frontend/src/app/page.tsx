@@ -26,9 +26,9 @@ export default async function HomePage() {
 
   if (!resume) {
     return (
-      <div className="flex items-center justify-center h-64 text-gray-500">
+      <div className="flex items-center justify-center h-64 text-ink-subtle">
         <div className="text-center">
-          <p className="font-medium">Could not load resume data.</p>
+          <p className="font-medium text-ink">Could not load resume data.</p>
           <p className="text-sm mt-1">Make sure the backend API is running at localhost:8000</p>
         </div>
       </div>

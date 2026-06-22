@@ -8,14 +8,15 @@ interface Props {
   otherTags: string[];
 }
 
+// Tonal ink scale with scarce lavender accents (no second chromatic color)
 const COLORS = [
-  "text-indigo-600",
-  "text-purple-600",
-  "text-blue-600",
-  "text-cyan-600",
-  "text-teal-600",
-  "text-green-600",
-  "text-emerald-600",
+  "text-ink",
+  "text-ink-muted",
+  "text-ink-subtle",
+  "text-primary",
+  "text-ink-muted",
+  "text-ink",
+  "text-ink-subtle",
 ];
 
 export default function TechWordCloud({ languages, otherTags }: Props) {
@@ -35,8 +36,8 @@ export default function TechWordCloud({ languages, otherTags }: Props) {
   const maxWeight = Math.max(...words.map((w) => w.weight));
 
   return (
-    <div className="bg-white rounded-xl border border-gray-200 p-4">
-      <h3 className="text-sm font-semibold text-gray-700 mb-3">Tech Stack</h3>
+    <div className="bg-surface-1 rounded-xl border border-hairline p-4">
+      <h3 className="text-sm font-semibold text-ink-muted mb-3">Tech Stack</h3>
       <div className="flex flex-wrap gap-2 justify-center py-2">
         {words.map((word, i) => {
           const size = 10 + (word.weight / maxWeight) * 14;

@@ -1,39 +1,86 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
-:root {
-  --background: #f7f7fc;
-  --foreground: #0f0f1a;
+/* ──────────────────────────────────────────────────────────────
+   Linear DESIGN.md — dark-canvas system
+   canvas → surface-1..4 ladder, hairline borders, scarce lavender.
+   ────────────────────────────────────────────────────────────── */
+@theme {
+  /* Surface ladder */
+  --color-canvas: #010102;
+  --color-surface-1: #0f1011;
+  --color-surface-2: #16171a;
+  --color-surface-3: #1c1d20;
+  --color-surface-4: #232427;
+
+  /* Hairline borders */
+  --color-hairline: #23252a;
+  --color-hairline-strong: #313337;
+  --color-hairline-tertiary: #1a1c20;
+
+  /* Text (ink) */
+  --color-ink: #f7f8f8;
+  --color-ink-muted: #d0d6e0;
+  --color-ink-subtle: #8a8f98;
+  --color-ink-tertiary: #62666d;
+
+  /* Brand accent — lavender-blue (used scarcely) */
+  --color-primary: #5e6ad2;
+  --color-primary-hover: #828fff;
+  --color-primary-focus: #5e69d1;
+  --color-on-primary: #ffffff;
+
+  /* Semantic — success is the only marketing semantic color */
+  --color-success: #27a644;
+
+  /* Fonts (Inter / JetBrains Mono substitutes per DESIGN.md) */
+  --font-sans: var(--font-inter), "SF Pro Display", -apple-system, system-ui,
+    "Segoe UI", Roboto, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, "SF Mono", Menlo,
+    monospace;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+:root {
+  --background: var(--color-canvas);
+  --foreground: var(--color-ink);
+}
+
+html {
+  background: var(--color-canvas);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  background: var(--color-canvas);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
+  letter-spacing: -0.011em; /* body holds at ≈ -0.05px */
 }
 
-/* Premium scrollbar */
+::selection {
+  background: rgba(94, 106, 210, 0.35);
+  color: var(--color-ink);
+}
+
+/* Aggressive negative tracking on display headings */
+.tracking-display {
+  letter-spacing: -0.035em;
+}
+
+/* Hairline scrollbar */
 ::-webkit-scrollbar {
-  width: 5px;
-  height: 5px;
+  width: 6px;
+  height: 6px;
 }
 ::-webkit-scrollbar-track {
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(139, 92, 246, 0.3);
-  border-radius: 10px;
+  background: var(--color-hairline-strong);
+  border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(139, 92, 246, 0.5);
+  background: #43454b;
 }
 
 /* Hide scrollbar while keeping scroll functionality */
@@ -44,15 +91,12 @@ body {
   display: none;
 }
 
-/* Gradient text */
+/* Brand wordmark — solid ink, no gradient (Linear uses no atmospheric gradients) */
 .gradient-text {
-  background: linear-gradient(135deg, #a855f7 0%, #6366f1 45%, #38bdf8 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--color-ink);
 }
 
-/* Gradient accent bar for section headers */
+/* Section accent bar — scarce solid lavender */
 .gradient-bar {
-  background: linear-gradient(180deg, #a855f7, #6366f1, #38bdf8);
+  background: var(--color-primary);
 }

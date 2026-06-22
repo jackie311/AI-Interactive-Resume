@@ -26,10 +26,9 @@ function linkedinUrl(keywords: string) {
   return `https://www.linkedin.com/jobs/search/?keywords=${encodeURIComponent(keywords)}&location=${LOCATION_LINKEDIN}&f_WT=2`;
 }
 
-const JOB_GROUPS: { category: string; color: string; jobs: JobSearch[] }[] = [
+const JOB_GROUPS: { category: string; jobs: JobSearch[] }[] = [
   {
     category: "AI Engineering",
-    color: "border-l-violet-500",
     jobs: [
       {
         title: "AI Engineer",
@@ -67,7 +66,6 @@ const JOB_GROUPS: { category: string; color: string; jobs: JobSearch[] }[] = [
   },
   {
     category: "Full Stack / Backend",
-    color: "border-l-blue-500",
     jobs: [
       {
         title: "Full Stack Engineer",
@@ -97,7 +95,6 @@ const JOB_GROUPS: { category: string; color: string; jobs: JobSearch[] }[] = [
   },
   {
     category: "Cloud & DevOps",
-    color: "border-l-amber-500",
     jobs: [
       {
         title: "Cloud Engineer (AWS)",
@@ -120,17 +117,17 @@ const JOB_GROUPS: { category: string; color: string; jobs: JobSearch[] }[] = [
 ];
 
 const BOARDS = [
-  { key: "seek", label: "Seek", color: "bg-[#e60278] hover:bg-[#c4006a] text-white" },
-  { key: "indeed", label: "Indeed", color: "bg-[#2164f3] hover:bg-[#1a52d4] text-white" },
-  { key: "linkedin", label: "LinkedIn", color: "bg-[#0a66c2] hover:bg-[#0958a8] text-white" },
+  { key: "seek", label: "Seek" },
+  { key: "indeed", label: "Indeed" },
+  { key: "linkedin", label: "LinkedIn" },
 ] as const;
 
 export default function JobsPage() {
   return (
     <div className="max-w-4xl mx-auto px-6 py-10">
       <div className="mb-8">
-        <h1 className="text-2xl font-bold text-gray-900">Job Search</h1>
-        <p className="text-gray-500 mt-1 text-sm">
+        <h1 className="text-2xl font-semibold tracking-display text-ink">Job Search</h1>
+        <p className="text-ink-subtle mt-1 text-sm">
           Pre-filled job searches on Seek, Indeed, and LinkedIn — Brisbane · Remote · Hybrid.
         </p>
       </div>
@@ -138,20 +135,20 @@ export default function JobsPage() {
       <div className="space-y-8">
         {JOB_GROUPS.map((group) => (
           <div key={group.category}>
-            <h2 className="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-3">
+            <h2 className="text-xs font-semibold uppercase tracking-wider text-ink-subtle mb-3">
               {group.category}
             </h2>
             <div className="space-y-3">
               {group.jobs.map((job) => (
                 <div key={job.title}
-                  className={`bg-white rounded-xl border border-gray-200 border-l-4 ${group.color} p-4`}>
+                  className="bg-surface-1 rounded-xl border border-hairline p-4 hover:bg-surface-2">
                   <div className="flex items-start justify-between gap-4 flex-wrap">
                     <div className="min-w-0">
                       <div className="flex items-center gap-2 mb-0.5">
-                        <Search className="w-3.5 h-3.5 text-gray-400 shrink-0" />
-                        <span className="font-semibold text-sm text-gray-900">{job.title}</span>
+                        <Search className="w-3.5 h-3.5 text-ink-tertiary shrink-0" />
+                        <span className="font-semibold text-sm text-ink">{job.title}</span>
                       </div>
-                      <p className="text-xs text-gray-500 ml-5">{job.description}</p>
+                      <p className="text-xs text-ink-subtle ml-5">{job.description}</p>
                     </div>
                     <div className="flex gap-2 shrink-0">
                       {BOARDS.map((board) => (
@@ -160,7 +157,7 @@ export default function JobsPage() {
                           href={job[board.key]}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className={`flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs font-semibold transition-all ${board.color}`}
+                          className="flex items-center gap-1 px-2.5 py-1.5 rounded-md text-xs font-semibold transition-all bg-surface-2 border border-hairline text-ink-muted hover:bg-surface-3 hover:text-ink"
                         >
                           {board.label}
                           <ExternalLink className="w-3 h-3 opacity-70" />

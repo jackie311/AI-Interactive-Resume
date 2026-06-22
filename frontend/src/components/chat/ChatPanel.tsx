@@ -70,26 +70,26 @@ export default function ChatPanel() {
   }
 
   return (
-    <div className="flex flex-col h-full bg-white#0d0d16] border-l border-black/[0.06]">
+    <div className="flex flex-col h-full bg-surface-1 border-l border-hairline">
       {/* Header */}
-      <div className="px-4 py-3.5 border-b border-black/[0.06] bg-gradient-to-r from-violet-600 via-indigo-600 to-blue-600 text-white">
+      <div className="px-4 py-3.5 border-b border-hairline bg-surface-2 text-ink">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-xl bg-white/15 flex items-center justify-center">
+            <div className="w-8 h-8 rounded-md bg-primary flex items-center justify-center text-on-primary">
               <Bot className="w-4.5 h-4.5" />
             </div>
             <div>
-              <p className="font-semibold text-sm leading-none">Ask Jackie&apos;s AI</p>
-              <p className="text-xs text-indigo-200 mt-0.5">Powered by Claude</p>
+              <p className="font-semibold text-sm leading-none text-ink">Ask Jackie&apos;s AI</p>
+              <p className="text-xs text-ink-subtle mt-1">Powered by Claude</p>
             </div>
           </div>
           <button
             onClick={() => setRecruiterMode((v) => !v)}
             title="Recruiter Mode: paste a JD and I'll analyze fit"
-            className={`flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-full transition-all font-semibold ${
+            className={`flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-md transition-colors font-medium border ${
               recruiterMode
-                ? "bg-amber-400 text-amber-900 shadow-lg shadow-amber-500/30"
-                : "bg-white/15 text-white hover:bg-white/25"
+                ? "bg-primary text-on-primary border-primary"
+                : "bg-surface-1 text-ink-subtle border-hairline hover:text-ink hover:border-hairline-strong"
             }`}
           >
             <Briefcase className="w-3.5 h-3.5" />
@@ -97,7 +97,7 @@ export default function ChatPanel() {
           </button>
         </div>
         {recruiterMode && (
-          <p className="text-xs text-indigo-200 mt-2">
+          <p className="text-xs text-ink-subtle mt-2">
             Paste a job description and I&apos;ll analyze how Jackie fits the role.
           </p>
         )}
@@ -111,10 +111,10 @@ export default function ChatPanel() {
             className={`flex gap-2.5 ${msg.role === "user" ? "flex-row-reverse" : "flex-row"}`}
           >
             <div
-              className={`w-7 h-7 rounded-xl flex items-center justify-center shrink-0 ${
+              className={`w-7 h-7 rounded-md flex items-center justify-center shrink-0 ${
                 msg.role === "assistant"
-                  ? "bg-gradient-to-br from-violet-500 to-indigo-600 text-white"
-                  : "bg-gray-100 text-gray-600"
+                  ? "bg-primary text-on-primary"
+                  : "bg-surface-3 text-ink-subtle border border-hairline"
               }`}
             >
               {msg.role === "assistant" ? (
@@ -124,10 +124,10 @@ export default function ChatPanel() {
               )}
             </div>
             <div
-              className={`max-w-[85%] rounded-2xl px-3.5 py-2.5 text-sm leading-relaxed ${
+              className={`max-w-[85%] rounded-lg px-3.5 py-2.5 text-sm leading-relaxed ${
                 msg.role === "assistant"
-                  ? "bg-gray-50 border border-black/[0.06] text-gray-800 rounded-tl-sm"
-                  : "bg-gradient-to-br from-violet-600 to-indigo-600 text-white rounded-tr-sm shadow-lg shadow-violet-500/20"
+                  ? "bg-surface-2 border border-hairline text-ink-muted rounded-tl-sm"
+                  : "bg-primary text-on-primary rounded-tr-sm"
               }`}
             >
               {msg.content ? (
@@ -139,7 +139,7 @@ export default function ChatPanel() {
                       ul: ({ children }) => <ul className="list-disc pl-4 mb-1 space-y-0.5">{children}</ul>,
                       ol: ({ children }) => <ol className="list-decimal pl-4 mb-1 space-y-0.5">{children}</ol>,
                       li: ({ children }) => <li>{children}</li>,
-                      code: ({ children }) => <code className="bg-black/[0.07] rounded px-1 text-xs font-mono">{children}</code>,
+                      code: ({ children }) => <code className="bg-surface-4 border border-hairline rounded px-1 text-xs font-mono text-ink">{children}</code>,
                     }}
                   >
                     {msg.content}
@@ -166,8 +166,8 @@ export default function ChatPanel() {
       )}
 
       {/* Input */}
-      <div className="p-3 border-t border-black/[0.06]">
-        <div className="flex gap-2 items-end bg-gray-50 border border-black/[0.06] rounded-xl px-3 py-2 focus-within:border-violet-300 transition-all">
+      <div className="p-3 border-t border-hairline">
+        <div className="flex gap-2 items-end bg-surface-2 border border-hairline rounded-md px-3 py-2 focus-within:border-primary-focus transition-colors">
           <textarea
             ref={textareaRef}
             value={input}
@@ -179,12 +179,12 @@ export default function ChatPanel() {
                 : "Ask me anything... (Enter to send)"
             }
             rows={1}
-            className="flex-1 bg-transparent resize-none outline-none text-sm text-gray-800 placeholder-gray-400 max-h-28 overflow-y-auto"
+            className="flex-1 bg-transparent resize-none outline-none text-sm text-ink placeholder-ink-tertiary max-h-28 overflow-y-auto"
           />
           <button
             onClick={() => sendMessage()}
             disabled={!input.trim() || loading}
-            className="p-1.5 rounded-lg bg-gradient-to-r from-violet-600 to-indigo-600 text-white disabled:opacity-30 hover:from-violet-500 hover:to-indigo-500 transition-all shrink-0 shadow-md shadow-violet-500/20"
+            className="p-1.5 rounded-md bg-primary text-on-primary disabled:opacity-30 hover:bg-primary-hover transition-colors shrink-0"
           >
             <Send className="w-4 h-4" />
           </button>

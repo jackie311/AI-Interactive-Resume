@@ -14,7 +14,7 @@ const QUESTIONS = [
 export default function SuggestedQuestions({ onSelect }: Props) {
   return (
     <div className="px-3 pb-3">
-      <p className="text-[10px] font-semibold uppercase tracking-widest text-gray-400 mb-2 px-1">
+      <p className="text-[10px] font-semibold uppercase tracking-widest text-ink-tertiary mb-2 px-1">
         Suggested
       </p>
       <div className="flex flex-wrap gap-1.5">
@@ -22,7 +22,7 @@ export default function SuggestedQuestions({ onSelect }: Props) {
           <button
             key={q}
             onClick={() => onSelect(q)}
-            className="text-xs px-2.5 py-1.5 bg-violet-50 text-violet-700 border border-violet-100 rounded-lg hover:bg-violet-100 transition-all font-medium"
+            className="text-xs px-2.5 py-1.5 bg-surface-2 text-ink-subtle border border-hairline rounded-md hover:text-ink hover:border-hairline-strong transition-colors font-medium"
           >
             {q}
           </button>

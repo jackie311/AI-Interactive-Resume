@@ -41,7 +41,7 @@ export default function HomeLayout({
         </div>
 
         {/* Bottom tab bar */}
-        <div className="shrink-0 border-t border-black/[0.06] bg-white flex">
+        <div className="shrink-0 border-t border-hairline bg-canvas flex">
           {(
             [
               { id: "resume", label: "Resume", Icon: FileText },
@@ -52,13 +52,13 @@ export default function HomeLayout({
               key={id}
               onClick={() => setActiveTab(id)}
               className={`relative flex-1 flex flex-col items-center gap-1 py-2.5 text-xs font-medium transition-colors ${
-                activeTab === id ? "text-violet-600" : "text-gray-400"
+                activeTab === id ? "text-ink" : "text-ink-tertiary"
               }`}
             >
               <Icon className="w-5 h-5" />
               {label}
               {activeTab === id && (
-                <span className="absolute top-0 left-4 right-4 h-0.5 bg-violet-600 rounded-b-full" />
+                <span className="absolute top-0 left-4 right-4 h-0.5 bg-primary rounded-b-full" />
               )}
             </button>
           ))}
