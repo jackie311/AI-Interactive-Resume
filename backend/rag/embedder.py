@@ -83,17 +83,30 @@ def build_documents(resume: dict, projects: dict) -> list[Document]:
 
     # Projects
     for proj in projects.get("projects", []):
-        content = (
-            f"Project: {proj['name']}\n"
-            f"Tagline: {proj['tagline']}\n"
-            f"Description: {proj['description']}\n"
-            f"Problem solved: {proj.get('problem', '')}\n"
-            f"Solution: {proj.get('solution', '')}\n"
-            f"Impact: {proj.get('impact', '')}\n"
-            f"Technologies: {', '.join(proj['tech'])}\n"
-            f"Year: {proj.get('year', '')}"
+        lines = [
+            f"Project: {proj['name']}",
+            f"Tagline: {proj['tagline']}",
+            f"Description: {proj['description']}",
+        ]
+        if proj.get("highlights"):
+            lines.append("Key highlights:\n" + "\n".join(f"- {h}" for h in proj["highlights"]))
+        for label, key in (("Problem solved", "problem"), ("Solution", "solution"), ("Impact", "impact")):
+            if proj.get(key):
+                lines.append(f"{label}: {proj[key]}")
+        lines.append(f"Technologies: {', '.join(proj['tech'])}")
+        lines.append(f"Year: {proj.get('year', '')}")
+        docs.append(Document(
+            page_content="\n".join(lines),
+            metadata={"section": "project", "project_id": proj["id"]},
+        ))
+
+    # Certifications
+    certs = resume.get("certifications", [])
+    if certs:
+        cert_text = "Certifications:\n" + "\n".join(
+            f"- {c['name']} ({c.get('issuer', '')}, {c.get('year', '')})" for c in certs
         )
-        docs.append(Document(page_content=content, metadata={"section": "project", "project_id": proj["id"]}))
+        docs.append(Document(page_content=cert_text, metadata={"section": "certifications"}))
 
     return docs
 

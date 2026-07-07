@@ -2,40 +2,44 @@
 @plugin "@tailwindcss/typography";
 
 /* ──────────────────────────────────────────────────────────────
-   Linear DESIGN.md — dark-canvas system
-   canvas → surface-1..4 ladder, hairline borders, scarce lavender.
+   Claude (Anthropic) DESIGN.md — warm editorial light system
+   Warm cream canvas · coral accent · serif display · sans body.
+   Depth via color-blocking + hairline borders, not shadows.
    ────────────────────────────────────────────────────────────── */
 @theme {
-  /* Surface ladder */
-  --color-canvas: #010102;
-  --color-surface-1: #0f1011;
-  --color-surface-2: #16171a;
-  --color-surface-3: #1c1d20;
-  --color-surface-4: #232427;
+  /* Surface ladder — cream canvas; cards lift with light fill + hairline.
+     Higher = warmer/deeper tint (chips, hovers, insets). */
+  --color-canvas: #faf9f5;
+  --color-surface-1: #ffffff;
+  --color-surface-2: #f4eee3;
+  --color-surface-3: #ece4d5;
+  --color-surface-4: #e3d8c5;
 
-  /* Hairline borders */
-  --color-hairline: #23252a;
-  --color-hairline-strong: #313337;
-  --color-hairline-tertiary: #1a1c20;
+  /* Hairline borders — warm, low-contrast */
+  --color-hairline: #e8e1d3;
+  --color-hairline-strong: #d7cdb9;
+  --color-hairline-tertiary: #f1ece1;
 
-  /* Text (ink) */
-  --color-ink: #f7f8f8;
-  --color-ink-muted: #d0d6e0;
-  --color-ink-subtle: #8a8f98;
-  --color-ink-tertiary: #62666d;
+  /* Text (ink) — warm near-black on cream */
+  --color-ink: #141413;
+  --color-ink-muted: #3d3b36;
+  --color-ink-subtle: #6d685f;
+  --color-ink-tertiary: #98928a;
 
-  /* Brand accent — lavender-blue (used scarcely) */
-  --color-primary: #5e6ad2;
-  --color-primary-hover: #828fff;
-  --color-primary-focus: #5e69d1;
+  /* Brand accent — warm coral (Claude wordmark / CTAs) */
+  --color-primary: #cc785c;
+  --color-primary-hover: #b5654b;
+  --color-primary-focus: #c06f52;
   --color-on-primary: #ffffff;
 
-  /* Semantic — success is the only marketing semantic color */
-  --color-success: #27a644;
+  /* Semantic — warm green tuned for a light canvas */
+  --color-success: #3f8f5f;
 
-  /* Fonts (Inter / JetBrains Mono substitutes per DESIGN.md) */
+  /* Fonts — Inter (StyreneB substitute) body, Newsreader (Copernicus
+     substitute) serif display, JetBrains Mono code */
   --font-sans: var(--font-inter), "SF Pro Display", -apple-system, system-ui,
     "Segoe UI", Roboto, sans-serif;
+  --font-serif: var(--font-newsreader), Georgia, "Times New Roman", serif;
   --font-mono: var(--font-jetbrains-mono), ui-monospace, "SF Mono", Menlo,
     monospace;
 }
@@ -54,17 +58,19 @@ body {
   color: var(--color-ink);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
-  letter-spacing: -0.011em; /* body holds at ≈ -0.05px */
+  letter-spacing: -0.006em;
 }
 
 ::selection {
-  background: rgba(94, 106, 210, 0.35);
+  background: rgba(204, 120, 92, 0.26);
   color: var(--color-ink);
 }
 
-/* Aggressive negative tracking on display headings */
+/* Editorial serif display — Claude leads with serif at ~400–500, soft tracking */
 .tracking-display {
-  letter-spacing: -0.035em;
+  font-family: var(--font-serif);
+  font-weight: 500;
+  letter-spacing: -0.018em;
 }
 
 /* Hairline scrollbar */
@@ -80,7 +86,7 @@ body {
   border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #43454b;
+  background: #c3b7a0;
 }
 
 /* Hide scrollbar while keeping scroll functionality */
@@ -91,12 +97,14 @@ body {
   display: none;
 }
 
-/* Brand wordmark — solid ink, no gradient (Linear uses no atmospheric gradients) */
+/* Brand wordmark — serif, solid ink */
 .gradient-text {
+  font-family: var(--font-serif);
+  font-weight: 600;
   color: var(--color-ink);
 }
 
-/* Section accent bar — scarce solid lavender */
+/* Section accent bar — solid coral */
 .gradient-bar {
   background: var(--color-primary);
 }

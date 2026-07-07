@@ -8,7 +8,7 @@ const PIPELINE_STEPS = [
   {
     icon: FileText,
     label: "Source Data",
-    detail: "resume.yaml + projects.yaml",
+    detail: "MASTER_RESUME.md → build_data.py",
     color: "bg-surface-1 border-hairline text-ink",
     iconColor: "text-ink-subtle",
   },

@@ -72,18 +72,22 @@ export interface Resume {
   availability: Availability;
 }
 
+export type ProjectCategory = "ai-engineer" | "fullstack" | "other";
+
 export interface Project {
   id: string;
   name: string;
   tagline: string;
   description: string;
-  problem: string;
-  solution: string;
+  highlights: string[];
+  problem?: string;
+  solution?: string;
   impact: string;
   tech: string[];
   github: string | null;
   live: string | null;
   featured: boolean;
+  category: ProjectCategory;
   year: number;
 }
 
