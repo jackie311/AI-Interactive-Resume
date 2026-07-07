@@ -1,161 +1,269 @@
+# GENERATED FILE — DO NOT EDIT BY HAND.
+# Source of truth: resume/MASTER_RESUME.md + resume/site-meta.yaml
+# Regenerate with: python scripts/build_data.py
+
 projects:
-  - id: ai-portfolio
-    name: AI Interactive Resume
-    tagline: RAG + LLM + AWS — a full AI engineering project, deployed to production
-    description: >
-      Designed and built an AI-powered portfolio from scratch. The core is a RAG pipeline:
-      resume data (YAML) is chunked and embedded with HuggingFace sentence transformers into
-      ChromaDB, then retrieved at query time to ground Claude's responses in real facts.
-      The backend is a Python FastAPI app that streams responses over SSE. The frontend is
-      Next.js with a real-time chat panel. The entire stack is deployed on AWS — ECS Fargate
-      (backend), S3 + CloudFront (frontend), EFS (ChromaDB persistence), ECR (Docker images) —
-      with GitHub Actions CI/CD for automated deployments.
-    problem: >
-      Static resumes don't let recruiters explore your background naturally.
-      More importantly, I wanted a hands-on AI engineering project that covers
-      the full stack: LLM integration, vector search, RAG pipeline design, streaming
-      inference, and production cloud deployment.
-    solution: >
-      Built the entire system end-to-end: YAML data → HuggingFace embeddings → ChromaDB
-      vector store → LangChain retrieval → Claude API streaming → FastAPI SSE → Next.js chat UI.
-      Deployed on AWS with ECS Fargate + EFS for persistent vector storage, fronted by
-      CloudFront with API routing to ALB.
-    impact: >
-      Production RAG system live at jackiejin.dev. Demonstrates end-to-end AI engineering:
-      pipeline design, embedding strategy, LLM orchestration, streaming architecture, and
-      cloud-native deployment.
-    tech: [Python, FastAPI, LangChain, ChromaDB, HuggingFace Embeddings, Claude API, Next.js, TypeScript, AWS ECS, AWS EFS, CloudFront, Docker, GitHub Actions]
-    github: https://github.com/jackie311/AI-Interactive-Resume
-    live: https://d33qsa6f99h2bi.cloudfront.net
-    featured: true
-    year: 2026
-
-  - id: bear
-    name: BEAR — Booking Entity Authorisation Reporting
-    tagline: Government reporting platform for regulatory workflows across internal staff and external auditors
-    description: >
-      Developed and delivered a government reporting platform supporting regulatory workflows for internal
-      staff and external auditors at the Department of Transport and Main Roads (TMR). Built complex,
-      data-driven user interfaces including dynamic form systems and administrative dashboards to handle
-      structured data submission and validation. Designed and implemented responsive, cross-device interfaces
-      (desktop, tablet, mobile), ensuring consistent user experience across multiple form factors. Ensured
-      full compliance with WCAG accessibility standards, balancing usability with strict government
-      requirements. Collaborated in an agile team environment (2-week sprints), working closely with backend
-      engineers, stakeholders, and auditors to deliver stable and scalable features. Integrated APIs and
-      handled complex data flows, enabling reliable data processing and real-time user interactions.
-      Contributed to CI/CD workflows using GitHub Actions, supporting multiple deployment environments and
-      improving release efficiency.
-    problem: >
-      Complex compliance reporting needed to serve both government staff and external auditors simultaneously,
-      meeting strict WCAG accessibility standards while iterating quickly under tight sprint pressure across
-      multiple device form factors.
-    solution: >
-      Designed reusable component libraries and frontend architecture patterns to improve consistency and
-      maintainability across the application. Integrated APIs to handle complex data flows and built
-      responsive interfaces across desktop, tablet, and mobile. Contributed to CI/CD pipelines via GitHub
-      Actions to support multiple deployment environments and reliable releases.
-    impact: >
-      Delivered features reliably under tight sprint cycles while maintaining system stability in a
-      multi-stakeholder environment. Improved development efficiency and reduced future maintenance costs
-      through standardised frontend architecture.
-    tech: [React, Next.js, TypeScript, AWS, GitHub Actions]
-    github: null
-    live: null
-    featured: true
-    year: 2024
-
-  - id: qantas-platforms
-    name: Qantas Digital Platforms
-    tagline: From maintaining mission-critical pilot apps to independently delivering a new production system end-to-end
-    description: >
-      Contributed to multiple Qantas operational platforms, including iPad applications (ELogbook, QETouch)
-      used by pilots and engineers, and an administrative dashboard for internal users. Maintained and
-      enhanced the dashboard system, debugging and resolving issues across both frontend and backend to
-      ensure reliability in a production-critical environment. Worked with React Native-based mobile
-      applications despite no prior iOS experience, quickly ramping up and contributing to cross-platform
-      fixes and improvements. Participated in monthly release cycles across multiple applications, supporting
-      deployment coordination and ensuring stable production releases. Acted as release-day support and backup
-      lead during Qantas release windows, assisting in issue triage, communication, and system monitoring.
-      Independently designed and built the Port Supervisor Page from initial hand-drawn concepts to
-      production, taking ownership of frontend development and integrating with existing backend systems via
-      new API endpoints. Collaborated with internal cloud teams to deploy using Kubernetes and ArgoCD,
-      leveraging internal documentation and cross-team communication despite limited prior exposure.
-      Established deployment pipelines across dev, test, and production environments, improving release
-      consistency and reducing manual effort.
-    problem: >
-      Two separate challenges: (1) maintain and enhance production-critical aviation platforms used by pilots
-      and engineers across mobile and web, and (2) deliver a brand-new internal tool from two hand-drawn
-      sketches with no prior design or requirements — then deploy it in a technology stack (Kubernetes/ArgoCD)
-      I had never used before.
-    solution: >
-      For ongoing platforms: ramped up quickly on React Native despite no iOS background, contributed
-      cross-platform fixes, and served as release-day backup lead to keep production stable.
-      For the Port Supervisor Page: owned the full product lifecycle — from interpreting rough sketches into
-      a real UI, through to new backend API endpoints and cloud deployment. Self-taught Kubernetes and ArgoCD
-      through internal documentation and cross-team collaboration to get it shipped.
-    impact: >
-      Port Supervisor Page reduced deployment time from ~40 minutes to 12 minutes (~70% improvement) through
-      improved CI/CD workflows. Ensured stable operation of mission-critical systems through effective
-      debugging, release support, and cross-team collaboration. Progressed from system maintenance to
-      independently delivering a new production system end-to-end.
-    tech: [React Native, React, Node.js, TypeScript, AWS Cognito, Kubernetes, ArgoCD]
-    github: null
-    live: null
-    featured: true
-    year: 2023
-
-  - id: png-police-check
-    name: PNG Police Check Application
-    tagline: Government e-portal prototype in 6 weeks — presented at an international conference
-    description: >
-      Built the entire front-end for a Papua New Guinea government police clearance prototype,
-      part of a digital government initiative (akin to myGov). Collaboration between AWS (cloud)
-      and Arq (full-stack), with a hard deadline of six weeks for three applications.
-    problem: Deliver a fully responsive government prototype — desktop and mobile — in six weeks with no prior digital government infrastructure in PNG.
-    solution: >
-      Sole front-end developer. Built a responsive UI from Figma designs using Next.js and
-      AWS Amplify, covering all device sizes and the complete police clearance workflow.
-    impact: >
-      Prototype success led to the Prime Minister of PNG presenting the Government Services
-      ePortal at an international conference in Seattle.
-    tech: [Next.js, JavaScript, AWS Amplify, Figma, Axios]
-    github: null
-    live: null
-    featured: false
-    year: 2023
-
-  - id: ncs-cv-tool
-    name: NCS Consultant CV Tool
-    tagline: Internal automation tool to manage and generate consultant CVs company-wide
-    description: >
-      After ARQ Group was acquired by NCS Australia, built a centralised CV management system
-      to standardise consultant profiles. Used Microsoft Power Apps for the UI, Power Automate
-      to auto-generate Word documents from SharePoint data, following Figma designs.
-    problem: No consistent CV template post-acquisition; manually managing hundreds of consultant profiles was unsustainable.
-    solution: >
-      Connected Power Automate to a SharePoint List to generate CVs from a standard template.
-      Built a Power Apps interface for staff to search, create, and update consultant CVs.
-    impact: Eliminated manual CV formatting company-wide; consistent branding from day one.
-    tech: [Microsoft Power Automate, Microsoft Power Apps, SharePoint, Figma]
-    github: null
-    live: null
-    featured: false
-    year: 2023
-
-  - id: conocophillips-haaic
-    name: ConocoPhillips HAAIC Sheet App
-    tagline: Digitised electrical equipment procurement — paperless and signature-ready
-    description: >
-      Web application for ConocoPhillips to replace paper-based electrical equipment
-      procurement with a digital workflow — responsive across desktop, mobile, and tablet,
-      with digital sign-offs.
-    problem: Manual paper-based procurement with physical signatures was slow and difficult to audit.
-    solution: >
-      Designed the front-end architecture with React and Material-UI, built reusable
-      components for all device sizes, and integrated backend APIs throughout.
-    impact: Eliminated paper-based procurement; streamlined digital approvals for field engineers.
-    tech: [React, JavaScript, Material-UI, Figma, Jira]
-    github: null
-    live: null
-    featured: false
-    year: 2022
+- id: jiragpt
+  name: JiraGPT — Jira-Integrated AI Assistant
+  tagline: Natural-language Jira — query, report, bulk-transition and create tickets on a RAG + intent-routing
+    microservice architecture
+  description: A Jira-integrated AI assistant where users query Jira data, generate reports, bulk-transition
+    tickets, create tickets, and produce release notes entirely in natural language — on a RAG + LLM +
+    intent-routing microservice architecture with pluggable local (Ollama) and cloud (Azure AI Foundry)
+    LLM backends, one-command Docker Compose locally, and Helm deploy to Azure AKS.
+  highlights:
+  - Built a Jira + LLM RAG assistant on a microservice architecture (Django + 2× FastAPI + React 19),
+    one-command local Docker Compose, deployed to Azure AKS via Helm.
+  - Designed a regex-fast-path + LLM-fallback intent router dispatching natural language into 8 business
+    branches (RAG Q&A, Text-to-JQL, ticket creation, bulk transitions, fixVersion, comment summary, release
+    notes, sprint reports).
+  - 'Engineered a RAG pipeline: BGE (BAAI/bge-large-en, 1024-dim) embeddings + ChromaDB per-project collections,
+    with scheduled Celery Beat ingestion (nightly 22:00) and Redis-lock-deduplicated on-demand priority
+    backfill.'
+  - Delivered pluggable dual LLM backends (local Ollama llama3 / cloud Azure Llama-3.3-70B-Instruct) switchable
+    via LLM_BACKEND, with Langfuse end-to-end LLM observability (off by default, no-op safe).
+  - Implemented per-user Fernet-encrypted Jira tokens + Azure AD / MSAL auth, and production secret management
+    via Azure Key Vault (CSI Secrets Store + Workload Identity).
+  - 'Text-to-JQL: natural language → JQL, resolving quoted names to Jira accountIds and "me" → currentUser().'
+  - Preview → confirm two-phase writes for ticket creation and bulk transitions (stored in jira_ticket_state).
+  impact: ''
+  tech:
+  - Python
+  - Django 4.x / DRF
+  - Gunicorn
+  - Celery + Celery Beat
+  - Redis
+  - PostgreSQL 16
+  - 'FastAPI + Uvicorn (×2: gds data service + vector service)'
+  - ChromaDB
+  - BGE / sentence-transformers
+  - Ollama
+  - Azure AI Foundry (Llama-3.3-70B)
+  - React 19
+  - Vite
+  - Tailwind CSS
+  - Langfuse
+  - Docker
+  - Docker Compose
+  - Kubernetes / Azure AKS
+  - Helm
+  - Azure Container Registry
+  - Azure Key Vault
+  - pytest
+  github: null
+  live: null
+  featured: true
+  category: ai-engineer
+  year: 2025
+- id: ai-portfolio
+  name: AI Interactive Resume
+  tagline: RAG + LLM + AWS — a full AI engineering project, deployed to production
+  description: Designed and full-stack built a production-grade AI application enabling users to interactively
+    query résumé data via natural language, in English or Chinese, with the AI answering in the first
+    person as Jackie. Full RAG lifecycle self-built end-to-end.
+  highlights:
+  - 'Architected an end-to-end RAG pipeline: YAML-based structured data modelling → semantic chunking
+    with metadata (section/company/project_id) → HuggingFace all-MiniLM-L6-v2 embeddings → ChromaDB vector
+    store → top-k (k=4) similarity retrieval → context injection → LLM generation.'
+  - Implemented LLM orchestration with LangChain + Anthropic Claude API (claude-sonnet-4-6), generating
+    grounded, first-person responses with anti-hallucination constraints and automatic bilingual alignment.
+  - Built a real-time backend with FastAPI (async ASGI) + Server-Sent Events (SSE) for low-latency token-by-token
+    streaming; maintains last 10 turns of history for coherence vs. token cost.
+  - 'Recruiter Mode: heuristically auto-detects when a user pastes a JD and dynamically rewrites the prompt
+    to output a structured match analysis (matched skills, honest gaps, overall fit) — turning a passive
+    résumé into active persuasion.'
+  - Built a conversational UI with Next.js 16 (App Router, SSG) / React 19 / TypeScript / Tailwind CSS
+    4, with hand-written SSE consumption and incremental Markdown rendering.
+  - Designed & deployed a cloud-native architecture on AWS (ECS Fargate / EC2, S3 + CloudFront, EFS, ECR);
+    CI/CD with GitHub Actions, including data-driven auto re-embedding when résumé data changes (MLOps).
+  impact: ''
+  tech:
+  - LangChain
+  - Claude API
+  - ChromaDB
+  - HuggingFace
+  - FastAPI
+  - Next.js
+  - React 19
+  - TypeScript
+  - Tailwind CSS
+  - AWS (ECS Fargate, S3, CloudFront, EFS, ECR)
+  - Docker
+  - Docker Compose
+  - GitHub Actions
+  github: https://github.com/jackie311/AI-Interactive-Resume
+  live: https://profile.jackiejin.dev
+  featured: true
+  category: ai-engineer
+  year: 2026
+- id: bear
+  name: BEAR — Booking Entity Authorisation Reporting
+  tagline: Government reporting platform for regulatory workflows across staff and auditors
+  description: A government reporting platform supporting regulatory workflows for internal staff and
+    external auditors at the Department of Transport and Main Roads — built around dynamic form systems
+    and administrative dashboards, responsive across desktop/tablet/mobile, and fully WCAG-compliant.
+  highlights:
+  - Developed and delivered a government reporting platform supporting regulatory workflows for internal
+    staff and external auditors.
+  - Built complex, data-driven UIs including dynamic form systems and administrative dashboards for structured
+    data submission and validation.
+  - Designed and implemented responsive, cross-device interfaces (desktop, tablet, mobile) for a consistent
+    experience across form factors.
+  - Ensured full compliance with WCAG accessibility standards, balancing usability with strict government
+    requirements.
+  - Designed reusable component libraries and frontend architecture patterns, improving consistency and
+    maintainability.
+  - Collaborated in an agile team (2-week sprints) with backend engineers, stakeholders, and auditors.
+  - Integrated APIs and handled complex data flows for reliable data processing and real-time user interactions.
+  - Contributed to CI/CD workflows using GitHub Actions across multiple deployment environments.
+  impact: Delivered features reliably under tight sprint cycles while maintaining stability in a multi-stakeholder
+    environment; reduced future maintenance costs through standardised frontend architecture.
+  tech:
+  - React
+  - Next.js
+  - TypeScript
+  - AWS
+  - GitHub Actions
+  github: null
+  live: null
+  featured: true
+  category: fullstack
+  year: 2024
+- id: qantas-platforms
+  name: Qantas Digital Platforms
+  tagline: From maintaining mission-critical pilot apps to delivering a new production system end-to-end
+  description: Contributed to multiple Qantas operational platforms — iPad apps (ELogbook, QETouch) used
+    by pilots and engineers, and an internal administrative dashboard — then independently designed and
+    built the Port Supervisor Page from hand-drawn concepts through to production and cloud deployment.
+  highlights:
+  - Contributed to multiple Qantas operational platforms, including iPad applications (ELogbook, QETouch)
+    used by pilots and engineers, and an administrative dashboard for internal users.
+  - Maintained and enhanced the dashboard system, debugging across frontend and backend to ensure reliability
+    in a production-critical environment.
+  - Worked with React Native-based mobile apps despite no prior iOS experience, ramping up quickly on
+    shared codebases.
+  - Participated in monthly release cycles across multiple applications, supporting deployment coordination.
+  - Acted as release-day support / backup lead during Qantas release windows (issue triage, communication,
+    monitoring).
+  - Independently designed and built the Port Supervisor Page from hand-drawn concepts to production,
+    owning frontend development and integrating with backend via new API endpoints.
+  - Collaborated with internal cloud teams to deploy using Kubernetes and ArgoCD.
+  - Established deployment pipelines across dev, test, and production environments.
+  impact: Port Supervisor Page substantially reduced deployment time through improved CI/CD; ensured stable
+    operation of mission-critical systems; progressed from maintenance to independently delivering a new
+    production system end-to-end.
+  tech:
+  - React Native
+  - React
+  - Node.js
+  - TypeScript
+  - AWS Cognito
+  - Kubernetes
+  - ArgoCD
+  github: null
+  live: null
+  featured: true
+  category: fullstack
+  year: 2023
+- id: conocophillips-haaic
+  name: ConocoPhillips HAAIC Sheet App
+  tagline: Digitised electrical-equipment procurement — paperless and signature-ready
+  description: A digital application that replaced paper-based electrical-equipment procurement with responsive,
+    signature-ready digital workflows across desktop, tablet, and mobile.
+  highlights:
+  - Developed a digital application to streamline procurement workflows, replacing manual sourcing and
+    paper-based processes with digital approvals and sign-offs.
+  - Designed and implemented scalable frontend architecture using React with responsive, cross-device
+    interfaces.
+  - Built reusable, performance-optimised UI components.
+  - Integrated with backend APIs for data-driven workflows.
+  - Collaborated with project managers and stakeholders to deliver on time.
+  impact: Improved operational efficiency by digitising procurement/approval workflows; established a
+    maintainable frontend architecture; built long-term client trust leading to repeat engagements.
+  tech:
+  - React
+  - JavaScript
+  - Material UI
+  - Jira
+  - Figma
+  github: null
+  live: null
+  featured: false
+  category: fullstack
+  year: 2022
+- id: png-police-check
+  name: PNG Police Check Application
+  tagline: Government e-portal prototype in 6 weeks — presented at an international conference
+  description: Built the entire front-end for a Papua New Guinea government police-clearance prototype
+    — part of a national digital-government initiative (akin to myGov) — delivering responsive applications
+    within a six-week deadline.
+  highlights:
+  - Sole front-end developer; built responsive desktop and mobile UIs from Figma designs using Next.js
+    and AWS Amplify.
+  - Delivered the complete police-clearance workflow under an aggressive six-week, weekly-sprint timeline.
+  impact: Prototype success led to the Prime Minister of PNG presenting the Government Services ePortal
+    at an international conference in Seattle.
+  tech:
+  - Next.js
+  - JavaScript
+  - AWS Amplify
+  - Figma
+  - Axios
+  github: null
+  live: null
+  featured: false
+  category: other
+  year: 2023
+- id: ncs-cv-tool
+  name: NCS Consultant CV Tool
+  tagline: Internal automation to manage and generate consultant CVs company-wide
+  description: An internal automation tool to standardise and generate consultant CVs company-wide after
+    ARQ Group was acquired by NCS Australia.
+  highlights:
+  - Connected Power Automate to a SharePoint List to auto-generate Word CVs from a standard template.
+  - Built a Power Apps interface for staff to search, create, and update consultant CVs, following Figma
+    designs.
+  impact: Eliminated manual CV formatting company-wide; consistent branding from day one.
+  tech:
+  - Microsoft Power Automate
+  - Microsoft Power Apps
+  - SharePoint
+  - Figma
+  github: null
+  live: null
+  featured: false
+  category: other
+  year: 2023
+- id: ozlottostats
+  name: OzLottoStats
+  tagline: Lottery statistics app — historical Oz Lotto draw analysis
+  description: A lottery statistics application that aggregates and visualises historical Oz Lotto draw
+    data — built end-to-end with Claude Code.
+  highlights:
+  - Designed and shipped as a solo project, using Claude Code for rapid delivery.
+  impact: ''
+  tech:
+  - Claude Code
+  - Web
+  github: null
+  live: https://www.ozlottostats.app/
+  featured: false
+  category: other
+  year: 2025
+- id: fishing-mate
+  name: Fishing Mate
+  tagline: Mobile weather & fishing-conditions companion
+  description: A mobile-first weather and fishing-conditions companion app, built with Claude Code and
+    deployed on Cloudflare Pages.
+  highlights:
+  - Delivered a mobile-first weather and fishing-conditions experience end-to-end.
+  impact: ''
+  tech:
+  - Claude Code
+  - Cloudflare Pages
+  - Mobile Web
+  github: null
+  live: https://fishing-mate.pages.dev/#/weather
+  featured: false
+  category: other
+  year: 2025

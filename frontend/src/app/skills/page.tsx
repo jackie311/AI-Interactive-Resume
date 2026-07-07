@@ -88,26 +88,26 @@ export default function StatsPage() {
         <h2 className="text-sm font-semibold text-ink-muted mb-4">Skill Coverage</h2>
         <ResponsiveContainer width="100%" height={320}>
           <RadarChart data={skill_radar}>
-            <PolarGrid stroke="#23252a" />
+            <PolarGrid stroke="#d7cdb9" />
             <PolarAngleAxis
               dataKey="category"
-              tick={{ fontSize: 12, fill: "#8a8f98" }}
+              tick={{ fontSize: 12, fill: "#6d685f" }}
             />
             <Radar
               dataKey="score"
-              stroke="#5e6ad2"
-              fill="#5e6ad2"
+              stroke="#cc785c"
+              fill="#cc785c"
               fillOpacity={0.25}
               strokeWidth={2}
             />
             <Tooltip
               formatter={(v) => [`${v} / 100`, "Score"]}
               contentStyle={{
-                backgroundColor: "#16171a",
-                border: "1px solid #313337",
+                backgroundColor: "#ffffff",
+                border: "1px solid #d7cdb9",
                 borderRadius: "8px",
                 fontSize: "12px",
-                color: "#f7f8f8",
+                color: "#141413",
               }}
             />
           </RadarChart>

@@ -1,163 +1,186 @@
+# GENERATED FILE — DO NOT EDIT BY HAND.
+# Source of truth: resume/MASTER_RESUME.md + resume/site-meta.yaml
+# Regenerate with: python scripts/build_data.py
+
 personal:
   name: Jackie Jin
   title: AI Engineer & Full Stack Developer
   email: qing.jin3912@gmail.com
   location: Brisbane, Australia
   github: https://github.com/jackie311
-  linkedin: https://linkedin.com/in/jackiejin
+  linkedin: https://www.linkedin.com/in/jackie-qing-jin/
   open_to_work: true
-  bio: >
-    Full Stack Engineer with 8+ years of experience, now specialising in AI engineering —
-    building LLM-powered applications, RAG pipelines, and cloud-native systems on AWS.
-    Hands-on with the full AI stack: Claude API, LangChain, ChromaDB, vector embeddings,
-    and streaming inference. Strong cloud background with production deployments on
-    EC2, CloudFront, and S3. Passionate about turning
-    state-of-the-art AI models into reliable, production-ready products.
-
+  bio: AI Engineer with 8+ years of full-stack engineering experience, now focused on building LLM and
+    agentic applications for enterprise users. Hands-on across the AI stack — RAG pipelines, document
+    retrieval with embeddings and ChromaDB, LLM orchestration with LangChain and the Claude API, and real-time
+    streaming via Server-Sent Events (SSE) — backed by strong Node.js fundamentals and a track record
+    of secure, scalable APIs. Comfortable in ambiguity, repeatedly taking vague problems from concept
+    to deployed, cloud-native product on AWS.
 experience:
-  - company: NCS Australia
-    role: Senior Full Stack Engineer
-    period: "Jun 2022 - Present"
-    start: 2022-06
-    location: Brisbane, AU
-    description: >
-      Delivered full-stack solutions for government and enterprise clients across
-      Transportation, Energy, and Commercial sectors. Led front-end architecture,
-      API integration, and cloud infrastructure. Also independently built an
-      AI-powered portfolio (RAG + LLM) to explore and demonstrate AI engineering capabilities.
-    highlights:
-      - Built an AI-powered interactive resume using RAG (ChromaDB + HuggingFace embeddings + Claude API), FastAPI streaming SSE, and Next.js — deployed end-to-end on AWS (EC2, CloudFront, S3)
-      - 'Independently built Qantas'' Port Supervisor Page from scratch — given only two hand-drawn UI sketches, self-directed the entire design, frontend, and backend solo; the ELogbook team manager singled me out by name: "your immediate impact, and ability to deliver results from day one is truly awesome"'
-      - Solved a critical deployment bottleneck by self-learning Kubernetes through Confluence research and proactively reaching out across teams on Microsoft Teams — reduced CI from ~40 min to 7–8 min and CD to ~2 min (70%+ improvement) through iterative trial and error
-      - Supported the team's monthly UAT, DEV, and TEST environment deployments and Prod release cycles; received repeated commendations from the Qantas team throughout the engagement
-      - Delivered the BEAR system for Queensland's Department of Transport — dynamic form engine and admin dashboard serving government auditors, fully WCAG-compliant
-      - Led the PNG Police Check prototype as Senior Developer; success resulted in the Prime Minister of PNG presenting the solution at an international conference in Seattle
-    tech: [Python, FastAPI, LangChain, ChromaDB, Claude API, TypeScript, React, Next.js, Node.js, AWS, Kubernetes, ArgoCD, Docker, GitHub Actions]
-
-  - company: Healthcarelogic
-    role: Fullstack Web Engineer
-    period: "Jun 2018 - Jun 2022"
-    start: 2018-06
-    location: Gold Coast, AU
-    description: >
-      Full stack development across the healthcare platform — building features,
-      reviewing PRs, managing deployments, and providing technical support.
-    highlights:
-      - Led TypeScript adoption across the codebase, reducing runtime errors by 40%
-      - Built reusable React component library used across 15+ features, cutting new feature dev time by 30%
-      - Maintained 99.9% uptime during production incidents with average resolution time under 2 hours
-    tech: [JavaScript, TypeScript, React, Redux, GraphQL, Node.js, Express, KnexJS, PostgreSQL]
-
-  - company: JR Craftsman Academy
-    role: Fullstack Engineer
-    period: "Aug 2017 - May 2018"
-    start: 2017-08
-    location: Brisbane, AU
-    description: >
-      Maintained and extended the company website. Introduced ReactJS within an existing
-      Pug/Node.js stack and modernised the CSS architecture.
-    highlights:
-      - Integrated ReactJS components into a legacy Pug template system, improving interactivity without a full rewrite
-      - Led migration from plain CSS to Sass, establishing reusable mixins and a scalable styling system
-    tech: [React, Node.js, JavaScript, Bootstrap, Sass, Pug, Keystone]
-
+- company: NCS Australia
+  role: Senior Software Engineer
+  period: Jun 2022 - Present
+  location: Brisbane
+  description: Delivered full-stack solutions for government and enterprise clients across the transport,
+    aviation, energy, and commercial sectors — leading front-end architecture and API integration — while
+    independently building an AI-powered RAG portfolio to demonstrate AI engineering capability.
+  highlights:
+  - Led frontend architecture and delivery across multiple enterprise and government systems, focusing
+    on scalable UI design, performance optimisation, and seamless API integration.
+  - Delivered end-to-end features in cross-functional agile teams, contributing to both frontend and backend
+    workflows where required.
+  - Established reusable component libraries and frontend best practices, improving development efficiency
+    and consistency across projects.
+  - Delivered high-impact digital transformation projects, including the Department of Transport BEAR
+    system and Qantas operational platforms, supporting large-scale user bases and mission-critical workflows.
+  - Led the technical implementation of the PNG Police Check prototype on AWS, which was showcased at
+    an international government conference.
+  - Improved deployment efficiency and engineering velocity through better architecture patterns and CI/CD
+    collaboration across teams.
+  tech:
+  - Python
+  - FastAPI
+  - LangChain
+  - ChromaDB
+  - Claude API
+  - TypeScript
+  - React
+  - Next.js
+  - Node.js
+  - AWS
+  - Docker
+  - GitHub Actions
+  start: 2022-06
+- company: Healthcarelogic
+  role: Full Stack Engineer
+  period: Jun 2018 - Jun 2022
+  location: ''
+  description: Full-stack development across a healthcare platform — building business-critical features
+    and internal systems, owning release management and production deployments, and leading a codebase-wide
+    TypeScript migration.
+  highlights:
+  - Built full-stack, data-driven web applications with Node.js, Express, Knex.js, GraphQL, React and
+    TypeScript, delivering business-critical features and internal systems.
+  - Designed and integrated secure, scalable backend services and APIs; owned release management and production
+    deployments.
+  - Led the migration to TypeScript across multiple projects, reducing runtime errors and improving maintainability.
+  tech:
+  - JavaScript
+  - TypeScript
+  - React
+  - GraphQL
+  - Node.js
+  - Express
+  - Knex.js
+  - PostgreSQL
+  start: 2018-06
 education:
-  - institution: Queensland University of Technology (QUT)
-    degree: Master of Network Management
-    period: "2015 - 2017"
-    highlights:
-      - Specialisation in network infrastructure, distributed systems, and cloud architecture
-
+- institution: Queensland University of Technology (QUT)
+  degree: Master of Network Management
+  period: 2015 - 2017
+  highlights:
+  - Specialisation in network infrastructure, distributed systems, and cloud architecture
 skills:
   languages:
-    - name: Python
-      level: 4
-      years: 1
-    - name: TypeScript
-      level: 5
-      years: 6
-    - name: JavaScript
-      level: 5
-      years: 8
-    - name: SQL
-      level: 3
-      years: 5
-    - name: HTML5 / CSS3
-      level: 4
-      years: 8
-
+  - name: Python
+    level: 4
+    years: 2
+  - name: TypeScript
+    level: 5
+    years: 6
+  - name: JavaScript
+    level: 5
+    years: 8
+  - name: SQL
+    level: 3
+    years: 5
+  - name: HTML5 / CSS3
+    level: 4
+    years: 8
   ai_ml:
-    - Claude API (Anthropic)
-    - OpenAI API
-    - LangChain
-    - RAG pipeline design
-    - ChromaDB (vector DB)
-    - HuggingFace Embeddings
-    - Prompt engineering
-    - Streaming inference (SSE)
-    - LLM orchestration
-
+  - Claude API (Anthropic)
+  - OpenAI API
+  - LangChain
+  - LangGraph
+  - RAG pipeline design
+  - ChromaDB (vector DB)
+  - HuggingFace Embeddings
+  - Hybrid retrieval (BM25 + Dense)
+  - Cohere Reranker
+  - Prompt Engineering
+  - Function Calling
+  - Structured Output / JSON Schema
+  - MCP Server
+  - Anthropic Computer Use
+  - Claude Code
+  - Streaming inference (SSE)
+  - Token usage & cost monitoring
   backend:
-    - FastAPI
-    - Node.js / Express
-    - REST APIs
-    - GraphQL
-    - WebSockets / SSE
-    - KnexJS
-
+  - Python
+  - Node.js
+  - FastAPI
+  - Django
+  - REST APIs
+  - GraphQL
   frontend:
-    - React
-    - Next.js
-    - TypeScript
-    - Redux
-    - Tailwind CSS
-    - Material-UI
-    - React Native
-
+  - React
+  - Next.js
+  - TypeScript
+  - Tailwind CSS
+  - Material UI
+  - Chakra UI
   databases:
-    - PostgreSQL
-    - ChromaDB
-    - DynamoDB
-    - Redis
-    - MySQL
-
+  - PostgreSQL
+  - MySQL
+  - DynamoDB
+  - Redis
+  - ChromaDB
   devops_cloud:
-    - AWS (ECS Fargate, ECR, S3, CloudFront, EFS, ALB, Cognito, Lambda, Amplify)
-    - Docker / Docker Compose
-    - GitHub Actions (CI/CD)
-    - Kubernetes (K8s)
-    - ArgoCD
-    - Linux / Bash
-
+  - AWS (ECS Fargate, Lambda, S3, CloudFront, EFS, ECR, Cognito, ALB)
+  - Docker / Docker Compose
+  - Helm
+  - GitHub Actions (CI/CD)
   skill_radar:
-    - category: AI / LLM Engineering
-      score: 82
-    - category: Backend & APIs
-      score: 80
-    - category: Cloud & DevOps
-      score: 78
-    - category: Frontend
-      score: 88
-    - category: System Design
-      score: 72
-    - category: Databases
-      score: 70
-
+  - category: AI / LLM Engineering
+    score: 82
+  - category: Backend & APIs
+    score: 80
+  - category: Cloud & DevOps
+    score: 78
+  - category: Frontend
+    score: 88
+  - category: System Design
+    score: 72
+  - category: Databases
+    score: 70
 certifications:
-  - name: AWS Certified Cloud Practitioner
-    issuer: Amazon Web Services
-    year: 2022
-  - name: Cisco Certified Network Professional (CCNP)
-    issuer: Cisco
-    year: 2014
-
+- name: AWS Certified Cloud Practitioner
+  issuer: Amazon Web Services
+  year: 2022
+- name: Cisco Certified Network Professional (CCNP)
+  issuer: Cisco
+  year: 2014
 languages_spoken:
-  - English (Professional)
-  - Mandarin Chinese (Native)
-
+- English (Professional)
+- Mandarin Chinese (Native)
 availability:
   status: Open to work
-  preferred_roles: [AI Engineer, LLM Engineer, AI Full Stack Engineer]
-  preferred_stack: [Python, LLM, RAG, AI Agents, LangChain, Claude API, OpenAI API, FastAPI, TypeScript, AWS]
-  work_arrangement: [Remote, Hybrid]
+  preferred_roles:
+  - AI Engineer
+  - LLM Engineer
+  - AI Full Stack Engineer
+  preferred_stack:
+  - Python
+  - LLM
+  - RAG
+  - AI Agents
+  - LangChain
+  - Claude API
+  - OpenAI API
+  - FastAPI
+  - TypeScript
+  - AWS
+  work_arrangement:
+  - Remote
+  - Hybrid
   notice_period: 4 weeks

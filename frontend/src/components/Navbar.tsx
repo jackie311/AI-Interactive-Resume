@@ -72,11 +72,11 @@ export default function Navbar() {
       {menuOpen && (
         <div className="lg:hidden fixed inset-0 z-30 flex flex-col" onClick={() => setMenuOpen(false)}>
           {/* Backdrop */}
-          <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" />
+          <div className="absolute inset-0 bg-ink/30 backdrop-blur-sm" />
 
           {/* Menu panel — slides down from top */}
           <div
-            className="relative mt-12 mx-3 bg-surface-1 border border-hairline rounded-xl shadow-2xl shadow-black/40 overflow-hidden"
+            className="relative mt-12 mx-3 bg-surface-1 border border-hairline-strong rounded-xl shadow-2xl shadow-ink/10 overflow-hidden"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="p-2">

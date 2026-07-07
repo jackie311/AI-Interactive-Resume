@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What This Project Is
 
-AI-powered interactive resume/portfolio site. Visitors see a resume + always-visible chat sidebar where they can ask questions about Jackie's background in English or Chinese. The AI speaks in first person as Jackie, using RAG over resume YAML files.
+AI-powered interactive resume/portfolio site. Visitors see a resume + always-visible chat sidebar where they can ask questions about Jackie's background in English or Chinese. The AI speaks in first person as Jackie, using RAG over resume data. **`resume/MASTER_RESUME.md` + `resume/site-meta.yaml` are the single source of truth**; `scripts/build_data.py` compiles them into the `backend/data/*.yaml` the app consumes (see Data flow).
 
 ## Commands
 
@@ -20,7 +20,8 @@ cd backend
 source .venv/Scripts/activate          # Windows; use .venv/bin/activate on Mac/Linux
 uvicorn main:app --reload              # http://localhost:8000
 
-# After editing data/resume.yaml or data/projects.yaml:
+# After editing resume/MASTER_RESUME.md or resume/site-meta.yaml:
+python ../scripts/build_data.py        # regenerate data/*.yaml (run from repo root or backend)
 python rag/embedder.py                 # re-embed into ChromaDB
 ```
 
@@ -49,17 +50,36 @@ cd myResume && git pull
 docker compose -f docker-compose.prod.yml up -d --build
 ```
 
-**Re-run embedder** (after editing resume.yaml or projects.yaml):
+**Re-run embedder** (after editing the master/sidecar and regenerating data locally, then pushing):
 ```bash
+# The `Run Embedder` GitHub Action does this automatically on push to resume/ or backend/data/.
+# Manual fallback on EC2:
 docker compose -f docker-compose.prod.yml exec backend python rag/embedder.py
 ```
 
 ## Architecture
 
 ### Data flow
-`backend/data/resume.yaml` + `data/projects.yaml` → `rag/embedder.py` → ChromaDB (`chroma_db/`) → `rag/chain.py` retrieves context → Claude API streams response → frontend SSE
+`resume/MASTER_RESUME.md` + `resume/site-meta.yaml` → `scripts/build_data.py` → `backend/data/resume.yaml` + `data/projects.yaml` (+ `frontend/public/resume.md`) → `rag/embedder.py` → ChromaDB (`chroma_db/`) → `rag/chain.py` retrieves context → Claude API streams response → frontend SSE
 
-**Important**: The YAML files are the source of truth. After editing them, `rag/embedder.py` must be re-run to update the vector store.
+**Important — source of truth**: `resume/MASTER_RESUME.md` (all prose) and `resume/site-meta.yaml` (display-only structured fields: skill chips, radar scores, project ids/flags/links, education, certs, availability) are the ONLY files you edit by hand. `backend/data/resume.yaml`, `backend/data/projects.yaml`, and `frontend/public/resume.md` are **generated** — do not hand-edit them (they carry a `GENERATED FILE — DO NOT EDIT` header).
+
+After editing the master or sidecar:
+```bash
+python scripts/build_data.py    # regenerate resume.yaml/projects.yaml/resume.md
+cd backend && python -m rag.embedder    # re-embed ChromaDB from the regenerated YAML
+```
+`scripts/build_data.py` parses the master's headings, merges `site-meta.yaml` by project slug, and **fails loudly** if a project heading has no sidecar entry (drift guard). The `Run Embedder` GitHub Action also verifies the committed generated files are not stale.
+
+**Downloadable résumé PDF** (the "Download Resume" button serves `frontend/public/resume.pdf`). It is generated from the same data — a Claude-styled A4 (warm serif headings + coral accents). Regenerate after a data change:
+```bash
+python scripts/build_resume_pdf.py    # writes resume-exports/resume.html from backend/data/*.yaml
+# then render to PDF with Chrome headless (new headless mode):
+"C:/Program Files/Google/Chrome/Application/chrome.exe" --headless=new --disable-gpu \
+  --no-pdf-header-footer --print-to-pdf="frontend/public/resume.pdf" \
+  "file:///D:/Jackie/repo/myResume/resume-exports/resume.html"
+cp frontend/public/resume.pdf backend/data/resume.pdf    # keep /api/resume/download in sync
+```
 
 ### Backend
 - `main.py` — FastAPI app, CORS config reads `ALLOWED_ORIGINS` env var

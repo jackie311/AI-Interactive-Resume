@@ -1,0 +1,199 @@
+# site-meta.yaml — display-only structured fields for the portfolio site.
+#
+# MASTER_RESUME.md is the source of truth for all PROSE (bios, bullets, project
+# descriptions, experience). This sidecar holds only the structured / presentational
+# scaffolding that prose can't carry: skill chips, proficiency levels, radar scores,
+# per-project ids/flags/links, education/certs, and availability.
+#
+# scripts/build_data.py parses MASTER_RESUME.md, merges this file, and regenerates
+# backend/data/resume.yaml + projects.yaml + frontend/public/resume.md.
+# Keep the skill chips here consistent with the master's Skills inventory.
+
+personal:
+  title: "AI Engineer & Full Stack Developer"
+  open_to_work: true
+
+# Programming-language proficiency (drives the tech word cloud + skill bars).
+skills:
+  languages:
+    - { name: Python, level: 4, years: 2 }
+    - { name: TypeScript, level: 5, years: 6 }
+    - { name: JavaScript, level: 5, years: 8 }
+    - { name: SQL, level: 3, years: 5 }
+    - { name: "HTML5 / CSS3", level: 4, years: 8 }
+
+  # Skill chips — AI Engineering first (AI-forward positioning), then Full Stack.
+  # These mirror the master's Skills inventory, curated into atomic chips.
+  ai_ml:
+    - Claude API (Anthropic)
+    - OpenAI API
+    - LangChain
+    - LangGraph
+    - RAG pipeline design
+    - ChromaDB (vector DB)
+    - HuggingFace Embeddings
+    - Hybrid retrieval (BM25 + Dense)
+    - Cohere Reranker
+    - Prompt Engineering
+    - Function Calling
+    - Structured Output / JSON Schema
+    - MCP Server
+    - Anthropic Computer Use
+    - Claude Code
+    - Streaming inference (SSE)
+    - Token usage & cost monitoring
+  frontend:
+    - React
+    - Next.js
+    - TypeScript
+    - Tailwind CSS
+    - Material UI
+    - Chakra UI
+  backend:
+    - Python
+    - Node.js
+    - FastAPI
+    - Django
+    - REST APIs
+    - GraphQL
+  databases:
+    - PostgreSQL
+    - MySQL
+    - DynamoDB
+    - Redis
+    - ChromaDB
+  devops_cloud:
+    - AWS (ECS Fargate, Lambda, S3, CloudFront, EFS, ECR, Cognito, ALB)
+    - Docker / Docker Compose
+    - Helm
+    - GitHub Actions (CI/CD)
+
+  skill_radar:
+    - { category: AI / LLM Engineering, score: 82 }
+    - { category: Backend & APIs, score: 80 }
+    - { category: Cloud & DevOps, score: 78 }
+    - { category: Frontend, score: 88 }
+    - { category: System Design, score: 72 }
+    - { category: Databases, score: 70 }
+
+# Education (master lists the degree name; structured period/highlights live here).
+education:
+  - institution: Queensland University of Technology (QUT)
+    degree: Master of Network Management
+    period: "2015 - 2017"
+    highlights:
+      - Specialisation in network infrastructure, distributed systems, and cloud architecture
+
+certifications:
+  - name: AWS Certified Cloud Practitioner
+    issuer: Amazon Web Services
+    year: 2022
+  - name: Cisco Certified Network Professional (CCNP)
+    issuer: Cisco
+    year: 2014
+
+languages_spoken:
+  - English (Professional)
+  - Mandarin Chinese (Native)
+
+availability:
+  status: Open to work
+  preferred_roles: [AI Engineer, LLM Engineer, AI Full Stack Engineer]
+  preferred_stack: [Python, LLM, RAG, AI Agents, LangChain, Claude API, OpenAI API, FastAPI, TypeScript, AWS]
+  work_arrangement: [Remote, Hybrid]
+  notice_period: 4 weeks
+
+# Per-project structured metadata. `heading` must match the master's `###` heading
+# exactly (normalised: case- and whitespace-insensitive). `category` places the
+# project on the site (ai-engineer | fullstack | other). Build fails loudly if a
+# master project heading has no entry here (drift guard).
+projects:
+  jiragpt:
+    heading: "JiraGPT — Jira-Integrated AI Assistant Platform"
+    name: "JiraGPT — Jira-Integrated AI Assistant"
+    category: ai-engineer
+    featured: true
+    year: 2025
+    github: null
+    live: null
+    tagline: "Natural-language Jira — query, report, bulk-transition and create tickets on a RAG + intent-routing microservice architecture"
+
+  ai-portfolio:
+    heading: "AI Interactive Resume / Conversational RAG Portfolio"
+    name: "AI Interactive Resume"
+    category: ai-engineer
+    featured: true
+    year: 2026
+    github: "https://github.com/jackie311/AI-Interactive-Resume"
+    live: "https://profile.jackiejin.dev"
+    tagline: "RAG + LLM + AWS — a full AI engineering project, deployed to production"
+
+  bear:
+    heading: "Booking Entity Authorisation Reporting (BEAR)"
+    name: "BEAR — Booking Entity Authorisation Reporting"
+    category: fullstack
+    featured: true
+    year: 2024
+    github: null
+    live: null
+    tagline: "Government reporting platform for regulatory workflows across staff and auditors"
+
+  qantas-platforms:
+    heading: "ELogbook, QETouch, Port Supervisor Page"
+    name: "Qantas Digital Platforms"
+    category: fullstack
+    featured: true
+    year: 2023
+    github: null
+    live: null
+    tagline: "From maintaining mission-critical pilot apps to delivering a new production system end-to-end"
+
+  conocophillips-haaic:
+    heading: "HAAIC Sheet App"
+    name: "ConocoPhillips HAAIC Sheet App"
+    category: fullstack
+    featured: false
+    year: 2022
+    github: null
+    live: null
+    tagline: "Digitised electrical-equipment procurement — paperless and signature-ready"
+
+  png-police-check:
+    heading: "PNG Police Check Application"
+    name: "PNG Police Check Application"
+    category: other
+    featured: false
+    year: 2023
+    github: null
+    live: null
+    tagline: "Government e-portal prototype in 6 weeks — presented at an international conference"
+
+  ncs-cv-tool:
+    heading: "NCS Consultant CV Tool"
+    name: "NCS Consultant CV Tool"
+    category: other
+    featured: false
+    year: 2023
+    github: null
+    live: null
+    tagline: "Internal automation to manage and generate consultant CVs company-wide"
+
+  ozlottostats:
+    heading: "OzLottoStats"
+    name: "OzLottoStats"
+    category: other
+    featured: false
+    year: 2025
+    github: null
+    live: "https://www.ozlottostats.app/"
+    tagline: "Lottery statistics app — historical Oz Lotto draw analysis"
+
+  fishing-mate:
+    heading: "Fishing Mate"
+    name: "Fishing Mate"
+    category: other
+    featured: false
+    year: 2025
+    github: null
+    live: "https://fishing-mate.pages.dev/#/weather"
+    tagline: "Mobile weather & fishing-conditions companion"

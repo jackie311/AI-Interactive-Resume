@@ -82,7 +82,7 @@ export default function ProjectCard({ project, index, featured = false }: Props)
             className="fixed inset-0 z-50 flex items-end sm:items-center justify-center sm:p-6"
             onClick={() => setOpen(false)}
           >
-            <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" />
+            <div className="absolute inset-0 bg-ink/40 backdrop-blur-sm" />
 
             <motion.div
               initial={{ opacity: 0, y: 40 }}
@@ -90,7 +90,7 @@ export default function ProjectCard({ project, index, featured = false }: Props)
               exit={{ opacity: 0, y: 40 }}
               transition={{ duration: 0.25, ease: "easeOut" }}
               onClick={(e) => e.stopPropagation()}
-              className="relative w-full sm:max-w-xl bg-surface-1 rounded-t-2xl sm:rounded-2xl border border-hairline shadow-2xl shadow-black/50 overflow-hidden max-h-[92dvh] sm:max-h-[85vh] flex flex-col"
+              className="relative w-full sm:max-w-xl bg-surface-1 rounded-t-2xl sm:rounded-2xl border border-hairline-strong shadow-2xl shadow-ink/10 overflow-hidden max-h-[92dvh] sm:max-h-[85vh] flex flex-col"
             >
               {/* Header */}
               <div className="flex items-start justify-between p-4 sm:p-6 pb-4 shrink-0">
@@ -117,6 +117,18 @@ export default function ProjectCard({ project, index, featured = false }: Props)
                 <p className="text-sm text-ink-muted leading-relaxed">
                   {project.description}
                 </p>
+
+                {/* Highlights */}
+                {project.highlights?.length > 0 && (
+                  <ul className="space-y-2">
+                    {project.highlights.map((h, i) => (
+                      <li key={i} className="flex gap-2.5 text-sm text-ink-muted leading-relaxed">
+                        <span className="mt-1.5 w-1 h-1 rounded-full bg-ink-tertiary shrink-0" />
+                        <span>{h}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
 
                 {/* Problem / Solution / Impact */}
                 {(project.problem || project.solution || project.impact) && (

@@ -7,12 +7,36 @@ on:
       - master
       - dev
     paths:
+      # Source of truth — edits here must be compiled via scripts/build_data.py.
+      - "resume/MASTER_RESUME.md"
+      - "resume/site-meta.yaml"
+      - "scripts/build_data.py"
+      # Generated artifacts (committed) — the embedder reads these.
       - "backend/data/resume.yaml"
       - "backend/data/projects.yaml"
 
 jobs:
+  verify-generated:
+    name: Verify generated data is up to date
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install PyYAML
+        run: pip install pyyaml
+      - name: Regenerate and check for drift
+        run: |
+          python scripts/build_data.py
+          if ! git diff --exit-code backend/data/resume.yaml backend/data/projects.yaml frontend/public/resume.md; then
+            echo "::error::Generated data is stale. Run 'python scripts/build_data.py' and commit the result."
+            exit 1
+          fi
+
   embed:
     name: Rebuild image and re-embed data on EC2
+    needs: verify-generated
     runs-on: ubuntu-latest
 
     steps:

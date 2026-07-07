@@ -8,11 +8,11 @@ interface Props {
 
 export default function SkillsSection({ skills }: Props) {
   const tagCategories: [string, string[]][] = [
+    ["AI Engineering", skills.ai_ml],
     ["Frontend", skills.frontend],
     ["Backend", skills.backend],
     ["Databases", skills.databases],
     ["DevOps & Cloud", skills.devops_cloud],
-    ["AI & ML", skills.ai_ml],
   ];
 
   return (

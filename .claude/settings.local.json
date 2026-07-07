@@ -13,7 +13,10 @@
       "Bash(curl -s -o /dev/null -w \"frontend / -> %{http_code}\\\\n\" http://localhost:3000)",
       "Bash(curl -s -o /dev/null -w \"backend /api/resume -> %{http_code}\\\\n\" http://localhost:8000/api/resume)",
       "PowerShell($chrome = \"C:\\\\Program Files\\\\Google\\\\Chrome\\\\Application\\\\chrome.exe\"; $out = \"D:\\\\Jackie\\\\repo\\\\myResume\\\\.claude\\\\worktrees\\\\home-theme.png\"; & $chrome --headless --disable-gpu --hide-scrollbars --window-size=1440,1024 --screenshot=\"$out\" \"http://localhost:3000\" 2>$null; Start-Sleep -Seconds 2; if \\(Test-Path $out\\) { \"screenshot saved: $out \\($\\(\\(Get-Item $out\\).Length\\) bytes\\)\" } else { \"screenshot failed\" })",
-      "PowerShell($chrome = \"C:\\\\Program Files\\\\Google\\\\Chrome\\\\Application\\\\chrome.exe\"; $out = \"D:\\\\Jackie\\\\repo\\\\myResume\\\\.claude\\\\worktrees\\\\home-theme2.png\"; & $chrome --headless --disable-gpu --hide-scrollbars --window-size=1440,1024 --virtual-time-budget=5000 --screenshot=\"$out\" \"http://localhost:3000\" 2>$null; Start-Sleep -Seconds 2; if \\(Test-Path $out\\) { \"saved \\($\\(\\(Get-Item $out\\).Length\\) bytes\\)\" } else { \"failed\" })"
+      "PowerShell($chrome = \"C:\\\\Program Files\\\\Google\\\\Chrome\\\\Application\\\\chrome.exe\"; $out = \"D:\\\\Jackie\\\\repo\\\\myResume\\\\.claude\\\\worktrees\\\\home-theme2.png\"; & $chrome --headless --disable-gpu --hide-scrollbars --window-size=1440,1024 --virtual-time-budget=5000 --screenshot=\"$out\" \"http://localhost:3000\" 2>$null; Start-Sleep -Seconds 2; if \\(Test-Path $out\\) { \"saved \\($\\(\\(Get-Item $out\\).Length\\) bytes\\)\" } else { \"failed\" })",
+      "Skill(update-config)",
+      "PowerShell($s = Get-Content \"C:\\\\Users\\\\Jackie\\\\.claude\\\\settings.json\" -Raw | ConvertFrom-Json; $s.hooks.Stop[0].hooks[0].command)",
+      "PowerShell(\\(New-Object System.Media.SoundPlayer \"$env:WINDIR\\\\Media\\\\notify.wav\"\\).PlaySync\\(\\); \"played\")"
     ]
   }
 }
